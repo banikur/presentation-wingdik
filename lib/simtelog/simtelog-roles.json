@@ -1,0 +1,1008 @@
+[
+  {
+    "id": "kagpl",
+    "name": "KaGPL",
+    "fullname": "Kepala Gudang Pangkalan",
+    "category": "gudang",
+    "icon": "🏭",
+    "tagline": "Penjaga gudang pangkalan. Pegang kendali stok harian.",
+    "scenario": "Senin pagi di gudang pangkalan. Hasil stock opname menunjukkan jumlah fisik barang non-komponen berbeda dengan data di sistem. Sebagai KaGPL, kamu bertanggung jawab menyelaraskan data sistem dengan kondisi gudang yang sebenarnya.",
+    "tupoksi": [
+      {
+        "icon": "📦",
+        "title": "Kelola Inventory",
+        "desc": "Memantau dan mengelola stok barang komponen & non-komponen di gudang pangkalan."
+      },
+      {
+        "icon": "⚖️",
+        "title": "Inventory Adjustment",
+        "desc": "Penyesuaian Current Balance & Physical Count agar data sistem sesuai kondisi fisik."
+      },
+      {
+        "icon": "➕",
+        "title": "Add Items to Storeroom",
+        "desc": "Mengenalkan Part Number (PN) baru ke gudang tujuan secara sistem."
+      },
+      {
+        "icon": "📝",
+        "title": "Request Item",
+        "desc": "Mengajukan PN baru ke Binakatstand bila belum terdaftar di Item Master."
+      }
+    ],
+    "docs": [
+      "Inventory",
+      "Form Request Item",
+      "Item Master",
+      "Component"
+    ],
+    "warning": {
+      "label": "Perhatian",
+      "text": "Setiap adjustment inventory harus dipastikan akurat — Physical Count harus sesuai hasil pengecekan fisik sebelum klik Reconcile Balances."
+    },
+    "demo": {
+      "title": "Inventory Adjustment Non-Komponen",
+      "subtitle": "Menyesuaikan Current Balance & Physical Count barang non-komponen agar data sistem sinkron dengan kondisi gudang.",
+      "context": "Stok fisik barang non-komponen di gudang berjumlah 50 unit, namun di sistem tercatat 47 unit. Sebagai KaGPL, kamu perlu melakukan adjustment.",
+      "steps": [
+        {
+          "title": "Akses menu Inventory",
+          "desc": "Klik Go To → Pembekalan → Inventory, lalu pastikan masuk ke tab non-komponen."
+        },
+        {
+          "title": "Pilih Part Number",
+          "desc": "Pilih satu PN yang akan di-adjust dari daftar."
+        },
+        {
+          "title": "Pilih Action Adjustment",
+          "desc": "Klik Select Action → Inventory Adjustments → Current Balance."
+        },
+        {
+          "title": "Isi New Balance",
+          "desc": "Masukkan jumlah baru sesuai kondisi gudang, klik OK."
+        },
+        {
+          "title": "Reconcile Balances",
+          "desc": "Klik Select Action → Inventory Adjustments → Reconcile Balances untuk update final."
+        }
+      ],
+      "takeaways": [
+        "KaGPL bertanggung jawab atas akurasi data inventory gudang pangkalan.",
+        "Adjustment harus melalui proses Reconcile Balances untuk diakui sistem."
+      ]
+    }
+  },
+  {
+    "id": "kagpd",
+    "name": "KaGPD",
+    "fullname": "Kepala Gudang Depo",
+    "category": "gudang",
+    "icon": "🏗️",
+    "tagline": "Pegang kendali gudang depo. Skala lebih besar dari pangkalan.",
+    "scenario": "Sebuah Part Number baru saja disetujui untuk masuk gudang depo. Sebagai KaGPD, kamu harus mengenalkan PN tersebut ke storeroom yang dituju agar dapat ditransaksikan dalam sistem.",
+    "tupoksi": [
+      {
+        "icon": "🏗️",
+        "title": "Kelola Gudang Depo",
+        "desc": "Mengelola stok skala depo, melayani permintaan antar satker."
+      },
+      {
+        "icon": "➕",
+        "title": "Add Items to Storeroom",
+        "desc": "Mengenalkan PN ke gudang depo agar bisa ditransaksikan."
+      },
+      {
+        "icon": "⚖️",
+        "title": "Inventory Adjustment",
+        "desc": "Penyesuaian stok komponen & non-komponen di tingkat depo."
+      },
+      {
+        "icon": "🔄",
+        "title": "Distribusi Antar Satker",
+        "desc": "Memproses permintaan barang dari satker lain melalui bentuk pengeluaran."
+      }
+    ],
+    "docs": [
+      "Item Master",
+      "Inventory",
+      "Bentuk 40400",
+      "Component"
+    ],
+    "warning": {
+      "label": "Perhatian",
+      "text": "Pastikan Site dan Storeroom tujuan sudah benar sebelum klik OK — PN yang salah dikenalkan ke gudang sulit di-rollback."
+    },
+    "demo": {
+      "title": "Add Items to Storeroom",
+      "subtitle": "Mengenalkan Part Number baru ke gudang tujuan secara sistem.",
+      "context": "Sebuah PN baru telah disetujui untuk masuk ke GPD Lanud. Sebagai KaGPD, kamu mengenalkan PN ini ke storeroom yang tepat.",
+      "steps": [
+        {
+          "title": "Buka Item Master",
+          "desc": "Klik Go To → Item Master, lalu ketik PN yang akan ditambahkan."
+        },
+        {
+          "title": "Pilih Action",
+          "desc": "Klik Select Action → Add Items To Storeroom."
+        },
+        {
+          "title": "Tentukan Site & Storeroom",
+          "desc": "Pilih Site (Lanud/Depo) dan Storeroom (GPL/GPD) tujuan."
+        },
+        {
+          "title": "Konfirmasi",
+          "desc": "Klik OK — PN otomatis terdaftar di gudang tujuan."
+        }
+      ],
+      "takeaways": [
+        "Add Items to Storeroom adalah langkah administratif sebelum PN bisa ditransaksikan.",
+        "KaGPD pegang kuasa di tingkat depo, lebih luas dari KaGPL."
+      ]
+    }
+  },
+  {
+    "id": "kasikal",
+    "name": "Kasikal",
+    "fullname": "Kepala Seksi Pembekalan",
+    "category": "admin",
+    "icon": "📋",
+    "tagline": "Otorisator pengeluaran barang antar satker.",
+    "scenario": "Satker lain membutuhkan pengeluaran barang dari satkermu. Sebagai Kasikal, kamu memproses Bentuk 40400 untuk mengeluarkan barang secara resmi antar satker.",
+    "tupoksi": [
+      {
+        "icon": "📤",
+        "title": "Otorisasi Bentuk 40400",
+        "desc": "Memproses pengeluaran barang antar satker."
+      },
+      {
+        "icon": "📝",
+        "title": "Request Item",
+        "desc": "Mengajukan PN baru ke Binakatstand jika diperlukan."
+      },
+      {
+        "icon": "📑",
+        "title": "Nota Dinas",
+        "desc": "Membuat nota dinas terkait pembekalan."
+      },
+      {
+        "icon": "✅",
+        "title": "Verifikasi Dokumen",
+        "desc": "Memastikan kelengkapan administrasi sebelum pengeluaran."
+      }
+    ],
+    "docs": [
+      "Bentuk 40400",
+      "Form Request Item",
+      "Nota Dinas"
+    ],
+    "warning": null,
+    "demo": {
+      "title": "Bentuk 40400 — Pengeluaran Antar Satker",
+      "subtitle": "Memproses pengeluaran barang Suku Cadang antar satker melalui Bentuk 40400.",
+      "context": "Satker lain mengajukan permintaan barang. Sebagai Kasikal, kamu generate Bentuk 40400 sebagai dasar pengeluaran resmi.",
+      "steps": [
+        {
+          "title": "Akses Pembekalan",
+          "desc": "Login → Go To → Pembekalan → pilih Bentuk 40400."
+        },
+        {
+          "title": "Buat Dokumen Baru",
+          "desc": "Klik New, isi field sesuai permintaan satker tujuan."
+        },
+        {
+          "title": "Route Persetujuan",
+          "desc": "Klik Save → Route ke pejabat berikutnya untuk approval."
+        },
+        {
+          "title": "Cetak Laporan",
+          "desc": "Setelah disetujui, gunakan Run Reports untuk export ke Word."
+        }
+      ],
+      "takeaways": [
+        "Kasikal adalah gatekeeper administrasi pengeluaran antar satker.",
+        "Setiap bentuk harus di-route sesuai jenjang persetujuan."
+      ]
+    }
+  },
+  {
+    "id": "kasubsikal",
+    "name": "Kasubsikal",
+    "fullname": "Kepala Sub Seksi Pembekalan",
+    "category": "admin",
+    "icon": "📂",
+    "tagline": "Pendukung Kasikal di tingkat sub-seksi.",
+    "scenario": "Ada PN baru yang belum terdaftar di sistem dan dibutuhkan untuk operasional. Sebagai Kasubsikal, kamu mengajukan Request Item ke Binakatstand untuk diverifikasi.",
+    "tupoksi": [
+      {
+        "icon": "📝",
+        "title": "Request Item",
+        "desc": "Mengajukan PN baru ke Binakatstand."
+      },
+      {
+        "icon": "📋",
+        "title": "Dukung Administrasi",
+        "desc": "Mendukung Kasikal dalam administrasi pembekalan."
+      },
+      {
+        "icon": "🔍",
+        "title": "Verifikasi Awal",
+        "desc": "Memeriksa kelengkapan dokumen sebelum eskalasi."
+      },
+      {
+        "icon": "📤",
+        "title": "Pengeluaran Barang",
+        "desc": "Membantu proses pengeluaran sesuai delegasi."
+      }
+    ],
+    "docs": [
+      "Form Request Item",
+      "Bentuk 40400"
+    ],
+    "warning": null,
+    "demo": {
+      "title": "Request Item",
+      "subtitle": "Mengajukan Part Number baru yang belum ada di Item Master.",
+      "context": "PN tertentu belum terdaftar di aplikasi. Sebagai Kasubsikal, kamu submit form request ke Binakatstand.",
+      "steps": [
+        {
+          "title": "Buka Form Request",
+          "desc": "Go To → Pembekalan → Form Request Item."
+        },
+        {
+          "title": "Buat REQITEM Baru",
+          "desc": "Klik New REQITEM — nama pemohon otomatis terisi."
+        },
+        {
+          "title": "Isi Detail PN",
+          "desc": "Isi No urut, PN, Nama Barang, Satuan, Component, Komoditi."
+        },
+        {
+          "title": "Route ke Binakat",
+          "desc": "Klik Save → Route → Route ke Binakat → OK."
+        }
+      ],
+      "takeaways": [
+        "Request Item adalah jembatan antara kebutuhan operasional & registrasi sistem.",
+        "Setelah verifikasi Binakatstand, request dikembalikan ke pemohon untuk di-close."
+      ]
+    }
+  },
+  {
+    "id": "katb",
+    "name": "KaTB",
+    "fullname": "Kepala Tempat Bench Stock",
+    "category": "admin",
+    "icon": "📊",
+    "tagline": "Pengelola bench stock & pemindahan barang dalam satker.",
+    "scenario": "Ada kebutuhan memindahkan barang Suku Cadang dari satu unit ke unit lain dalam satkermu. Sebagai KaTB, kamu memproses Bentuk 40220.",
+    "tupoksi": [
+      {
+        "icon": "🔄",
+        "title": "Bentuk 40220",
+        "desc": "Pemindahan barang dalam satu satker."
+      },
+      {
+        "icon": "📊",
+        "title": "Laporan Bench Stock",
+        "desc": "Membuat Bentuk 45100 — laporan pemakaian materiel."
+      },
+      {
+        "icon": "📝",
+        "title": "Request Item",
+        "desc": "Mengajukan PN baru ke Binakatstand."
+      },
+      {
+        "icon": "📋",
+        "title": "Administrasi Bench Stock",
+        "desc": "Mengelola dokumen-dokumen terkait bench stock."
+      }
+    ],
+    "docs": [
+      "Bentuk 40220",
+      "Bentuk 45100",
+      "Form Request Item"
+    ],
+    "warning": null,
+    "demo": {
+      "title": "Bentuk 40220 — Pemindahan Dalam Satker",
+      "subtitle": "Memindahkan barang Suku Cadang dari satu unit ke unit lain dalam satker yang sama.",
+      "context": "Barang Suku Cadang perlu dipindah antar unit dalam satkermu. Bentuk 40220 menjadi dokumen resminya.",
+      "steps": [
+        {
+          "title": "Akses Bentuk 40220",
+          "desc": "Go To → Pembekalan → Bentuk 40220."
+        },
+        {
+          "title": "Buat Dokumen",
+          "desc": "Klik New, isi data pemindahan (asal, tujuan, PN, quantity)."
+        },
+        {
+          "title": "Route Persetujuan",
+          "desc": "Save → Route ke pejabat berikutnya."
+        },
+        {
+          "title": "Cetak Laporan",
+          "desc": "Setelah final, Run Reports → export ke Word."
+        }
+      ],
+      "takeaways": [
+        "KaTB fokus pada pergerakan barang internal satker.",
+        "Bentuk 40220 ≠ 40400 — beda lingkup (dalam vs antar satker)."
+      ]
+    }
+  },
+  {
+    "id": "kabinakatstand",
+    "name": "Kabinakatstand",
+    "fullname": "Kepala Bina Katalog & Standardisasi",
+    "category": "admin",
+    "icon": "🔍",
+    "tagline": "Verifikator data PN baru. Pintu gerbang katalog.",
+    "scenario": "Sebuah Request Item baru masuk ke inbox. Sebagai Kabinakatstand, kamu memverifikasi & melengkapi data NSN, pabrikan, asal negara sebelum PN bisa digunakan.",
+    "tupoksi": [
+      {
+        "icon": "🔍",
+        "title": "Verifikasi Request Item",
+        "desc": "Memeriksa & melengkapi data PN baru."
+      },
+      {
+        "icon": "🏷️",
+        "title": "Lengkapi NSN",
+        "desc": "Mengisi National Stock Number, pabrikan, asal negara."
+      },
+      {
+        "icon": "📚",
+        "title": "Bina Katalog",
+        "desc": "Menjaga konsistensi & standardisasi katalog barang."
+      },
+      {
+        "icon": "↩️",
+        "title": "Route ke Pemohon",
+        "desc": "Mengembalikan request yang sudah dilengkapi."
+      }
+    ],
+    "docs": [
+      "Form Request Item",
+      "Item Master"
+    ],
+    "warning": {
+      "label": "Penting",
+      "text": "Data NSN, pabrikan, dan asal negara harus diisi dengan akurat — kesalahan di sini akan terbawa ke seluruh proses pembekalan selanjutnya."
+    },
+    "demo": {
+      "title": "Verifikasi Request Item",
+      "subtitle": "Memeriksa Request Item yang masuk dan melengkapi data katalog.",
+      "context": "Request Item dari KaGPL/Kasikal/KaTB masuk ke inbox-mu. Saatnya verifikasi & lengkapi data.",
+      "steps": [
+        {
+          "title": "Buka Inbox",
+          "desc": "Login → cek Start Center → klik inbox Request Item."
+        },
+        {
+          "title": "Periksa Data Awal",
+          "desc": "Review data yang diisi pemohon."
+        },
+        {
+          "title": "Lengkapi NSN & Lainnya",
+          "desc": "Isi NSN, Pabrikan, Asal Negara, Keterangan."
+        },
+        {
+          "title": "Route ke Pemohon",
+          "desc": "Save → Route → Route ke Pemohon → OK."
+        }
+      ],
+      "takeaways": [
+        "Kabinakatstand adalah quality gate katalog — data salah di sini berdampak panjang.",
+        "Proses Request Item butuh bolak-balik antara pemohon & Binakatstand."
+      ]
+    }
+  },
+  {
+    "id": "kasibinitem",
+    "name": "Kasibinitem",
+    "fullname": "Kepala Seksi Bina Item",
+    "category": "admin",
+    "icon": "📝",
+    "tagline": "Pengelola PALM (Penetapan Alokasi Lebih Materiel).",
+    "scenario": "Sebuah UP/Kontrak baru memerlukan penetapan alokasi materiel. Sebagai Kasibinitem, kamu menginisiasi dokumen PALM untuk di-route ke jenjang persetujuan.",
+    "tupoksi": [
+      {
+        "icon": "📝",
+        "title": "Inisiasi PALM",
+        "desc": "Membuat dokumen Penetapan Alokasi Lebih Materiel."
+      },
+      {
+        "icon": "🔀",
+        "title": "Route Workflow",
+        "desc": "Menjalankan alur persetujuan PALM antar pejabat."
+      },
+      {
+        "icon": "📑",
+        "title": "Administrasi Item",
+        "desc": "Mengelola administrasi item-item materiel."
+      },
+      {
+        "icon": "📅",
+        "title": "Tanggal & No PALM",
+        "desc": "Memastikan penomoran & dating yang konsisten."
+      }
+    ],
+    "docs": [
+      "PALM",
+      "UP/Kontrak"
+    ],
+    "warning": null,
+    "demo": {
+      "title": "PALM — Penetapan Alokasi Lebih Materiel",
+      "subtitle": "Membuat dokumen PALM dan menjalankan workflow persetujuan.",
+      "context": "UP/Kontrak baru membutuhkan PALM. Sebagai Kasibinitem, kamu mulai dari pengisian header sampai routing.",
+      "steps": [
+        {
+          "title": "Login & Isi Header",
+          "desc": "Isi Dinas, Tanggal PALM, No PALM, Description, No Kontrak, Klasifikasi."
+        },
+        {
+          "title": "Lengkapi Lampiran",
+          "desc": "Isi Lampiran, Tembusan, Atas Nama (jika ada), Penandatangan."
+        },
+        {
+          "title": "Save & Route",
+          "desc": "Klik Save → Route ke Persetujuan Kasubdisbinitem."
+        },
+        {
+          "title": "Pantau Workflow",
+          "desc": "Cek inbox saat dokumen kembali untuk tahap berikutnya."
+        }
+      ],
+      "takeaways": [
+        "PALM melewati banyak jenjang persetujuan — sabar & teliti.",
+        "Kasibinitem adalah inisiator, bukan penandatangan akhir."
+      ]
+    }
+  },
+  {
+    "id": "kasimatkomoditi",
+    "name": "Kasimatkomoditi",
+    "fullname": "Kepala Seksi Materiel Komoditi",
+    "category": "har",
+    "icon": "🧰",
+    "tagline": "Otorisator instruksi pengeluaran & penerimaan tingkat Dismatau.",
+    "scenario": "Ada instruksi pengeluaran & penerimaan barang yang harus diproses di tingkat Dismatau. Sebagai Kasimatkomoditi, kamu memproses Bentuk 40510.",
+    "tupoksi": [
+      {
+        "icon": "📤",
+        "title": "Bentuk 40510",
+        "desc": "Instruksi pengeluaran & penerimaan barang."
+      },
+      {
+        "icon": "🔀",
+        "title": "Workflow PALM",
+        "desc": "Menerima & meneruskan PALM dari/ke Kasubdismatkomoditi."
+      },
+      {
+        "icon": "🧰",
+        "title": "Materiel Komoditi",
+        "desc": "Mengelola barang-barang komoditi di tingkat Dismatau."
+      },
+      {
+        "icon": "✅",
+        "title": "Verifikasi Dokumen",
+        "desc": "Memastikan kelengkapan sebelum di-route ke atasan."
+      }
+    ],
+    "docs": [
+      "Bentuk 40510",
+      "PALM"
+    ],
+    "warning": null,
+    "demo": {
+      "title": "Bentuk 40510 — Instruksi Pengeluaran & Penerimaan",
+      "subtitle": "Memproses instruksi pengeluaran & penerimaan barang di tingkat Dismatau.",
+      "context": "Instruksi pengeluaran & penerimaan masuk untuk diproses. Bentuk 40510 jadi dokumen resminya.",
+      "steps": [
+        {
+          "title": "Akses Bentuk 40510",
+          "desc": "Go To → Pembekalan → Bentuk 40510."
+        },
+        {
+          "title": "Buat Dokumen Baru",
+          "desc": "Klik New, lengkapi field sesuai instruksi."
+        },
+        {
+          "title": "Route Persetujuan",
+          "desc": "Save → Route ke pejabat berikutnya."
+        },
+        {
+          "title": "Cetak Laporan",
+          "desc": "Setelah disetujui, Run Reports → export."
+        }
+      ],
+      "takeaways": [
+        "Bentuk 40510 fokus pada instruksi resmi pengeluaran & penerimaan.",
+        "Kasimatkomoditi berperan di tingkat Dismatau, bukan satker pangkalan."
+      ]
+    }
+  },
+  {
+    "id": "kasihar",
+    "name": "Kasihar",
+    "fullname": "Kepala Seksi Pemeliharaan",
+    "category": "har",
+    "icon": "🔧",
+    "tagline": "Penentu Perintah Kerja Utama (PKU) & PKT.",
+    "scenario": "Sebuah pekerjaan pemeliharaan major perlu diinisiasi. Sebagai Kasihar, kamu menerbitkan PKU sebagai dasar pelaksanaan kerja teknis.",
+    "tupoksi": [
+      {
+        "icon": "🔧",
+        "title": "Perintah Kerja Utama",
+        "desc": "Menerbitkan PKU sebagai dasar pekerjaan pemeliharaan."
+      },
+      {
+        "icon": "➕",
+        "title": "Bentuk 12001 (PKT)",
+        "desc": "Perintah Kerja Tambahan untuk pekerjaan suplemen."
+      },
+      {
+        "icon": "📑",
+        "title": "Nota Dinas",
+        "desc": "Mengeluarkan nota dinas terkait pemeliharaan."
+      },
+      {
+        "icon": "🔍",
+        "title": "Koordinasi Teknis",
+        "desc": "Berkoordinasi dengan unit teknis pelaksana."
+      }
+    ],
+    "docs": [
+      "PKU",
+      "Bentuk 12001 (PKT)",
+      "Nota Dinas"
+    ],
+    "warning": {
+      "label": "Perhatian",
+      "text": "PKU adalah dokumen dasar — pastikan ruang lingkup pekerjaan jelas sebelum diterbitkan. PKT hanya untuk pekerjaan tambahan, bukan pengganti PKU."
+    },
+    "demo": {
+      "title": "PKU — Perintah Kerja Utama",
+      "subtitle": "Menerbitkan Perintah Kerja Utama untuk pekerjaan pemeliharaan.",
+      "context": "Sebuah pekerjaan pemeliharaan perlu diinisiasi. PKU jadi dokumen dasarnya.",
+      "steps": [
+        {
+          "title": "Akses Modul PKU",
+          "desc": "Go To → menu PKU pada Pembekalan."
+        },
+        {
+          "title": "Buat PKU Baru",
+          "desc": "Klik New, isi data pekerjaan, lingkup, target."
+        },
+        {
+          "title": "Lengkapi Detail",
+          "desc": "Tambahkan deskripsi teknis & sumber daya yang dibutuhkan."
+        },
+        {
+          "title": "Save & Route",
+          "desc": "Submit untuk persetujuan & distribusi ke pelaksana."
+        }
+      ],
+      "takeaways": [
+        "PKU adalah dasar legitimasi pekerjaan pemeliharaan.",
+        "Bila ada scope tambahan saat berjalan, gunakan PKT (Bentuk 12001)."
+      ]
+    }
+  },
+  {
+    "id": "kasiminmat",
+    "name": "Kasiminmat",
+    "fullname": "Kepala Seksi Administrasi Materiel",
+    "category": "har",
+    "icon": "📑",
+    "tagline": "Administrator nota dinas materiel.",
+    "scenario": "Ada kebutuhan koordinasi materiel yang memerlukan dokumen resmi antar unit. Sebagai Kasiminmat, kamu menyiapkan Nota Dinas terkait administrasi materiel.",
+    "tupoksi": [
+      {
+        "icon": "📑",
+        "title": "Nota Dinas",
+        "desc": "Menyusun & mengeluarkan nota dinas administrasi materiel."
+      },
+      {
+        "icon": "🗂️",
+        "title": "Administrasi Materiel",
+        "desc": "Mengelola dokumentasi administratif materiel."
+      },
+      {
+        "icon": "🔍",
+        "title": "Verifikasi Dokumen",
+        "desc": "Memastikan kelengkapan dokumen administrasi."
+      },
+      {
+        "icon": "🤝",
+        "title": "Koordinasi Antar Seksi",
+        "desc": "Menjembatani komunikasi administratif lintas seksi."
+      }
+    ],
+    "docs": [
+      "Nota Dinas"
+    ],
+    "warning": null,
+    "demo": {
+      "title": "Nota Dinas Materiel",
+      "subtitle": "Menyusun nota dinas untuk koordinasi administratif materiel.",
+      "context": "Sebuah koordinasi materiel butuh dokumen resmi. Kamu menyusun nota dinas sebagai dokumen administratifnya.",
+      "steps": [
+        {
+          "title": "Akses Modul Nota Dinas",
+          "desc": "Go To → Pembekalan → Nota Dinas."
+        },
+        {
+          "title": "Buat Nota Dinas Baru",
+          "desc": "Klik New, isi nomor, tanggal, perihal, isi."
+        },
+        {
+          "title": "Lengkapi Penandatangan",
+          "desc": "Tentukan tembusan & penandatangan sesuai jenjang."
+        },
+        {
+          "title": "Save & Route",
+          "desc": "Submit untuk persetujuan sesuai alur."
+        }
+      ],
+      "takeaways": [
+        "Nota Dinas adalah dokumen administratif resmi antar unit.",
+        "Kasiminmat fokus pada dokumentasi, bukan eksekusi teknis."
+      ]
+    }
+  },
+  {
+    "id": "kasubdisbinitem",
+    "name": "Kasubdisbinitem",
+    "fullname": "Kepala Sub Dinas Bina Item",
+    "category": "approval",
+    "icon": "✅",
+    "tagline": "Approval tingkat sub-dinas pada workflow PALM.",
+    "scenario": "Dokumen PALM dari Kasibinitem masuk ke inbox-mu. Sebagai Kasubdisbinitem, kamu review & teruskan ke Sesdisbinitem.",
+    "tupoksi": [
+      {
+        "icon": "📥",
+        "title": "Terima Inbox PALM",
+        "desc": "Menerima dokumen PALM dari Kasibinitem."
+      },
+      {
+        "icon": "🔍",
+        "title": "Review Konten",
+        "desc": "Memastikan kelengkapan & kesesuaian dokumen."
+      },
+      {
+        "icon": "🔀",
+        "title": "Route ke Sesdisbinitem",
+        "desc": "Meneruskan dokumen ke jenjang persetujuan berikutnya."
+      },
+      {
+        "icon": "↩️",
+        "title": "Kembalikan Bila Salah",
+        "desc": "Mengembalikan ke pemohon bila ditemukan ketidaksesuaian."
+      }
+    ],
+    "docs": [
+      "PALM"
+    ],
+    "warning": {
+      "label": "Catatan",
+      "text": "Sebagai jenjang persetujuan, fokus utama adalah review — bukan inisiasi dokumen. Pastikan setiap dokumen yang lolos dari sini sudah benar-benar siap."
+    },
+    "demo": {
+      "title": "Approval PALM — Sub Dinas",
+      "subtitle": "Mereview & meneruskan dokumen PALM dari Kasibinitem ke Sesdisbinitem.",
+      "context": "PALM dari Kasibinitem masuk inbox-mu untuk approval di tingkat Sub Dinas.",
+      "steps": [
+        {
+          "title": "Buka Inbox",
+          "desc": "Login → Start Center → klik inbox PALM yang masuk."
+        },
+        {
+          "title": "Review Dokumen",
+          "desc": "Periksa konten PALM, pastikan sesuai standar."
+        },
+        {
+          "title": "Route ke Sesdisbinitem",
+          "desc": "Klik Route → Route ke Persetujuan Sesdisbinitem → OK."
+        }
+      ],
+      "takeaways": [
+        "Approval workflow PALM melewati banyak jenjang — Kasubdisbinitem adalah lapis ke-2.",
+        "Tugas utama: memastikan kualitas dokumen sebelum naik ke jenjang lebih tinggi."
+      ]
+    }
+  },
+  {
+    "id": "sesdisbinitem",
+    "name": "Sesdisbinitem",
+    "fullname": "Sekretaris Dinas Bina Item",
+    "category": "approval",
+    "icon": "📨",
+    "tagline": "Sekretariat Dinas Bina Item di alur PALM.",
+    "scenario": "Dokumen PALM sudah lolos dari Kasubdisbinitem dan masuk ke meja sekretariat. Tugasmu meneruskan ke Kadisbinitem.",
+    "tupoksi": [
+      {
+        "icon": "📥",
+        "title": "Terima Inbox",
+        "desc": "Menerima dokumen dari Kasubdisbinitem."
+      },
+      {
+        "icon": "🔍",
+        "title": "Review Sekretariat",
+        "desc": "Cek administratif sebelum diteruskan ke Kadis."
+      },
+      {
+        "icon": "🔀",
+        "title": "Route ke Kadisbinitem",
+        "desc": "Meneruskan dokumen ke kepala dinas."
+      },
+      {
+        "icon": "📋",
+        "title": "Catat & Arsipkan",
+        "desc": "Memastikan jejak administratif terdokumentasi."
+      }
+    ],
+    "docs": [
+      "PALM"
+    ],
+    "warning": null,
+    "demo": {
+      "title": "Approval PALM — Sekretariat",
+      "subtitle": "Meneruskan PALM dari Kasubdisbinitem ke Kadisbinitem.",
+      "context": "Dokumen PALM sampai di sekretariat Dinas Bina Item, kamu meneruskan ke Kadis.",
+      "steps": [
+        {
+          "title": "Buka Inbox",
+          "desc": "Login → cek inbox di Start Center."
+        },
+        {
+          "title": "Review Singkat",
+          "desc": "Pastikan kelengkapan sekretariat."
+        },
+        {
+          "title": "Route ke Kadisbinitem",
+          "desc": "Klik Route → Persetujuan Kadisbinitem → OK."
+        }
+      ],
+      "takeaways": [
+        "Sekretariat adalah jembatan administratif sebelum kepala dinas.",
+        "Peran ini krusial untuk menjaga ketertiban alur dokumen."
+      ]
+    }
+  },
+  {
+    "id": "kadisbinitem",
+    "name": "Kadisbinitem",
+    "fullname": "Kepala Dinas Bina Item",
+    "category": "approval",
+    "icon": "🏛️",
+    "tagline": "Otoritas tertinggi Dinas Bina Item dalam alur PALM.",
+    "scenario": "Dokumen PALM sudah melewati seluruh jenjang Dinas Bina Item. Sebagai Kadisbinitem, kamu meneruskan ke jalur Materiel Komoditi.",
+    "tupoksi": [
+      {
+        "icon": "🏛️",
+        "title": "Otoritas Dinas",
+        "desc": "Memberikan persetujuan tertinggi tingkat dinas."
+      },
+      {
+        "icon": "📥",
+        "title": "Review Final Sub-alur",
+        "desc": "Verifikasi akhir di jalur Bina Item."
+      },
+      {
+        "icon": "🔀",
+        "title": "Route ke Kasimatkomoditi",
+        "desc": "Menjembatani ke jalur Materiel Komoditi."
+      },
+      {
+        "icon": "✍️",
+        "title": "Penandatangan PALM",
+        "desc": "Pejabat penandatangan yang tercantum di dokumen."
+      }
+    ],
+    "docs": [
+      "PALM"
+    ],
+    "warning": null,
+    "demo": {
+      "title": "Approval PALM — Kepala Dinas",
+      "subtitle": "Memberikan persetujuan & meneruskan ke jalur Materiel Komoditi.",
+      "context": "PALM sampai ke meja Kadis sebagai persetujuan final di jalur Bina Item.",
+      "steps": [
+        {
+          "title": "Buka Inbox",
+          "desc": "Login → cek inbox di Start Center."
+        },
+        {
+          "title": "Review Final",
+          "desc": "Cek menyeluruh dokumen PALM."
+        },
+        {
+          "title": "Route ke Kasimatkomoditi",
+          "desc": "Klik Route → Kasimatkomoditi → OK."
+        }
+      ],
+      "takeaways": [
+        "Kadisbinitem adalah jenjang final di sub-alur Bina Item.",
+        "Setelah ini, alur berlanjut ke ekosistem Dismatau."
+      ]
+    }
+  },
+  {
+    "id": "kasubdismatkomoditi",
+    "name": "Kasubdismatkomoditi",
+    "fullname": "Kepala Sub Dinas Materiel Komoditi",
+    "category": "approval",
+    "icon": "✅",
+    "tagline": "Approval tingkat sub-dinas di jalur Materiel Komoditi.",
+    "scenario": "PALM dari Kasimatkomoditi masuk ke inbox-mu. Tugasmu review & teruskan ke Sesdismatau.",
+    "tupoksi": [
+      {
+        "icon": "📥",
+        "title": "Terima Inbox PALM",
+        "desc": "Menerima dokumen dari Kasimatkomoditi."
+      },
+      {
+        "icon": "🔍",
+        "title": "Review Sub-dinas",
+        "desc": "Verifikasi tingkat sub-dinas materiel komoditi."
+      },
+      {
+        "icon": "🔀",
+        "title": "Route ke Sesdismatau",
+        "desc": "Meneruskan ke sekretariat Dismatau."
+      },
+      {
+        "icon": "↩️",
+        "title": "Kembalikan Bila Salah",
+        "desc": "Mengembalikan dokumen yang belum sesuai."
+      }
+    ],
+    "docs": [
+      "PALM"
+    ],
+    "warning": null,
+    "demo": {
+      "title": "Approval PALM — Sub Dinas Matkomoditi",
+      "subtitle": "Mereview & meneruskan PALM dari Kasimatkomoditi ke Sesdismatau.",
+      "context": "PALM masuk ke jenjang Sub Dinas Materiel Komoditi untuk approval.",
+      "steps": [
+        {
+          "title": "Buka Inbox",
+          "desc": "Login → klik inbox PALM yang masuk."
+        },
+        {
+          "title": "Review Dokumen",
+          "desc": "Pastikan kelengkapan & kesesuaian."
+        },
+        {
+          "title": "Route ke Sesdismatau",
+          "desc": "Klik Route → Persetujuan Sesdismatau → OK."
+        }
+      ],
+      "takeaways": [
+        "Sub Dinas Matkomoditi adalah cabang ke-2 di jalur Dismatau.",
+        "Tetap fokus pada review, bukan inisiasi."
+      ]
+    }
+  },
+  {
+    "id": "sesdismatau",
+    "name": "Sesdismatau",
+    "fullname": "Sekretaris Dinas Materiel TNI AU",
+    "category": "approval",
+    "icon": "📨",
+    "tagline": "Sekretariat Dinas Materiel di alur PALM.",
+    "scenario": "Dokumen PALM masuk ke sekretariat Dinas Materiel. Tugasmu meneruskan ke Kadismatau.",
+    "tupoksi": [
+      {
+        "icon": "📥",
+        "title": "Terima Inbox",
+        "desc": "Menerima dokumen dari Kasubdismatkomoditi."
+      },
+      {
+        "icon": "🔍",
+        "title": "Review Sekretariat",
+        "desc": "Cek administratif sebelum diteruskan ke Kadis."
+      },
+      {
+        "icon": "🔀",
+        "title": "Route ke Kadismatau",
+        "desc": "Meneruskan dokumen ke kepala dinas."
+      },
+      {
+        "icon": "📋",
+        "title": "Catat & Arsipkan",
+        "desc": "Memastikan jejak administratif terdokumentasi."
+      }
+    ],
+    "docs": [
+      "PALM"
+    ],
+    "warning": null,
+    "demo": {
+      "title": "Approval PALM — Sekretariat Dismatau",
+      "subtitle": "Meneruskan PALM dari Kasubdismatkomoditi ke Kadismatau.",
+      "context": "PALM sampai di sekretariat Dinas Materiel TNI AU.",
+      "steps": [
+        {
+          "title": "Buka Inbox",
+          "desc": "Login → cek inbox di Start Center."
+        },
+        {
+          "title": "Review Singkat",
+          "desc": "Verifikasi kelengkapan sekretariat."
+        },
+        {
+          "title": "Route ke Kadismatau",
+          "desc": "Klik Route → Kadismatau → OK."
+        }
+      ],
+      "takeaways": [
+        "Sesdismatau adalah jembatan sekretariat menuju kepala dinas.",
+        "Peran administratif yang menjaga ketertiban alur."
+      ]
+    }
+  },
+  {
+    "id": "kadismatau",
+    "name": "Kadismatau",
+    "fullname": "Kepala Dinas Materiel TNI AU",
+    "category": "approval",
+    "icon": "🏛️",
+    "tagline": "Otoritas tertinggi alur PALM. Pengambil keputusan final.",
+    "scenario": "Dokumen PALM telah melewati seluruh jenjang persetujuan dan tiba di mejamu. Sebagai Kadismatau, kamu memberikan persetujuan final dan menutup workflow.",
+    "tupoksi": [
+      {
+        "icon": "🏛️",
+        "title": "Otoritas Tertinggi",
+        "desc": "Pengambil keputusan final atas PALM."
+      },
+      {
+        "icon": "📥",
+        "title": "Review Menyeluruh",
+        "desc": "Verifikasi paripurna seluruh konten dokumen."
+      },
+      {
+        "icon": "🛑",
+        "title": "Stop Workflow",
+        "desc": "Menyelesaikan & menutup proses PALM."
+      },
+      {
+        "icon": "✍️",
+        "title": "Penandatangan Final",
+        "desc": "Penandatangan otoritatif dokumen PALM."
+      }
+    ],
+    "docs": [
+      "PALM"
+    ],
+    "warning": {
+      "label": "Perhatian",
+      "text": "Klik \"Route Stop Workflow\" menandakan PALM telah final disetujui & ditutup. Pastikan seluruh konten sudah benar sebelum eksekusi langkah ini."
+    },
+    "demo": {
+      "title": "Approval Final PALM",
+      "subtitle": "Memberikan persetujuan final & menutup workflow PALM.",
+      "context": "PALM tiba di meja Kadismatau setelah melewati semua jenjang. Saatnya keputusan final.",
+      "steps": [
+        {
+          "title": "Buka Inbox",
+          "desc": "Login → cek inbox PALM final."
+        },
+        {
+          "title": "Review Menyeluruh",
+          "desc": "Verifikasi total konten dokumen."
+        },
+        {
+          "title": "Stop Workflow",
+          "desc": "Klik Route → Route Stop Workflow → OK."
+        }
+      ],
+      "takeaways": [
+        "Kadismatau adalah titik akhir workflow PALM.",
+        "Stop Workflow = penutupan resmi, tidak bisa di-undo."
+      ]
+    }
+  }
+]

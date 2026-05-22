@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="SIMAK BMN">
+  <rect width="64" height="64" rx="8" fill="#047857"/>
+  <text x="32" y="34" text-anchor="middle" fill="#fff" font-family="system-ui,sans-serif" font-size="8" font-weight="700">SIMAK</text>
+  <text x="32" y="44" text-anchor="middle" fill="#fff" font-family="system-ui,sans-serif" font-size="7" font-weight="600">BMN</text>
+</svg>
