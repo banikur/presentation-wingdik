@@ -17,8 +17,12 @@ import {
   simtelogRoleImageFolder,
 } from '@/lib/simtelog/simtelog-data';
 import type { SimtelogRole } from '@/lib/simtelog/simtelog-types';
+import { SimtelogDisclosure } from './simtelog-ui';
 import { SimtelogDocsTable } from './simtelog-docs-table';
 import { useSimtelogFiles } from './use-simtelog-files';
+
+const PREVIEW_MAX_H = 'min(42vh, 380px)';
+const DOC_PREVIEW_MAX_H = 'min(38vh, 340px)';
 
 type SimtelogTupoksiDetailProps = {
   role: SimtelogRole;
@@ -83,16 +87,19 @@ function ImageSlidePreview({
   const showPlaceholder = loading || !hasImages || !currentFile || loadFailed;
 
   return (
-    <div className="flex min-h-[300px] flex-col">
-      <div className="relative min-h-[240px] flex-1 overflow-hidden rounded-lg border border-app-border bg-slate-100">
+    <div className="flex flex-col">
+      <div
+        className="relative overflow-hidden rounded-lg border border-app-border bg-slate-100"
+        style={{ height: PREVIEW_MAX_H }}
+      >
         {loading ? (
-          <div className="flex h-full min-h-[240px] flex-col items-center justify-center gap-2 text-app-text-muted">
+          <div className="flex h-full flex-col items-center justify-center gap-2 text-app-text-muted">
             <Loader2 className="h-8 w-8 animate-spin text-app-accent" />
             <p className="text-sm">Memuat daftar gambar…</p>
           </div>
         ) : showPlaceholder ? (
-          <div className="flex h-full min-h-[240px] w-full flex-col items-center justify-center rounded-lg border border-dashed border-app-border bg-app-card-muted px-4 py-8 text-center">
-            <ImageIcon className="mb-3 h-10 w-10 text-app-border" strokeWidth={1.25} />
+          <div className="flex h-full w-full flex-col items-center justify-center rounded-lg border border-dashed border-app-border bg-app-card-muted px-4 py-6 text-center">
+            <ImageIcon className="mb-2 h-9 w-9 text-app-border" strokeWidth={1.25} />
             <p className="text-sm font-medium text-app-text-muted">Pratinjau tangkapan layar</p>
             {roleHasNoImages ? (
               <>
@@ -100,9 +107,10 @@ function ImageSlidePreview({
                   Belum ada tangkapan layar
                 </p>
                 <p className="mt-2 max-w-sm text-sm leading-relaxed text-app-text-muted">
-                  Peran <strong className="text-app-text">{role.name}</strong> belum memiliki
-                  tangkapan layar pada materi pembekalan. Caption tetap akan muncul di sini bila
-                  gambar ditambahkan di folder berikut.
+                  Folder:{' '}
+                  <span className="font-mono text-app-link">
+                    public/img/simtelog/{node.imgFolder}/
+                  </span>
                 </p>
               </>
             ) : (
@@ -110,9 +118,6 @@ function ImageSlidePreview({
                 {fetchError ? 'Gagal memuat daftar file.' : 'Belum ada gambar untuk tupoksi ini.'}
               </p>
             )}
-            <p className="mt-2 font-mono text-sm text-app-link">
-              public/img/simtelog/{node.imgFolder}/
-            </p>
           </div>
         ) : (
           <button
@@ -130,7 +135,7 @@ function ImageSlidePreview({
             />
             <span className="pointer-events-none absolute bottom-2 right-2 inline-flex items-center gap-1 rounded-md bg-app-header/85 px-2.5 py-1 text-sm font-medium text-white opacity-0 transition-opacity group-hover:opacity-100">
               <ZoomIn className="h-4 w-4" />
-              Klik untuk perbesar
+              Perbesar
             </span>
           </button>
         )}
@@ -149,23 +154,23 @@ function ImageSlidePreview({
         caption={caption}
       />
 
-      {caption && hasImages && !showPlaceholder && (
-        <figcaption className="mt-3 rounded-r-md border-l-4 border-app-accent bg-amber-50/80 px-3 py-2 text-sm leading-relaxed text-app-text">
+      {caption && hasImages && !showPlaceholder ? (
+        <p className="mt-2 line-clamp-2 rounded-r border-l-4 border-app-accent bg-amber-50/80 px-2 py-1.5 text-sm leading-snug text-app-text">
           {caption}
-        </figcaption>
-      )}
+        </p>
+      ) : null}
 
-      <div className="mt-3 flex items-center justify-center gap-3">
+      <div className="mt-2 flex items-center justify-center gap-2">
         <button
           type="button"
           onClick={() => onImageIndexChange(Math.max(0, imageIndex - 1))}
           disabled={loading || !hasImages || imageIndex <= 0}
           aria-label="Gambar sebelumnya"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-app-border bg-white text-lg text-app-text hover:bg-app-card-muted disabled:opacity-40"
+          className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-app-border bg-white text-lg text-app-text hover:bg-app-card-muted disabled:opacity-40"
         >
           ‹
         </button>
-        <span className="min-w-[3.5rem] text-center text-sm tabular-nums text-app-text-muted">
+        <span className="min-w-[3rem] text-center text-sm tabular-nums text-app-text-muted">
           {loading ? '…' : hasImages ? `${imageIndex + 1} / ${total}` : '0 / 0'}
         </span>
         <button
@@ -173,7 +178,7 @@ function ImageSlidePreview({
           onClick={() => onImageIndexChange(Math.min(total - 1, imageIndex + 1))}
           disabled={loading || !hasImages || imageIndex >= total - 1}
           aria-label="Gambar berikutnya"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-app-border bg-white text-lg text-app-text hover:bg-app-card-muted disabled:opacity-40"
+          className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-app-border bg-white text-lg text-app-text hover:bg-app-card-muted disabled:opacity-40"
         >
           ›
         </button>
@@ -185,8 +190,11 @@ function ImageSlidePreview({
 function DocPreviewPane({ node, activeDocFile }: { node: SimtelogNode; activeDocFile: string | null }) {
   if (!activeDocFile) {
     return (
-      <div className="flex min-h-[280px] items-center justify-center rounded-lg border border-dashed border-app-border bg-app-card-muted p-6 text-center text-base text-app-text-muted">
-        Pilih dokumen di galeri untuk pratinjau
+      <div
+        className="flex items-center justify-center rounded-lg border border-dashed border-app-border bg-app-card-muted p-4 text-center text-sm text-app-text-muted"
+        style={{ height: DOC_PREVIEW_MAX_H }}
+      >
+        Pilih baris dokumen di panel kiri, lalu buka tab Pratinjau dokumen.
       </div>
     );
   }
@@ -197,7 +205,10 @@ function DocPreviewPane({ node, activeDocFile }: { node: SimtelogNode; activeDoc
 
   if (isImage) {
     return (
-      <div className="relative min-h-[280px] overflow-hidden rounded-lg border border-app-border bg-slate-100">
+      <div
+        className="relative overflow-hidden rounded-lg border border-app-border bg-slate-100"
+        style={{ height: DOC_PREVIEW_MAX_H }}
+      >
         <img
           src={simtelogImageSrc(node.imgFolder, activeDocFile)}
           alt={activeDocFile}
@@ -209,27 +220,70 @@ function DocPreviewPane({ node, activeDocFile }: { node: SimtelogNode; activeDoc
 
   if (ext === '.pdf') {
     return (
-      <div className="min-h-[280px] overflow-hidden rounded-lg border border-app-border bg-white">
+      <div
+        className="overflow-hidden rounded-lg border border-app-border bg-white"
+        style={{ height: DOC_PREVIEW_MAX_H }}
+      >
         <iframe
           title={activeDocFile}
           src={simtelogDocSrc(node.imgFolder, activeDocFile)}
-          className="h-[min(400px,55vh)] w-full"
+          className="h-full w-full"
         />
       </div>
     );
   }
 
   return (
-    <div className="flex min-h-[280px] flex-col items-center justify-center gap-3 rounded-lg border border-app-border bg-app-card-muted p-6 text-center">
-      <FileText className="h-10 w-10 text-app-accent" />
-      <p className="text-base text-app-text">{formatDocDisplayName(activeDocFile)}</p>
+    <div
+      className="flex flex-col items-center justify-center gap-2 rounded-lg border border-app-border bg-app-card-muted p-4 text-center"
+      style={{ height: DOC_PREVIEW_MAX_H }}
+    >
+      <FileText className="h-9 w-9 text-app-accent" />
+      <p className="text-sm font-medium text-app-text">{formatDocDisplayName(activeDocFile)}</p>
       <a
         href={simtelogDocSrc(node.imgFolder, activeDocFile)}
         download={activeDocFile}
-        className="rounded-md border border-app-accent bg-amber-50 px-4 py-2 text-sm font-semibold text-app-accent hover:bg-amber-100"
+        className="rounded-md border border-app-accent bg-amber-50 px-3 py-1.5 text-sm font-semibold text-app-accent hover:bg-amber-100"
       >
         Download file
       </a>
+    </div>
+  );
+}
+
+function StepsList({ steps }: { steps: { title: string; desc: string }[] }) {
+  const [expanded, setExpanded] = useState(false);
+  const visible = expanded ? steps : steps.slice(0, 2);
+  const hiddenCount = steps.length - 2;
+
+  return (
+    <div className="space-y-2">
+      {visible.map((s, i) => (
+        <div key={s.title} className="flex gap-2 text-sm text-app-text">
+          <span className="font-bold text-app-accent">{i + 1}.</span>
+          <span>
+            <strong>{s.title}</strong> — {s.desc}
+          </span>
+        </div>
+      ))}
+      {hiddenCount > 0 && !expanded ? (
+        <button
+          type="button"
+          onClick={() => setExpanded(true)}
+          className="text-sm font-semibold text-app-link hover:underline"
+        >
+          Lihat {hiddenCount} langkah lainnya
+        </button>
+      ) : null}
+      {expanded && steps.length > 2 ? (
+        <button
+          type="button"
+          onClick={() => setExpanded(false)}
+          className="text-sm font-semibold text-app-text-muted hover:underline"
+        >
+          Ringkas langkah
+        </button>
+      ) : null}
     </div>
   );
 }
@@ -268,142 +322,109 @@ export function SimtelogTupoksiDetail({
   const tabIdle =
     'border-app-border text-app-text-muted hover:border-app-border hover:bg-app-card-muted';
 
+  const handleSelectDoc = (filename: string) => {
+    setActiveDocFile(filename);
+    setPreviewMode('doc');
+  };
+
   return (
     <div
-      className="mt-8 grid grid-cols-1 gap-4 lg:grid-cols-[35%_65%] lg:gap-5"
+      className="mt-4 flex flex-col lg:max-h-[min(58vh,680px)] lg:min-h-[400px]"
       role="region"
       aria-label={`Demo ${tupoksi.title}`}
     >
-      <aside className="app-card rounded-xl p-4 md:p-5">
-        <p className="text-sm font-bold text-app-accent">Tupoksi</p>
-        <h3 className="mt-1 text-xl font-bold text-app-text md:text-2xl">{tupoksi.title}</h3>
-        <p className="mt-0.5 text-sm text-app-text-muted">
-          {role.name} · {role.fullname}
-        </p>
-
-        <div className="mt-4">
-          <p className="text-sm font-semibold text-app-text-muted">Deskripsi</p>
-          <p className="mt-1 text-base leading-relaxed text-app-text">{tupoksi.desc}</p>
-        </div>
-
-        <div className="mt-5">
-          <p className="text-sm font-semibold text-app-accent">Contoh task — {demo.title}</p>
-          <p className="mt-1 text-sm text-app-text-muted">{demo.subtitle}</p>
-          <p className="mt-2 text-base leading-relaxed text-app-text">{demo.context}</p>
-        </div>
-
-        <div className="mt-5 max-h-[12rem] space-y-2 overflow-y-auto">
-          <p className="text-sm font-semibold text-app-text-muted">Langkah-langkah</p>
-          {demo.steps.map((s, i) => (
-            <div key={s.title} className="flex gap-2 text-sm text-app-text">
-              <span className="font-bold text-app-accent">{i + 1}.</span>
-              <span>
-                <strong>{s.title}</strong> — {s.desc}
-              </span>
-            </div>
-          ))}
-        </div>
-
-        {docFiles.length > 0 && (
-          <div className="mt-5 overflow-hidden rounded-xl border border-app-border bg-app-card-muted">
-            <p className="border-b border-app-border bg-white px-3 py-2.5 text-sm font-bold text-app-text-muted">
-              Galeri dokumen
-            </p>
-            <div className="max-h-[12rem] overflow-y-auto">
-              {docFiles.map((filename) => {
-                const active = activeDocFile === filename;
-                return (
-                  <button
-                    key={filename}
-                    type="button"
-                    onClick={() => {
-                      setActiveDocFile(filename);
-                      setPreviewMode('doc');
-                    }}
-                    className={`block w-full border-b border-app-border-subtle px-3 py-3 text-left text-sm font-medium transition-colors last:border-0 ${
-                      active && previewMode === 'doc'
-                        ? 'bg-amber-50 text-app-accent'
-                        : 'text-app-text hover:bg-white'
-                    }`}
-                  >
-                    {formatDocDisplayName(filename)}
-                  </button>
-                );
-              })}
-            </div>
+      <div className="grid min-h-0 flex-1 grid-cols-1 gap-3 lg:grid-cols-[32%_68%]">
+        <aside className="app-card flex min-h-0 flex-col overflow-hidden rounded-xl p-3 md:p-4">
+          <div className="shrink-0">
+            <p className="text-sm font-bold text-app-accent">Tupoksi aktif</p>
+            <h3 className="text-lg font-bold leading-tight text-app-text">{tupoksi.title}</h3>
           </div>
-        )}
 
-        <SimtelogDocsTable node={node} />
+          <div className="mt-3 min-h-0 flex-1 space-y-3 overflow-y-auto pr-1">
+            <div className="rounded-lg border border-app-border-subtle bg-app-card-muted px-3 py-2">
+              <p className="text-sm leading-snug text-app-text">{tupoksi.desc}</p>
+              <p className="mt-2 text-sm leading-snug text-app-text-muted">
+                <span className="font-semibold text-app-accent">{demo.title}:</span>{' '}
+                {demo.context}
+              </p>
+            </div>
 
-        {role.warning && (
-          <div className="mt-4 rounded-lg border border-app-accent/40 bg-amber-50 px-3 py-3 text-sm text-app-text">
-            <span className="font-semibold text-app-accent">{role.warning.label}: </span>
-            {role.warning.text}
+            <SimtelogDisclosure
+              label="Langkah-langkah"
+              badge={`${demo.steps.length} langkah`}
+              defaultOpen
+            >
+              <StepsList steps={demo.steps} />
+            </SimtelogDisclosure>
+
+            <SimtelogDisclosure label="Poin kunci" badge={`${demo.takeaways.length} poin`}>
+              <ul className="space-y-1.5">
+                {demo.takeaways.map((t) => (
+                  <li key={t} className="flex gap-2 text-sm text-app-text">
+                    <span className="text-app-accent">→</span>
+                    {t}
+                  </li>
+                ))}
+              </ul>
+            </SimtelogDisclosure>
+
+            <SimtelogDocsTable
+              node={node}
+              compact
+              activeFilename={activeDocFile}
+              onSelectFilename={handleSelectDoc}
+            />
+
+            {role.warning ? (
+              <div className="rounded-lg border border-app-accent/40 bg-amber-50 px-3 py-2 text-sm text-app-text">
+                <span className="font-semibold text-app-accent">{role.warning.label}: </span>
+                {role.warning.text}
+              </div>
+            ) : null}
           </div>
-        )}
-      </aside>
+        </aside>
 
-      <div className="app-card rounded-xl p-4 md:p-5">
-        <div className="mb-3 flex flex-wrap gap-2" role="tablist" aria-label="Mode pratinjau">
-          <button
-            type="button"
-            role="tab"
-            aria-selected={previewMode === 'slides'}
-            onClick={() => setPreviewMode('slides')}
-            className={`rounded-lg border px-4 py-2 text-sm transition-colors ${
-              previewMode === 'slides' ? tabActive : tabIdle
-            }`}
-          >
-            Slide gambar
-          </button>
-          {docFiles.length > 0 && (
+        <div className="app-card flex min-h-0 flex-col overflow-hidden rounded-xl p-3 md:p-4">
+          <div className="mb-2 flex shrink-0 flex-wrap gap-2" role="tablist" aria-label="Mode pratinjau">
             <button
               type="button"
               role="tab"
-              aria-selected={previewMode === 'doc'}
-              onClick={() => setPreviewMode('doc')}
-              className={`rounded-lg border px-4 py-2 text-sm transition-colors ${
-                previewMode === 'doc' ? tabActive : tabIdle
+              aria-selected={previewMode === 'slides'}
+              onClick={() => setPreviewMode('slides')}
+              className={`rounded-lg border px-3 py-1.5 text-sm transition-colors ${
+                previewMode === 'slides' ? tabActive : tabIdle
               }`}
             >
-              Pratinjau dokumen
+              Tangkapan layar
             </button>
-          )}
-        </div>
+            {docFiles.length > 0 && (
+              <button
+                type="button"
+                role="tab"
+                aria-selected={previewMode === 'doc'}
+                onClick={() => setPreviewMode('doc')}
+                className={`rounded-lg border px-3 py-1.5 text-sm transition-colors ${
+                  previewMode === 'doc' ? tabActive : tabIdle
+                }`}
+              >
+                Pratinjau dokumen
+              </button>
+            )}
+          </div>
 
-        {previewMode === 'slides' ? (
-          <>
-            <p className="mb-3 text-sm font-semibold text-app-text-muted">
-              Tangkapan layar — {tupoksi.title}
-            </p>
-            <ImageSlidePreview
-              role={role}
-              node={node}
-              tupoksiTitle={tupoksi.title}
-              imageIndex={imageIndex}
-              onImageIndexChange={onImageIndexChange}
-            />
-          </>
-        ) : (
-          <>
-            <p className="mb-3 text-sm font-semibold text-app-text-muted">
-              {activeDocFile ? formatDocDisplayName(activeDocFile) : 'Dokumen'}
-            </p>
-            <DocPreviewPane node={node} activeDocFile={activeDocFile} />
-          </>
-        )}
-
-        <div className="mt-5 rounded-lg border border-app-border bg-app-card-muted p-4">
-          <p className="text-sm font-semibold text-app-accent">Poin kunci</p>
-          <ul className="mt-2 space-y-2">
-            {demo.takeaways.map((t) => (
-              <li key={t} className="flex gap-2 text-sm text-app-text">
-                <span className="text-app-accent">→</span>
-                {t}
-              </li>
-            ))}
-          </ul>
+          <div className="min-h-0 flex-1 overflow-y-auto">
+            {previewMode === 'slides' ? (
+              <ImageSlidePreview
+                role={role}
+                node={node}
+                tupoksiTitle={tupoksi.title}
+                imageIndex={imageIndex}
+                onImageIndexChange={onImageIndexChange}
+              />
+            ) : (
+              <DocPreviewPane node={node} activeDocFile={activeDocFile} />
+            )}
+          </div>
         </div>
       </div>
     </div>

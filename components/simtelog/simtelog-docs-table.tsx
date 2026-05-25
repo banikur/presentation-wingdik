@@ -8,9 +8,18 @@ import { useSimtelogFiles } from './use-simtelog-files';
 type SimtelogDocsTableProps = {
   node: SimtelogNode;
   showTitle?: boolean;
+  compact?: boolean;
+  activeFilename?: string | null;
+  onSelectFilename?: (filename: string) => void;
 };
 
-export function SimtelogDocsTable({ node, showTitle = true }: SimtelogDocsTableProps) {
+export function SimtelogDocsTable({
+  node,
+  showTitle = true,
+  compact = false,
+  activeFilename = null,
+  onSelectFilename,
+}: SimtelogDocsTableProps) {
   const { files, loading, fetchError } = useSimtelogFiles('docs', node);
 
   const rows = files.map((filename) => ({
@@ -24,6 +33,9 @@ export function SimtelogDocsTable({ node, showTitle = true }: SimtelogDocsTableP
       loading={loading}
       fetchError={fetchError}
       title={showTitle ? 'File dokumen' : undefined}
+      compact={compact}
+      activeFilename={activeFilename}
+      onSelectFilename={onSelectFilename}
       emptyHint={
         <>
           Belum ada file di{' '}

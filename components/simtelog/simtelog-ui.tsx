@@ -1,6 +1,7 @@
 'use client';
 
-import type { ReactNode } from 'react';
+import { useState, type ReactNode } from 'react';
+import { ChevronDown } from 'lucide-react';
 
 export function SimtelogEyebrow({ children }: { children: ReactNode }) {
   return (
@@ -99,7 +100,7 @@ export function SimtelogBreadcrumb({
   items: { label: string; onClick?: () => void; current?: boolean }[];
 }) {
   return (
-    <nav className="mb-6 flex flex-wrap items-center gap-2 text-sm text-app-text-muted">
+    <nav className="mb-4 flex flex-wrap items-center gap-2 text-sm text-app-text-muted">
       {items.map((item, i) => (
         <span key={`${item.label}-${i}`} className="flex items-center gap-2">
           {i > 0 && <span className="text-app-border">/</span>}
@@ -128,9 +129,47 @@ export function SimtelogPageNav({
   right?: ReactNode;
 }) {
   return (
-    <div className="mt-10 flex flex-col gap-4 border-t border-app-border pt-8 sm:flex-row sm:items-center sm:justify-between">
+    <div className="mt-6 flex flex-col gap-4 border-t border-app-border pt-5 sm:flex-row sm:items-center sm:justify-between">
       {left}
       {right ? <div className="flex flex-wrap gap-3">{right}</div> : null}
+    </div>
+  );
+}
+
+export function SimtelogDisclosure({
+  label,
+  children,
+  defaultOpen = false,
+  badge,
+}: {
+  label: string;
+  children: ReactNode;
+  defaultOpen?: boolean;
+  badge?: string;
+}) {
+  const [open, setOpen] = useState(defaultOpen);
+
+  return (
+    <div className="rounded-lg border border-app-border bg-app-card-muted">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        className="flex w-full items-center justify-between gap-2 px-3 py-2.5 text-left transition hover:bg-white"
+      >
+        <span className="text-sm font-semibold text-app-text">{label}</span>
+        <span className="flex items-center gap-2 shrink-0">
+          {badge ? (
+            <span className="rounded-full bg-white px-2 py-0.5 text-xs font-medium text-app-text-muted">
+              {badge}
+            </span>
+          ) : null}
+          <ChevronDown
+            className={`h-4 w-4 text-app-text-muted transition-transform ${open ? 'rotate-180' : ''}`}
+          />
+        </span>
+      </button>
+      {open ? <div className="border-t border-app-border px-3 py-3">{children}</div> : null}
     </div>
   );
 }

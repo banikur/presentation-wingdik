@@ -12,6 +12,7 @@ import type { SimtelogRole, SimtelogScreen } from '@/lib/simtelog/simtelog-types
 import { SimtelogTupoksiDetail } from './simtelog-tupoksi-detail';
 import {
   SimtelogBreadcrumb,
+  SimtelogDisclosure,
   SimtelogEyebrow,
   SimtelogNavBack,
   SimtelogPageDesc,
@@ -176,52 +177,62 @@ function RoleTupoksiScreen({
         ]}
       />
 
-      <div className="mb-8 flex flex-col gap-4 border-b border-app-border pb-8 sm:flex-row sm:items-center">
-        <div className="flex h-[4.5rem] w-[4.5rem] shrink-0 items-center justify-center rounded-lg border border-app-border bg-app-card-muted text-4xl">
+      <div className="mb-4 flex items-center gap-3 border-b border-app-border pb-4">
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-app-border bg-app-card-muted text-2xl">
           {role.icon}
         </div>
-        <div>
-          <SimtelogEyebrow>{cat.name}</SimtelogEyebrow>
-          <h2 className="text-2xl font-bold text-app-text md:text-3xl">{role.name}</h2>
-          <p className="mt-1 text-base text-app-text-muted">{role.fullname}</p>
+        <div className="min-w-0 flex-1">
+          <p className="text-sm font-semibold text-app-accent">{cat.name}</p>
+          <h2 className="text-xl font-bold text-app-text md:text-2xl">{role.name}</h2>
+          <p className="truncate text-sm text-app-text-muted">{role.fullname}</p>
         </div>
       </div>
 
-      <div
-        className="app-card-muted mb-8 rounded-lg border-l-[4px] px-5 py-4"
-        style={{ borderLeftColor: cat.color }}
-      >
-        <p className="text-sm font-semibold text-app-accent">Skenario</p>
-        <p className="mt-2 text-base leading-relaxed text-app-text">{role.scenario}</p>
-      </div>
+      <SimtelogDisclosure label="Tampilkan skenario peran" badge="Opsional">
+        <p className="text-base leading-relaxed text-app-text">{role.scenario}</p>
+      </SimtelogDisclosure>
 
-      <SimtelogSectionLabel>Tugas Pokok & Fungsi</SimtelogSectionLabel>
-      <p className="mb-4 text-base text-app-text-muted">
-        Klik kartu untuk melihat contoh dokumen dan slide gambar di bawah.
-      </p>
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {role.tupoksi.map((t, i) => {
-          const active = i === activeTupoksiIndex;
-          return (
-            <button
-              key={t.title}
-              type="button"
-              onClick={() => handleSelectTupoksi(i)}
-              className={`relative min-h-[11rem] rounded-lg border p-5 text-left transition ${
-                active
-                  ? 'border-app-accent bg-amber-50 ring-2 ring-app-accent/30'
-                  : 'app-card-interactive border-app-border'
-              }`}
-            >
-              <span className="absolute right-4 top-4 text-3xl font-bold text-app-border">
-                {String(i + 1).padStart(2, '0')}
-              </span>
-              <span className="text-2xl">{t.icon}</span>
-              <h4 className="mt-3 text-base font-semibold text-app-text">{t.title}</h4>
-              <p className="mt-2 text-sm leading-relaxed text-app-text-muted">{t.desc}</p>
-            </button>
-          );
-        })}
+      <div className="mt-5">
+        <SimtelogSectionLabel>Tugas Pokok &amp; Fungsi</SimtelogSectionLabel>
+        <p className="mb-3 text-sm text-app-text-muted">
+          Pilih nomor tugas — materi tampil di panel bawah tanpa perlu scroll ke atas.
+        </p>
+
+        <div
+          className="sticky top-0 z-10 -mx-0.5 flex gap-2 overflow-x-auto border-b border-app-border bg-app-page pb-2 pt-1"
+          role="tablist"
+          aria-label="Pilih tupoksi"
+        >
+          {role.tupoksi.map((t, i) => {
+            const active = i === activeTupoksiIndex;
+            return (
+              <button
+                key={t.title}
+                type="button"
+                role="tab"
+                aria-selected={active}
+                onClick={() => handleSelectTupoksi(i)}
+                className={`flex shrink-0 items-center gap-2 rounded-lg border px-3 py-2.5 text-left transition ${
+                  active
+                    ? 'border-app-accent bg-amber-50 ring-1 ring-app-accent/40'
+                    : 'border-app-border bg-white hover:bg-app-card-muted'
+                }`}
+              >
+                <span
+                  className={`text-sm font-bold tabular-nums ${active ? 'text-app-accent' : 'text-app-text-muted'}`}
+                >
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <span className="text-lg leading-none">{t.icon}</span>
+                <span
+                  className={`max-w-[9rem] text-sm font-semibold leading-tight sm:max-w-[11rem] ${active ? 'text-app-text' : 'text-app-text-muted'}`}
+                >
+                  {t.title}
+                </span>
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       <SimtelogTupoksiDetail
