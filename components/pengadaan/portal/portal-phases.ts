@@ -20,7 +20,7 @@ export const PORTAL_PHASES: PortalPhase[] = [
     num: '04',
     title: 'Pelaksanaan / pengadaan',
     desc:
-      'Proses eksekusi pengadaan di level satker. Untuk nilai < 50 juta: pengadaan langsung dengan SPPH sederhana. Untuk nilai 50–200 juta: pemilihan penyedia dengan evaluasi penawaran, negosiasi, dan penetapan pemenang sebelum SPK diterbitkan.',
+      'Proses eksekusi pengadaan di level satker',
   },
   {
     num: '05',
