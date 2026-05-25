@@ -98,8 +98,8 @@ function LandingScreen({ onSelectRole }: { onSelectRole: (id: string) => void })
                   className="h-2.5 w-2.5 shrink-0 rounded-full"
                   style={{ background: cat.color }}
                 />
-                <span className="text-base font-semibold text-app-text">{cat.name}</span>
-                <span className="text-sm text-app-text-muted">{roles.length} Peran</span>
+                <span className="text-sm font-semibold text-app-text">{cat.name}</span>
+                <span className="text-xs text-app-text-muted">{roles.length} Peran</span>
               </div>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {roles.map((r) => {
@@ -120,9 +120,9 @@ function LandingScreen({ onSelectRole }: { onSelectRole: (id: string) => void })
                           Tanpa SS
                         </span>
                       )}
-                      <span className="text-3xl">{r.icon}</span>
-                      <span className="mt-3 text-lg font-semibold text-app-text">{r.name}</span>
-                      <span className="mt-2 flex-1 text-base leading-snug text-app-text-muted">
+                      <span className="text-2xl">{r.icon}</span>
+                      <span className="mt-3 text-sm font-semibold text-app-text">{r.name}</span>
+                      <span className="mt-2 flex-1 text-xs leading-snug text-app-text-muted">
                         {r.tagline}
                       </span>
                       <span
@@ -147,7 +147,7 @@ function MetaItem({ label, value }: { label: string; value: string }) {
   return (
     <div className="app-card-muted rounded-lg px-6 py-5">
       <p className="text-sm font-medium text-app-text-muted">{label}</p>
-      <p className="mt-2 text-xl font-semibold text-app-text">{value}</p>
+      <p className="mt-2 text-lg font-semibold text-app-text">{value}</p>
     </div>
   );
 }
@@ -183,13 +183,13 @@ function RoleTupoksiScreen({
         </div>
         <div className="min-w-0 flex-1">
           <p className="text-sm font-semibold text-app-accent">{cat.name}</p>
-          <h2 className="text-xl font-bold text-app-text md:text-2xl">{role.name}</h2>
+          <h2 className="text-lg font-bold text-app-text md:text-xl">{role.name}</h2>
           <p className="truncate text-sm text-app-text-muted">{role.fullname}</p>
         </div>
       </div>
 
       <SimtelogDisclosure label="Tampilkan skenario peran" badge="Opsional">
-        <p className="text-base leading-relaxed text-app-text">{role.scenario}</p>
+        <p className="text-sm leading-relaxed text-app-text">{role.scenario}</p>
       </SimtelogDisclosure>
 
       <div className="mt-5">
@@ -223,7 +223,7 @@ function RoleTupoksiScreen({
                 >
                   {String(i + 1).padStart(2, '0')}
                 </span>
-                <span className="text-lg leading-none">{t.icon}</span>
+                <span className="text-base leading-none">{t.icon}</span>
                 <span
                   className={`max-w-[9rem] text-sm font-semibold leading-tight sm:max-w-[11rem] ${active ? 'text-app-text' : 'text-app-text-muted'}`}
                 >

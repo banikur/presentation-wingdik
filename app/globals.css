@@ -8,7 +8,8 @@
   --app-header-muted: #e2eef8;
   --app-header-accent: #c9a227;
   --app-text: #0f2942;
-  --app-text-muted: #475569;
+  /* Kontras lebih kuat untuk proyektor (bukan ukuran font lebih besar) */
+  --app-text-muted: #334155;
   --app-text-on-header: #f8fafc;
   --app-accent: #e09b2d;
   --app-accent-hover: #c8871f;
@@ -18,15 +19,6 @@
   --app-card: #ffffff;
   --app-card-muted: #f4fafd;
   --app-focus-ring: #2563eb;
-
-  /* Skala tipografi — basis 18px untuk audiens pembekalan */
-  --app-text-xs: 0.8125rem; /* ~14.6px */
-  --app-text-sm: 0.9375rem; /* ~16.9px */
-  --app-text-base: 1.0625rem; /* ~19px */
-  --app-text-lg: 1.25rem;
-  --app-text-xl: 1.5rem;
-  --app-text-2xl: 1.75rem;
-  --app-text-3xl: 2rem;
 }
 
 @theme inline {
@@ -42,14 +34,13 @@
 }
 
 html {
-  font-size: 18px;
   -webkit-text-size-adjust: 100%;
 }
 
 body {
   font-family: var(--font-noto-sans), ui-sans-serif, system-ui, sans-serif;
-  font-size: var(--app-text-base);
-  line-height: 1.65;
+  font-size: 1rem;
+  line-height: 1.6;
   color: var(--app-text);
   background-color: var(--app-page);
 }

@@ -337,7 +337,7 @@ export function SimtelogTupoksiDetail({
         <aside className="app-card flex min-h-0 flex-col overflow-hidden rounded-xl p-3 md:p-4">
           <div className="shrink-0">
             <p className="text-sm font-bold text-app-accent">Tupoksi aktif</p>
-            <h3 className="text-lg font-bold leading-tight text-app-text">{tupoksi.title}</h3>
+            <h3 className="text-base font-bold leading-tight text-app-text">{tupoksi.title}</h3>
           </div>
 
           <div className="mt-3 min-h-0 flex-1 space-y-3 overflow-y-auto pr-1">

@@ -4,14 +4,14 @@ import React from 'react';
 import { FileText, LayoutDashboard } from 'lucide-react';
 
 export const DocBadge = ({ text }: { text: string }) => (
-  <span className="inline-flex items-center gap-1.5 rounded-full bg-app-accent px-3 py-1.5 text-sm font-bold leading-none text-app-text shadow-sm">
+  <span className="inline-flex items-center gap-1 rounded-full bg-app-accent px-2.5 py-1 text-[10px] font-bold uppercase leading-none tracking-wider text-app-text shadow-sm md:text-xs">
     <FileText className="h-4 w-4" />
     {text}
   </span>
 );
 
 export const AppBadge = ({ text }: { text: string }) => (
-  <span className="inline-flex items-center gap-1.5 rounded-full bg-app-link px-3 py-1.5 text-sm font-bold leading-none text-white shadow-sm">
+  <span className="inline-flex items-center gap-1 rounded-full bg-app-link px-2.5 py-1 text-[10px] font-bold uppercase leading-none tracking-wider text-white shadow-sm md:text-xs">
     <LayoutDashboard className="h-4 w-4" />
     {text}
   </span>
@@ -36,8 +36,8 @@ export const FlowBox = ({
       onClick ? 'cursor-pointer' : ''
     } ${isActive ? 'border-2 border-app-accent ring-2 ring-app-accent/20' : ''}`}
   >
-    <h3 className="mb-1 text-base font-bold leading-tight text-app-text md:text-lg">{title}</h3>
-    {desc && <p className="mb-2 text-sm text-app-text-muted">{desc}</p>}
+    <h3 className="mb-1 text-sm font-bold leading-tight text-app-text md:text-base">{title}</h3>
+    {desc && <p className="mb-2 text-xs text-app-text-muted">{desc}</p>}
     {badges.length > 0 && (
       <div className="mt-auto flex flex-wrap items-center justify-center gap-2 pt-2">
         {badges.map((badge, i) => React.cloneElement(badge as React.ReactElement, { key: i }))}

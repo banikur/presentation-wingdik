@@ -55,7 +55,7 @@ export function AppShell({ view, onBackToPortal, children }: AppShellProps) {
               <h1 className="truncate text-lg font-bold leading-tight tracking-normal md:text-xl">
                 WING PENDIDIKAN 600 / PEMBEKALAN
               </h1>
-              <p className="text-sm text-[var(--app-header-muted)] md:text-[0.9375rem]">
+              <p className="text-xs text-[var(--app-header-muted)] md:text-sm">
                 Materi Pengenalan Alur Pengadaan Barang & Jasa Satker TNI AU
               </p>
             </div>

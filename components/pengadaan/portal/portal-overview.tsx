@@ -18,7 +18,7 @@ export function PortalOverview({ onSelectPhase, onSelectSimtelog }: PortalOvervi
         <h2 className="mb-2 text-2xl font-bold tracking-tight text-app-text md:text-3xl">
           Alur Pengadaan
         </h2>
-        <p className="mx-auto mb-8 max-w-3xl text-base leading-relaxed text-app-text-muted md:text-lg">
+        <p className="mx-auto mb-8 max-w-3xl text-sm leading-relaxed text-app-text-muted md:text-base">
           Terdapat 5 fase dalam proses pengadaan barang dan jasa pada tingkat satuan.
         </p>
       </div>
@@ -36,7 +36,7 @@ export function PortalOverview({ onSelectPhase, onSelectSimtelog }: PortalOvervi
                 <span className="text-3xl font-bold leading-none text-app-border tabular-nums md:text-4xl">
                   {phase.num}
                 </span>
-                <h3 className="mt-2 text-base font-semibold leading-snug text-app-link md:text-lg">
+                <h3 className="mt-2 text-sm font-semibold leading-snug text-app-link md:text-[0.9375rem]">
                   {phase.title}
                 </h3>
                 <p className="mt-1.5 text-sm leading-snug text-app-text-muted">{phase.desc}</p>

@@ -5,8 +5,8 @@ import { ChevronDown } from 'lucide-react';
 
 export function SimtelogEyebrow({ children }: { children: ReactNode }) {
   return (
-    <p className="mb-3 flex items-center gap-2 text-sm font-semibold tracking-wide text-app-accent">
-      <span className="text-xs">◉</span>
+    <p className="mb-3 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.15em] text-app-accent">
+      <span className="text-[9px]">◉</span>
       {children}
     </p>
   );
@@ -14,7 +14,7 @@ export function SimtelogEyebrow({ children }: { children: ReactNode }) {
 
 export function SimtelogPageTitle({ children }: { children: ReactNode }) {
   return (
-    <h2 className="text-2xl font-bold leading-tight tracking-tight text-app-text md:text-3xl">
+    <h2 className="text-3xl font-bold leading-tight tracking-tight text-app-text md:text-4xl">
       {children}
     </h2>
   );
@@ -22,7 +22,7 @@ export function SimtelogPageTitle({ children }: { children: ReactNode }) {
 
 export function SimtelogPageDesc({ children }: { children: ReactNode }) {
   return (
-    <p className="mt-3 max-w-2xl text-base leading-relaxed text-app-text-muted md:text-[1.0625rem]">
+    <p className="mt-3 max-w-2xl text-sm leading-relaxed text-app-text-muted md:text-base">
       {children}
     </p>
   );
@@ -30,7 +30,9 @@ export function SimtelogPageDesc({ children }: { children: ReactNode }) {
 
 export function SimtelogSectionLabel({ children }: { children: ReactNode }) {
   return (
-    <p className="mb-3 text-sm font-semibold tracking-wide text-app-text-muted">{children}</p>
+    <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-app-text-muted">
+      {children}
+    </p>
   );
 }
 
@@ -45,7 +47,7 @@ export function SimtelogCtaPrimary({
     <button
       type="button"
       onClick={onClick}
-      className="inline-flex items-center gap-2 bg-app-accent px-6 py-3.5 text-sm font-bold text-app-text transition hover:bg-[var(--app-accent-hover)] hover:shadow-md"
+      className="inline-flex items-center gap-2 bg-app-accent px-6 py-3.5 text-xs font-bold uppercase tracking-[0.1em] text-app-text transition hover:bg-[var(--app-accent-hover)] hover:shadow-md"
     >
       {children}
     </button>
@@ -63,7 +65,7 @@ export function SimtelogCtaSecondary({
     <button
       type="button"
       onClick={onClick}
-      className="inline-flex items-center gap-2 border border-app-border bg-transparent px-5 py-3 text-sm font-semibold text-app-text transition hover:border-app-accent hover:text-app-accent"
+      className="inline-flex items-center gap-2 border border-app-border bg-transparent px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.1em] text-app-text transition hover:border-app-accent hover:text-app-accent"
     >
       {children}
     </button>
@@ -85,10 +87,14 @@ export function SimtelogNavBack({
       onClick={onClick}
       className="inline-flex items-center gap-2 text-left text-app-text-muted transition hover:text-app-link"
     >
-      <span className="text-lg">←</span>
+      <span>←</span>
       <div>
-        <span className="block text-sm text-app-text-muted">{small}</span>
-        <span className="block text-base font-medium text-app-text">{big}</span>
+        <span className="block text-[10px] uppercase tracking-[0.15em] text-app-text-muted">
+          {small}
+        </span>
+        <span className="block text-sm font-medium text-app-text normal-case tracking-normal">
+          {big}
+        </span>
       </div>
     </button>
   );
@@ -100,17 +106,17 @@ export function SimtelogBreadcrumb({
   items: { label: string; onClick?: () => void; current?: boolean }[];
 }) {
   return (
-    <nav className="mb-4 flex flex-wrap items-center gap-2 text-sm text-app-text-muted">
+    <nav className="mb-4 flex flex-wrap items-center gap-2 text-[11px] uppercase tracking-[0.1em] text-app-text-muted">
       {items.map((item, i) => (
         <span key={`${item.label}-${i}`} className="flex items-center gap-2">
           {i > 0 && <span className="text-app-border">/</span>}
           {item.current ? (
-            <span className="font-semibold text-app-accent">{item.label}</span>
+            <span className="text-app-accent">{item.label}</span>
           ) : (
             <button
               type="button"
               onClick={item.onClick}
-              className="font-medium transition hover:text-app-link"
+              className="transition hover:text-app-link"
             >
               {item.label}
             </button>
@@ -158,9 +164,9 @@ export function SimtelogDisclosure({
         className="flex w-full items-center justify-between gap-2 px-3 py-2.5 text-left transition hover:bg-white"
       >
         <span className="text-sm font-semibold text-app-text">{label}</span>
-        <span className="flex items-center gap-2 shrink-0">
+        <span className="flex shrink-0 items-center gap-2">
           {badge ? (
-            <span className="rounded-full bg-white px-2 py-0.5 text-xs font-medium text-app-text-muted">
+            <span className="rounded-full bg-white px-2 py-0.5 text-[11px] font-medium text-app-text-muted">
               {badge}
             </span>
           ) : null}
