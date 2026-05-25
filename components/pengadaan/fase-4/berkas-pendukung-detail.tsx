@@ -64,22 +64,22 @@ function ImagePreview({
 
   return (
     <div className="flex min-h-[300px] flex-col">
-      <div className="relative min-h-[240px] flex-1 overflow-hidden rounded-lg border border-white/10 bg-[#0F172A]">
+      <div className="relative min-h-[240px] flex-1 overflow-hidden rounded-lg border border-app-border bg-slate-100">
         {loading ? (
-          <div className="flex h-full min-h-[240px] flex-col items-center justify-center gap-2 text-white/50">
-            <Loader2 className="h-8 w-8 animate-spin text-[#D4AF37]/60" />
+          <div className="flex h-full min-h-[240px] flex-col items-center justify-center gap-2 text-app-text-muted">
+            <Loader2 className="h-8 w-8 animate-spin text-app-accent/60" />
             <p className="text-xs">Memuat daftar gambar…</p>
           </div>
         ) : showPlaceholder ? (
-          <div className="flex h-full min-h-[240px] w-full flex-col items-center justify-center rounded-lg border border-dashed border-white/20 bg-[#0F172A]/80 px-4 py-8 text-center">
-            <ImageIcon className="mb-3 h-10 w-10 text-white/25" strokeWidth={1.25} />
-            <p className="text-xs font-medium text-white/50">Pratinjau gambar</p>
-            <p className="mt-2 text-[11px] text-white/45">
+          <div className="flex h-full min-h-[240px] w-full flex-col items-center justify-center rounded-lg border border-dashed border-app-border bg-app-card-muted px-4 py-8 text-center">
+            <ImageIcon className="mb-3 h-10 w-10 text-app-border" strokeWidth={1.25} />
+            <p className="text-xs font-medium text-app-text-muted">Pratinjau gambar</p>
+            <p className="mt-2 text-[11px] text-app-text-muted">
               {fetchError
                 ? 'Gagal memuat daftar file.'
                 : 'Belum ada tangkapan layar untuk kategori ini.'}
             </p>
-            <p className="mt-2 font-mono text-[10px] text-[#D4AF37]/80">
+            <p className="mt-2 font-mono text-sm text-app-accent/80">
               public/img/fase4/{tierFolder}/
             </p>
           </div>
@@ -87,7 +87,7 @@ function ImagePreview({
           <button
             type="button"
             onClick={() => setLightboxOpen(true)}
-            className="group absolute inset-0 flex h-full w-full cursor-zoom-in items-center justify-center p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/60"
+            className="group absolute inset-0 flex h-full w-full cursor-zoom-in items-center justify-center p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-app-accent/60"
             aria-label="Perbesar gambar"
           >
             <img
@@ -97,7 +97,7 @@ function ImagePreview({
               className="max-h-full max-w-full object-contain object-center"
               onError={() => setLoadFailed(true)}
             />
-            <span className="pointer-events-none absolute bottom-2 right-2 inline-flex items-center gap-1 rounded-md bg-black/60 px-2 py-1 text-[10px] font-medium text-white/90 opacity-0 transition-opacity group-hover:opacity-100">
+            <span className="pointer-events-none absolute bottom-2 right-2 inline-flex items-center gap-1 rounded-md bg-black/60 px-2 py-1 text-sm font-medium text-white/90 opacity-0 transition-opacity group-hover:opacity-100">
               <ZoomIn className="h-3.5 w-3.5" />
               Klik untuk perbesar
             </span>
@@ -123,11 +123,11 @@ function ImagePreview({
           onClick={() => onImageIndexChange(Math.max(0, imageIndex - 1))}
           disabled={loading || !hasImages || imageIndex <= 0}
           aria-label="Gambar sebelumnya"
-          className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-white/15 bg-white/5 text-lg text-white/90 hover:bg-white/10 disabled:opacity-40"
+          className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-app-border bg-white text-lg text-white/90 hover:bg-white/10 disabled:opacity-40"
         >
           ‹
         </button>
-        <span className="min-w-[3rem] text-center text-xs tabular-nums text-white/60">
+        <span className="min-w-[3rem] text-center text-xs tabular-nums text-app-text-muted">
           {loading ? '…' : hasImages ? `${imageIndex + 1} / ${total}` : '0 / 0'}
         </span>
         <button
@@ -135,7 +135,7 @@ function ImagePreview({
           onClick={() => onImageIndexChange(Math.min(total - 1, imageIndex + 1))}
           disabled={loading || !hasImages || imageIndex >= total - 1}
           aria-label="Gambar berikutnya"
-          className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-white/15 bg-white/5 text-lg text-white/90 hover:bg-white/10 disabled:opacity-40"
+          className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-app-border bg-white text-lg text-white/90 hover:bg-white/10 disabled:opacity-40"
         >
           ›
         </button>
@@ -164,20 +164,20 @@ export function BerkasPendukungDetail({
       role="region"
       aria-label="Detail Berkas Pendukung"
     >
-      <aside className="rounded-xl border border-white/10 bg-white/5 p-4 md:p-5">
-        <p className="text-[10px] font-bold uppercase tracking-wider text-[#D4AF37]">Tahapan</p>
-        <h3 className="mt-1 text-xl font-bold text-[#F8FAFC]">{node.label}</h3>
-        <p className="mt-0.5 text-xs text-white/50">{node.instansi}</p>
+      <aside className="rounded-xl border border-app-border bg-white p-4 md:p-5">
+        <p className="text-sm font-bold uppercase tracking-wider text-app-accent">Tahapan</p>
+        <h3 className="mt-1 text-xl font-bold text-app-text">{node.label}</h3>
+        <p className="mt-0.5 text-xs text-app-text-muted">{node.instansi}</p>
 
         <div className="mt-4">
-          <p className="text-[10px] font-semibold uppercase tracking-wider text-white/40">
+          <p className="text-sm font-semibold uppercase tracking-wider text-app-text-muted">
             Proses singkat
           </p>
-          <p className="mt-1 text-sm leading-relaxed text-white/75">{node.description}</p>
+          <p className="mt-1 text-sm leading-relaxed text-app-text">{node.description}</p>
         </div>
 
         <div className="mt-5">
-          <p className="mb-2 text-[10px] font-semibold uppercase tracking-wider text-white/40">
+          <p className="mb-2 text-sm font-semibold uppercase tracking-wider text-app-text-muted">
             Nilai paket pengadaan
           </p>
           <div
@@ -195,16 +195,16 @@ export function BerkasPendukungDetail({
                   aria-selected={active}
                   onClick={() => handleTierChange(t.id)}
                   className={`flex flex-1 flex-col rounded-lg border px-3 py-2.5 text-left transition-all sm:min-w-[7rem] ${active
-                      ? 'border-[#D4AF37]/80 bg-[#D4AF37]/15 text-[#F8FAFC]'
-                      : 'border-white/10 bg-[#0F172A]/40 text-white/70 hover:border-white/20'
+                      ? 'border-app-accent/80 bg-app-accent/15 text-app-text'
+                      : 'border-app-border bg-app-card-muted text-app-text-muted hover:border-app-border'
                     }`}
                 >
                   <span className="text-xs font-bold">{t.shortLabel}</span>
-                  <span className={`mt-0.5 text-[10px] ${active ? 'text-white/70' : 'text-white/45'}`}>
+                  <span className={`mt-0.5 text-sm ${active ? 'text-app-text-muted' : 'text-app-text-muted'}`}>
                     {t.rangeLabel}
                   </span>
                   <span
-                    className={`mt-1 text-[10px] font-semibold ${active ? 'text-[#D4AF37]' : 'text-white/40'}`}
+                    className={`mt-1 text-sm font-semibold ${active ? 'text-app-accent' : 'text-app-text-muted'}`}
                   >
                     {t.checklist.length} dokumen
                   </span>
@@ -216,26 +216,26 @@ export function BerkasPendukungDetail({
 
         <div className="mt-5">
           <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
-            <p className="text-[10px] font-semibold uppercase tracking-wider text-white/40">
+            <p className="text-sm font-semibold uppercase tracking-wider text-app-text-muted">
               Checklist - {tier.categoryTitle}
             </p>
             <a
               href={checklistDownloadUrl(tierId)}
               download={tier.excelFilename}
-              className="inline-flex items-center gap-1.5 rounded-md border border-[#D4AF37]/45 bg-[#D4AF37]/10 px-2.5 py-1.5 text-[11px] font-semibold text-[#D4AF37] transition-colors hover:bg-[#D4AF37]/20"
+              className="inline-flex items-center gap-1.5 rounded-md border border-app-accent/45 bg-app-accent/10 px-2.5 py-1.5 text-[11px] font-semibold text-app-accent transition-colors hover:bg-app-accent/20"
             >
               <FileSpreadsheet className="h-3.5 w-3.5" />
               Download Excel
             </a>
           </div>
-          <div className="max-h-[14rem] overflow-y-auto rounded-lg border border-white/10">
+          <div className="max-h-[14rem] overflow-y-auto rounded-lg border border-app-border">
             <table className="w-full text-left text-sm">
-              <thead className="sticky top-0 bg-[#1E293B]">
-                <tr className="border-b border-white/10">
-                  <th className="w-8 px-2 py-2 text-center text-[10px] font-semibold uppercase text-white/45">
+              <thead className="sticky top-0 bg-slate-100">
+                <tr className="border-b border-app-border">
+                  <th className="w-8 px-2 py-2 text-center text-sm font-semibold uppercase text-app-text-muted">
                     No
                   </th>
-                  <th className="px-2 py-2 text-[10px] font-semibold uppercase text-white/45">
+                  <th className="px-2 py-2 text-sm font-semibold uppercase text-app-text-muted">
                     Dokumen
                   </th>
                 </tr>
@@ -248,17 +248,17 @@ export function BerkasPendukungDetail({
                   return (
                     <Fragment key={item.no}>
                       {showGroup && (
-                        <tr className="border-b border-[#D4AF37]/20 bg-[#D4AF37]/[0.06]">
+                        <tr className="border-b border-app-accent/20 bg-app-accent/[0.06]">
                           <td
                             colSpan={2}
-                            className="px-2 py-2 text-[10px] font-semibold uppercase tracking-wide text-[#D4AF37]/90"
+                            className="px-2 py-2 text-sm font-semibold uppercase tracking-wide text-app-accent/90"
                           >
                             {item.processGroup}
                           </td>
                         </tr>
                       )}
-                      <tr className="border-b border-white/5 last:border-0 hover:bg-white/[0.04]">
-                        <td className="px-2 py-2 text-center text-xs tabular-nums text-white/40">
+                      <tr className="border-b border-app-border-subtle last:border-0 hover:bg-app-card-muted">
+                        <td className="px-2 py-2 text-center text-xs tabular-nums text-app-text-muted">
                           {item.no}
                         </td>
                         <td className="px-2 py-2 text-xs leading-snug text-white/85">
@@ -271,25 +271,25 @@ export function BerkasPendukungDetail({
               </tbody>
             </table>
           </div>
-          <p className="mt-2 text-[10px] text-white/40">
+          <p className="mt-2 text-sm text-app-text-muted">
             File template Excel dihasilkan otomatis dari konfigurasi resmi ({tier.checklist.length}{' '}
             dokumen).
           </p>
         </div>
 
         <div className="mt-4">
-          <p className="mb-2 text-[10px] font-semibold uppercase tracking-wider text-white/40">
+          <p className="mb-2 text-sm font-semibold uppercase tracking-wider text-app-text-muted">
             File dokumen (lampiran / contoh)
           </p>
           <PhaseDocsTable phase={4} node={docsNode} showTitle={false} />
         </div>
       </aside>
 
-      <div className="rounded-xl border border-white/10 bg-white/5 p-4 md:p-5">
-        <p className="mb-1 text-[10px] font-semibold uppercase tracking-wider text-white/40">
+      <div className="rounded-xl border border-app-border bg-white p-4 md:p-5">
+        <p className="mb-1 text-sm font-semibold uppercase tracking-wider text-app-text-muted">
           Pratinjau gambar - {tier.shortLabel}
         </p>
-        <p className="mb-3 text-[11px] text-white/45">{tier.rangeLabel}</p>
+        <p className="mb-3 text-[11px] text-app-text-muted">{tier.rangeLabel}</p>
         <ImagePreview
           node={node}
           tierFolder={tier.docFolder}

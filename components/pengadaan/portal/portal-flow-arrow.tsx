@@ -1,12 +1,14 @@
 'use client';
 
-import { ArrowRight } from 'lucide-react';
-
-export const PortalFlowArrow = () => (
-  <div
-    className="flex shrink-0 items-center justify-center self-center px-0.5 md:px-1 text-[#D4AF37]/60"
-    aria-hidden
-  >
-    <ArrowRight className="h-5 w-5 md:h-6 md:w-6" strokeWidth={2.25} />
-  </div>
-);
+export function PortalFlowArrow() {
+  return (
+    <div
+      className="flex shrink-0 items-center justify-center self-center px-0.5 text-app-accent md:px-1"
+      aria-hidden
+    >
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="opacity-70">
+        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+      </svg>
+    </div>
+  );
+}

@@ -2,9 +2,9 @@
 
 export const UpDocumentMock = () => {
   return (
-    <div className="mt-8 bg-[#1E293B] border border-white/10 rounded-xl overflow-hidden shadow-inner flex flex-col min-h-[300px]">
+    <div className="mt-8 bg-slate-100 border border-app-border rounded-xl overflow-hidden shadow-inner flex flex-col min-h-[300px]">
       <div className="bg-slate-100 text-slate-900 p-6 flex flex-col font-serif relative">
-        <div className="absolute top-0 right-0 py-1 px-3 bg-[#1E40AF] text-[#F8FAFC] text-[10px] font-bold tracking-wider uppercase rounded-bl-lg font-sans">Contoh Dokumen</div>
+        <div className="absolute top-0 right-0 py-1 px-3 bg-[#1E40AF] text-app-text text-sm font-bold tracking-wider uppercase rounded-bl-lg font-sans">Contoh Dokumen</div>
         
         <div className="flex justify-end mb-4">
            <button className="flex items-center gap-1.5 px-3 py-1.5 bg-green-600 hover:bg-green-700 text-white rounded text-xs font-sans font-bold transition-colors">

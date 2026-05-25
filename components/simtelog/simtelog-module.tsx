@@ -79,7 +79,7 @@ function LandingScreen({ onSelectRole }: { onSelectRole: (id: string) => void })
           Pilih peran untuk mempelajari tupoksi, contoh dokumen, dan tangkapan layar sistem
           per tugas.
         </SimtelogPageDesc>
-        <div className="mt-8 grid grid-cols-1 gap-px border border-white/10 bg-white/10 sm:grid-cols-3">
+        <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3">
           <MetaItem label="Total Peran" value="16 Tupoksi" />
           <MetaItem label="Kategori" value="4 Bidang" />
           <MetaItem label="Format" value="Self-paced" />
@@ -97,10 +97,8 @@ function LandingScreen({ onSelectRole }: { onSelectRole: (id: string) => void })
                   className="h-2.5 w-2.5 shrink-0 rounded-full"
                   style={{ background: cat.color }}
                 />
-                <span className="text-sm font-semibold uppercase tracking-wide text-[#F8FAFC]">
-                  {cat.name}
-                </span>
-                <span className="text-[11px] text-white/40">{roles.length} Peran</span>
+                <span className="text-base font-semibold text-app-text">{cat.name}</span>
+                <span className="text-sm text-app-text-muted">{roles.length} Peran</span>
               </div>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {roles.map((r) => {
@@ -110,24 +108,24 @@ function LandingScreen({ onSelectRole }: { onSelectRole: (id: string) => void })
                       key={r.id}
                       type="button"
                       onClick={() => onSelectRole(r.id)}
-                      className="group relative flex min-h-[10rem] flex-col border border-white/10 bg-white/[0.04] p-5 text-left transition hover:border-white/25 hover:bg-white/[0.08]"
-                      style={{ borderLeftWidth: 3, borderLeftColor: cat.color }}
+                      className="app-card-interactive group relative flex min-h-[11rem] flex-col p-5 text-left shadow-sm"
+                      style={{ borderLeftWidth: 4, borderLeftColor: cat.color }}
                     >
                       {noImg && (
                         <span
-                          className="absolute right-2 top-2 inline-flex items-center gap-1 rounded-full border border-white/15 bg-black/40 px-1.5 py-0.5 text-[9px] font-medium uppercase tracking-wide text-white/55"
+                          className="absolute right-2 top-2 inline-flex items-center gap-1 rounded-full border border-app-border bg-app-card-muted px-2 py-0.5 text-xs font-medium text-app-text-muted"
                           title="Belum ada tangkapan layar pada materi pembekalan"
                         >
                           Tanpa SS
                         </span>
                       )}
-                      <span className="text-2xl">{r.icon}</span>
-                      <span className="mt-3 text-lg font-semibold text-[#F8FAFC]">{r.name}</span>
-                      <span className="mt-2 flex-1 text-sm leading-snug text-white/55">
+                      <span className="text-3xl">{r.icon}</span>
+                      <span className="mt-3 text-lg font-semibold text-app-text">{r.name}</span>
+                      <span className="mt-2 flex-1 text-base leading-snug text-app-text-muted">
                         {r.tagline}
                       </span>
                       <span
-                        className="mt-3 text-[11px] font-semibold uppercase tracking-wide"
+                        className="mt-3 text-sm font-semibold"
                         style={{ color: cat.color }}
                       >
                         Lihat Tupoksi →
@@ -146,9 +144,9 @@ function LandingScreen({ onSelectRole }: { onSelectRole: (id: string) => void })
 
 function MetaItem({ label, value }: { label: string; value: string }) {
   return (
-    <div className="bg-[#1E293B]/80 px-6 py-5">
-      <p className="text-[10px] uppercase tracking-[0.2em] text-white/40">{label}</p>
-      <p className="mt-2 text-xl font-semibold text-[#F8FAFC]">{value}</p>
+    <div className="app-card-muted rounded-lg px-6 py-5">
+      <p className="text-sm font-medium text-app-text-muted">{label}</p>
+      <p className="mt-2 text-xl font-semibold text-app-text">{value}</p>
     </div>
   );
 }
@@ -178,29 +176,27 @@ function RoleTupoksiScreen({
         ]}
       />
 
-      <div className="mb-8 flex flex-col gap-4 border-b border-white/10 pb-8 sm:flex-row sm:items-center">
-        <div className="flex h-[4.5rem] w-[4.5rem] shrink-0 items-center justify-center border border-white/15 bg-white/5 text-4xl">
+      <div className="mb-8 flex flex-col gap-4 border-b border-app-border pb-8 sm:flex-row sm:items-center">
+        <div className="flex h-[4.5rem] w-[4.5rem] shrink-0 items-center justify-center rounded-lg border border-app-border bg-app-card-muted text-4xl">
           {role.icon}
         </div>
         <div>
           <SimtelogEyebrow>{cat.name}</SimtelogEyebrow>
-          <h2 className="text-3xl font-bold uppercase text-[#F8FAFC]">{role.name}</h2>
-          <p className="mt-1 text-sm text-white/55">{role.fullname}</p>
+          <h2 className="text-2xl font-bold text-app-text md:text-3xl">{role.name}</h2>
+          <p className="mt-1 text-base text-app-text-muted">{role.fullname}</p>
         </div>
       </div>
 
       <div
-        className="mb-8 border-l-[3px] bg-white/[0.04] px-5 py-4"
-        style={{ borderColor: cat.color }}
+        className="app-card-muted mb-8 rounded-lg border-l-[4px] px-5 py-4"
+        style={{ borderLeftColor: cat.color }}
       >
-        <p className="text-[10px] font-semibold uppercase tracking-wider text-[#D4AF37]">
-          Skenario
-        </p>
-        <p className="mt-2 text-sm leading-relaxed text-white/80">{role.scenario}</p>
+        <p className="text-sm font-semibold text-app-accent">Skenario</p>
+        <p className="mt-2 text-base leading-relaxed text-app-text">{role.scenario}</p>
       </div>
 
       <SimtelogSectionLabel>Tugas Pokok & Fungsi</SimtelogSectionLabel>
-      <p className="mb-4 text-xs text-white/45">
+      <p className="mb-4 text-base text-app-text-muted">
         Klik kartu untuk melihat contoh dokumen dan slide gambar di bawah.
       </p>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -211,18 +207,18 @@ function RoleTupoksiScreen({
               key={t.title}
               type="button"
               onClick={() => handleSelectTupoksi(i)}
-              className={`relative min-h-[10rem] border p-5 text-left transition ${
+              className={`relative min-h-[11rem] rounded-lg border p-5 text-left transition ${
                 active
-                  ? 'border-[#D4AF37]/70 bg-[#D4AF37]/10 ring-1 ring-[#D4AF37]/40'
-                  : 'border-white/10 bg-white/[0.04] hover:border-white/25 hover:bg-white/[0.08]'
+                  ? 'border-app-accent bg-amber-50 ring-2 ring-app-accent/30'
+                  : 'app-card-interactive border-app-border'
               }`}
             >
-              <span className="absolute right-4 top-4 text-3xl font-bold text-white/15">
+              <span className="absolute right-4 top-4 text-3xl font-bold text-app-border">
                 {String(i + 1).padStart(2, '0')}
               </span>
-              <span className="text-xl">{t.icon}</span>
-              <h4 className="mt-3 text-sm font-semibold text-[#F8FAFC]">{t.title}</h4>
-              <p className="mt-2 text-xs leading-relaxed text-white/55">{t.desc}</p>
+              <span className="text-2xl">{t.icon}</span>
+              <h4 className="mt-3 text-base font-semibold text-app-text">{t.title}</h4>
+              <p className="mt-2 text-sm leading-relaxed text-app-text-muted">{t.desc}</p>
             </button>
           );
         })}

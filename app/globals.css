@@ -1,1 +1,82 @@
 @import "tailwindcss";
+
+/* Palet B (langit pembelajaran) + sentuhan D — cerah, institusi, ramah pembaca */
+:root {
+  --app-page: #eef6fc;
+  --app-surface: #ffffff;
+  --app-header: #003d7a;
+  --app-header-muted: #e2eef8;
+  --app-header-accent: #c9a227;
+  --app-text: #0f2942;
+  --app-text-muted: #475569;
+  --app-text-on-header: #f8fafc;
+  --app-accent: #e09b2d;
+  --app-accent-hover: #c8871f;
+  --app-link: #1d4ed8;
+  --app-border: #b8d4e8;
+  --app-border-subtle: #d6e8f5;
+  --app-card: #ffffff;
+  --app-card-muted: #f4fafd;
+  --app-focus-ring: #2563eb;
+
+  /* Skala tipografi — basis 18px untuk audiens pembekalan */
+  --app-text-xs: 0.8125rem; /* ~14.6px */
+  --app-text-sm: 0.9375rem; /* ~16.9px */
+  --app-text-base: 1.0625rem; /* ~19px */
+  --app-text-lg: 1.25rem;
+  --app-text-xl: 1.5rem;
+  --app-text-2xl: 1.75rem;
+  --app-text-3xl: 2rem;
+}
+
+@theme inline {
+  --font-sans: var(--font-noto-sans), ui-sans-serif, system-ui, sans-serif;
+  --color-app-page: var(--app-page);
+  --color-app-surface: var(--app-surface);
+  --color-app-header: var(--app-header);
+  --color-app-text: var(--app-text);
+  --color-app-text-muted: var(--app-text-muted);
+  --color-app-accent: var(--app-accent);
+  --color-app-link: var(--app-link);
+  --color-app-border: var(--app-border);
+}
+
+html {
+  font-size: 18px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-noto-sans), ui-sans-serif, system-ui, sans-serif;
+  font-size: var(--app-text-base);
+  line-height: 1.65;
+  color: var(--app-text);
+  background-color: var(--app-page);
+}
+
+/* Kartu & panel di area konten terang */
+.app-card {
+  background-color: var(--app-card);
+  border: 1px solid var(--app-border);
+  border-radius: 0.5rem;
+}
+
+.app-card-muted {
+  background-color: var(--app-card-muted);
+  border: 1px solid var(--app-border-subtle);
+}
+
+.app-card-interactive {
+  background-color: var(--app-card);
+  border: 1px solid var(--app-border);
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.app-card-interactive:hover {
+  border-color: #94b8d4;
+  background-color: var(--app-card-muted);
+  box-shadow: 0 2px 8px rgb(15 41 66 / 0.06);
+}

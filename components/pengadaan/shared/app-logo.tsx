@@ -31,7 +31,7 @@ export function AppLogo({ appId, size = 'sm', showLabel = false }: AppLogoProps)
         />
       </div>
       {showLabel && (
-        <span className="max-w-[4.5rem] truncate text-[8px] font-semibold leading-none text-white/55">
+        <span className="max-w-[4.5rem] truncate text-[8px] font-semibold leading-none text-app-text-muted">
           {meta.shortName}
         </span>
       )}

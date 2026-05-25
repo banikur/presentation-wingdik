@@ -41,11 +41,11 @@ export function Fase4Section() {
         />
       </section>
 
-      <div className="mt-6 rounded-lg border border-[#D4AF37]/30 bg-[#D4AF37]/10 p-5">
-        <p className="text-sm font-bold uppercase tracking-wide text-[#D4AF37]">
+      <div className="mt-6 rounded-lg border border-app-accent/30 bg-app-accent/10 p-5">
+        <p className="text-sm font-bold uppercase tracking-wide text-app-accent">
           Penting
         </p>
-        <p className="mt-1 text-sm text-white/80">
+        <p className="mt-1 text-sm text-app-text">
           PPK (Pejabat Pembuat Komitmen) harus sudah ditunjuk sebelum proses berjalan.
         </p>
       </div>

@@ -7,17 +7,17 @@ export const DocumentGalleryFase2Mock = () => {
   const [activeTab, setActiveTab] = useState('DIPA');
   
   return (
-    <div className="mt-8 bg-[#1E293B] border border-white/10 rounded-xl overflow-hidden shadow-inner flex flex-col sm:flex-row min-h-[350px]">
-      <div className="w-full sm:w-56 bg-white/5 border-b sm:border-b-0 sm:border-r border-white/10 flex flex-row sm:flex-col shrink-0 overflow-x-auto sm:overflow-visible">
-        <div className="p-3 text-[10px] font-bold text-white/50 uppercase tracking-wider hidden sm:block shrink-0">Galeri Fase 2</div>
-        <button onClick={() => setActiveTab('DIPA')} className={`px-4 py-3 text-left text-sm font-medium transition-colors whitespace-nowrap sm:whitespace-normal ${activeTab === 'DIPA' ? 'bg-[#D4AF37]/20 text-[#D4AF37] border-b-2 sm:border-b-0 sm:border-l-2 border-[#D4AF37]' : 'text-white/70 hover:bg-white/5'}`}>1. DIPA Petikan</button>
-        <button onClick={() => setActiveTab('SAKTI')} className={`px-4 py-3 text-left text-sm font-medium transition-colors whitespace-nowrap sm:whitespace-normal ${activeTab === 'SAKTI' ? 'bg-[#D4AF37]/20 text-[#D4AF37] border-b-2 sm:border-b-0 sm:border-l-2 border-[#D4AF37]' : 'text-white/70 hover:bg-white/5'}`}>2. Aplikasi SAKTI (SS)</button>
-        <button onClick={() => setActiveTab('Nota Dinas')} className={`px-4 py-3 text-left text-sm font-medium transition-colors whitespace-nowrap sm:whitespace-normal ${activeTab === 'Nota Dinas' ? 'bg-[#D4AF37]/20 text-[#D4AF37] border-b-2 sm:border-b-0 sm:border-l-2 border-[#D4AF37]' : 'text-white/70 hover:bg-white/5'}`}>3. Nota Dinas (HAR)</button>
-        <button onClick={() => setActiveTab('SIRUP')} className={`px-4 py-3 text-left text-sm font-medium transition-colors whitespace-nowrap sm:whitespace-normal ${activeTab === 'SIRUP' ? 'bg-[#D4AF37]/20 text-[#D4AF37] border-b-2 sm:border-b-0 sm:border-l-2 border-[#D4AF37]' : 'text-white/70 hover:bg-white/5'}`}>4. SIRUP LKPP (SS)</button>
+    <div className="mt-8 bg-slate-100 border border-app-border rounded-xl overflow-hidden shadow-inner flex flex-col sm:flex-row min-h-[350px]">
+      <div className="w-full sm:w-56 bg-white border-b sm:border-b-0 sm:border-r border-app-border flex flex-row sm:flex-col shrink-0 overflow-x-auto sm:overflow-visible">
+        <div className="p-3 text-sm font-bold text-app-text-muted uppercase tracking-wider hidden sm:block shrink-0">Galeri Fase 2</div>
+        <button onClick={() => setActiveTab('DIPA')} className={`px-4 py-3 text-left text-sm font-medium transition-colors whitespace-nowrap sm:whitespace-normal ${activeTab === 'DIPA' ? 'bg-app-accent/20 text-app-accent border-b-2 sm:border-b-0 sm:border-l-2 border-app-accent' : 'text-app-text-muted hover:bg-white'}`}>1. DIPA Petikan</button>
+        <button onClick={() => setActiveTab('SAKTI')} className={`px-4 py-3 text-left text-sm font-medium transition-colors whitespace-nowrap sm:whitespace-normal ${activeTab === 'SAKTI' ? 'bg-app-accent/20 text-app-accent border-b-2 sm:border-b-0 sm:border-l-2 border-app-accent' : 'text-app-text-muted hover:bg-white'}`}>2. Aplikasi SAKTI (SS)</button>
+        <button onClick={() => setActiveTab('Nota Dinas')} className={`px-4 py-3 text-left text-sm font-medium transition-colors whitespace-nowrap sm:whitespace-normal ${activeTab === 'Nota Dinas' ? 'bg-app-accent/20 text-app-accent border-b-2 sm:border-b-0 sm:border-l-2 border-app-accent' : 'text-app-text-muted hover:bg-white'}`}>3. Nota Dinas (HAR)</button>
+        <button onClick={() => setActiveTab('SIRUP')} className={`px-4 py-3 text-left text-sm font-medium transition-colors whitespace-nowrap sm:whitespace-normal ${activeTab === 'SIRUP' ? 'bg-app-accent/20 text-app-accent border-b-2 sm:border-b-0 sm:border-l-2 border-app-accent' : 'text-app-text-muted hover:bg-white'}`}>4. SIRUP LKPP (SS)</button>
       </div>
 
-      <div className="p-4 md:p-6 flex-1 bg-slate-100 text-slate-900 border-b sm:border-b-0 sm:border-r border-white/10 font-serif overflow-y-auto" style={{ maxHeight: '450px' }}>
-        <div className="absolute top-0 right-0 py-1 px-3 bg-[#1E40AF] text-[#F8FAFC] text-[10px] font-bold tracking-wider uppercase rounded-bl-lg font-sans z-10">Contoh</div>
+      <div className="relative p-4 md:p-6 flex-1 bg-white text-slate-900 border-b sm:border-b-0 sm:border-r border-app-border font-serif overflow-y-auto" style={{ maxHeight: '450px' }}>
+        <div className="absolute top-0 right-0 py-1 px-3 bg-[#1E40AF] text-app-text text-sm font-bold tracking-wider uppercase rounded-bl-lg font-sans z-10">Contoh</div>
         
         {activeTab === 'DIPA' && (
           <div className="animate-in fade-in flex flex-col relative h-full">
@@ -82,14 +82,14 @@ export const DocumentGalleryFase2Mock = () => {
                  <div className="flex gap-4 items-center">
                     <span className="hidden sm:inline-block">2024 | Modul Penganggaran</span>
                     <div className="flex items-center gap-1 bg-white/10 px-2 py-1 rounded">
-                       <div className="w-4 h-4 rounded-full bg-white text-blue-900 flex items-center justify-center text-[10px] font-bold">K</div>
+                       <div className="w-4 h-4 rounded-full bg-white text-blue-900 flex items-center justify-center text-sm font-bold">K</div>
                        <span>KPA Satker</span>
                     </div>
                  </div>
               </div>
               <div className="flex flex-1 overflow-hidden">
                  {/* Sidebar */}
-                 <div className="w-40 md:w-48 bg-white border-r border-gray-200 p-2 text-[10px] md:text-xs overflow-y-auto">
+                 <div className="w-40 md:w-48 bg-white border-r border-gray-200 p-2 text-sm md:text-xs overflow-y-auto">
                     <ul className="space-y-1">
                        <li className="font-bold text-slate-500 mb-1 px-2">MENU UTAMA</li>
                        <li className="px-2 py-1.5 hover:bg-blue-50 rounded">Dashboard</li>
@@ -122,7 +122,7 @@ export const DocumentGalleryFase2Mock = () => {
                     </div>
 
                     <div className="bg-white border border-gray-200 shadow-sm rounded overflow-hidden">
-                       <table className="w-full text-[10px] md:text-xs">
+                       <table className="w-full text-sm md:text-xs">
                          <thead className="bg-gray-100 border-b border-gray-200">
                            <tr>
                               <th className="p-2 text-left">Kode</th>
@@ -212,7 +212,7 @@ export const DocumentGalleryFase2Mock = () => {
                  <div className="font-bold flex items-center gap-2 text-sm sm:text-base">
                     SIRUP (Sistem Informasi Rencana Umum Pengadaan)
                  </div>
-                 <div className="flex gap-4 mt-2 sm:mt-0 opacity-90 text-[10px] sm:text-xs">
+                 <div className="flex gap-4 mt-2 sm:mt-0 opacity-90 text-sm sm:text-xs">
                     <span className="hover:underline cursor-pointer">Rekap Nasional</span>
                     <span className="hover:underline cursor-pointer">K/L/PD</span>
                     <span className="font-bold">Login KPA/PPK</span>
@@ -227,14 +227,14 @@ export const DocumentGalleryFase2Mock = () => {
                  
                  <div className="grid grid-cols-2 gap-3 mb-5">
                     <div className="bg-white p-3 border border-blue-200 rounded-lg shadow-sm border-l-4 border-l-blue-500 relative overflow-hidden">
-                       <div className="text-slate-500 text-[10px] sm:text-xs font-bold uppercase mb-1">Total Penyedia</div>
-                       <div className="text-lg sm:text-xl font-bold text-slate-800">120 <span className="text-[10px] sm:text-xs font-normal text-slate-500">Paket</span></div>
+                       <div className="text-slate-500 text-sm sm:text-xs font-bold uppercase mb-1">Total Penyedia</div>
+                       <div className="text-lg sm:text-xl font-bold text-slate-800">120 <span className="text-sm sm:text-xs font-normal text-slate-500">Paket</span></div>
                        <div className="text-xs sm:text-sm font-semibold text-blue-700 mt-1">Rp 15.000.000.000</div>
                        <div className="absolute top-2 right-2 opacity-10"><Building className="w-8 h-8"/></div>
                     </div>
                     <div className="bg-white p-3 border border-green-200 rounded-lg shadow-sm border-l-4 border-l-green-500 relative overflow-hidden">
-                       <div className="text-slate-500 text-[10px] sm:text-xs font-bold uppercase mb-1">Total Swakelola</div>
-                       <div className="text-lg sm:text-xl font-bold text-slate-800">12 <span className="text-[10px] sm:text-xs font-normal text-slate-500">Kegiatan</span></div>
+                       <div className="text-slate-500 text-sm sm:text-xs font-bold uppercase mb-1">Total Swakelola</div>
+                       <div className="text-lg sm:text-xl font-bold text-slate-800">12 <span className="text-sm sm:text-xs font-normal text-slate-500">Kegiatan</span></div>
                        <div className="text-xs sm:text-sm font-semibold text-green-700 mt-1">Rp 9.500.000.000</div>
                        <div className="absolute top-2 right-2 opacity-10"><Briefcase className="w-8 h-8"/></div>
                     </div>
@@ -245,7 +245,7 @@ export const DocumentGalleryFase2Mock = () => {
                        <span className="font-bold text-slate-700">Daftar Paket Penyedia</span>
                        <span className="text-blue-600 hover:underline cursor-pointer">Lihat Semua →</span>
                     </div>
-                    <table className="w-full text-[10px] sm:text-xs">
+                    <table className="w-full text-sm sm:text-xs">
                        <thead className="bg-slate-100 text-slate-600">
                           <tr>
                              <th className="p-2 text-center border-b border-slate-200">ID RUP</th>

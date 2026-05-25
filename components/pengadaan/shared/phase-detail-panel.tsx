@@ -33,12 +33,12 @@ function ImagePlaceholder({
   const label = filename ?? (hint ?? 'Letakkan file (.png, .jpg, …) di folder:');
 
   return (
-    <div className="flex h-full min-h-[240px] w-full flex-col items-center justify-center rounded-lg border border-dashed border-white/20 bg-[#0F172A]/80 px-4 py-8 text-center">
-      <ImageIcon className="mb-3 h-10 w-10 text-white/25" strokeWidth={1.25} />
-      <p className="text-xs font-medium text-white/50">Pratinjau gambar</p>
-      <p className="mt-2 max-w-full break-all font-mono text-[11px] text-white/40">{label}</p>
+    <div className="flex h-full min-h-[240px] w-full flex-col items-center justify-center rounded-lg border border-dashed border-app-border bg-app-card-muted px-4 py-8 text-center">
+      <ImageIcon className="mb-3 h-10 w-10 text-app-border" strokeWidth={1.25} />
+      <p className="text-xs font-medium text-app-text-muted">Pratinjau gambar</p>
+      <p className="mt-2 max-w-full break-all font-mono text-[11px] text-app-text-muted">{label}</p>
       {!filename && (
-        <p className="mt-2 font-mono text-[10px] text-[#D4AF37]/80">
+        <p className="mt-2 font-mono text-sm text-app-accent/80">
           public/img/fase{phase}/{folder}/
         </p>
       )}
@@ -82,10 +82,10 @@ function ImagePreview({
 
   return (
     <div className="flex min-h-[300px] flex-col">
-      <div className="relative min-h-[240px] flex-1 overflow-hidden rounded-lg border border-white/10 bg-[#0F172A]">
+      <div className="relative min-h-[240px] flex-1 overflow-hidden rounded-lg border border-app-border bg-slate-100">
         {loading ? (
-          <div className="flex h-full min-h-[240px] flex-col items-center justify-center gap-2 text-white/50">
-            <Loader2 className="h-8 w-8 animate-spin text-[#D4AF37]/60" />
+          <div className="flex h-full min-h-[240px] flex-col items-center justify-center gap-2 text-app-text-muted">
+            <Loader2 className="h-8 w-8 animate-spin text-app-accent/60" />
             <p className="text-xs">Memuat daftar gambar…</p>
           </div>
         ) : showPlaceholder ? (
@@ -105,7 +105,7 @@ function ImagePreview({
           <button
             type="button"
             onClick={() => setLightboxOpen(true)}
-            className="group absolute inset-0 flex h-full w-full cursor-zoom-in items-center justify-center p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/60"
+            className="group absolute inset-0 flex h-full w-full cursor-zoom-in items-center justify-center p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-app-accent/60"
             aria-label="Perbesar gambar"
           >
             <img
@@ -115,7 +115,7 @@ function ImagePreview({
               className="max-h-full max-w-full object-contain object-center"
               onError={() => setLoadFailed(true)}
             />
-            <span className="pointer-events-none absolute bottom-2 right-2 inline-flex items-center gap-1 rounded-md bg-black/60 px-2 py-1 text-[10px] font-medium text-white/90 opacity-0 transition-opacity group-hover:opacity-100">
+            <span className="pointer-events-none absolute bottom-2 right-2 inline-flex items-center gap-1 rounded-md bg-black/60 px-2 py-1 text-sm font-medium text-white/90 opacity-0 transition-opacity group-hover:opacity-100">
               <ZoomIn className="h-3.5 w-3.5" />
               Klik untuk perbesar
             </span>
@@ -141,11 +141,11 @@ function ImagePreview({
           onClick={goPrev}
           disabled={loading || !hasImages || imageIndex <= 0}
           aria-label="Gambar sebelumnya"
-          className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-white/15 bg-white/5 text-lg leading-none text-white/90 transition-colors hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-40"
+          className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-app-border bg-white text-lg leading-none text-white/90 transition-colors hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-40"
         >
           ‹
         </button>
-        <span className="min-w-[3rem] text-center text-xs font-medium tabular-nums text-white/60">
+        <span className="min-w-[3rem] text-center text-xs font-medium tabular-nums text-app-text-muted">
           {loading ? '…' : hasImages ? `${imageIndex + 1} / ${total}` : '0 / 0'}
         </span>
         <button
@@ -153,7 +153,7 @@ function ImagePreview({
           onClick={goNext}
           disabled={loading || !hasImages || imageIndex >= total - 1}
           aria-label="Gambar berikutnya"
-          className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-white/15 bg-white/5 text-lg leading-none text-white/90 transition-colors hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-40"
+          className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-app-border bg-white text-lg leading-none text-white/90 transition-colors hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-40"
         >
           ›
         </button>
@@ -174,14 +174,14 @@ export function PhaseDetailPanel({
       role="region"
       aria-label={`Detail ${node.label}`}
     >
-      <aside className="rounded-xl border border-white/10 bg-white/5 p-4 md:p-5 lg:max-w-none">
-        <p className="text-[10px] font-bold uppercase tracking-wider text-[#D4AF37]">Tahapan</p>
-        <h3 className="mt-1 text-xl font-bold text-[#F8FAFC]">{node.label}</h3>
-        <p className="mt-0.5 text-xs text-white/50">{node.instansi}</p>
+      <aside className="rounded-xl border border-app-border bg-white p-4 md:p-5 lg:max-w-none">
+        <p className="text-sm font-bold uppercase tracking-wider text-app-accent">Tahapan</p>
+        <h3 className="mt-1 text-xl font-bold text-app-text">{node.label}</h3>
+        <p className="mt-0.5 text-xs text-app-text-muted">{node.instansi}</p>
 
         {node.apps?.length ? (
-          <div className="mt-4 rounded-lg border border-white/10 bg-[#0F172A]/50 px-3 py-2.5">
-            <p className="text-[10px] font-semibold uppercase tracking-wider text-white/40">
+          <div className="mt-4 rounded-lg border border-app-border bg-app-card-muted px-3 py-2.5">
+            <p className="text-sm font-semibold uppercase tracking-wider text-app-text-muted">
               Aplikasi terkait
             </p>
             <AppLogoStrip
@@ -194,20 +194,20 @@ export function PhaseDetailPanel({
         ) : null}
 
         <div className="mt-4">
-          <p className="text-[10px] font-semibold uppercase tracking-wider text-white/40">
+          <p className="text-sm font-semibold uppercase tracking-wider text-app-text-muted">
             Proses singkat
           </p>
-          <p className="mt-1 text-sm leading-relaxed text-white/75">{node.description}</p>
+          <p className="mt-1 text-sm leading-relaxed text-app-text">{node.description}</p>
         </div>
 
         <PhaseDocsTable phase={phase} node={node} />
       </aside>
 
-      <div className="rounded-xl border border-white/10 bg-white/5 p-4 md:p-5">
-        <p className="mb-1 text-[10px] font-semibold uppercase tracking-wider text-white/40">
+      <div className="rounded-xl border border-app-border bg-white p-4 md:p-5">
+        <p className="mb-1 text-sm font-semibold uppercase tracking-wider text-app-text-muted">
           Pratinjau gambar (tangkapan layar)
         </p>
-        <p className="mb-3 text-[11px] text-white/45">Klik gambar untuk membuka pop-up perbesar.</p>
+        <p className="mb-3 text-[11px] text-app-text-muted">Klik gambar untuk membuka pop-up perbesar.</p>
         <ImagePreview
           phase={phase}
           node={node}

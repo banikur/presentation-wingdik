@@ -4,25 +4,42 @@ import React from 'react';
 import { FileText, LayoutDashboard } from 'lucide-react';
 
 export const DocBadge = ({ text }: { text: string }) => (
-  <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-[#D4AF37] text-black rounded-full text-[10px] md:text-xs font-bold leading-none tracking-wider uppercase shadow-sm whitespace-nowrap">
-    <FileText className="w-3 h-3" />
+  <span className="inline-flex items-center gap-1.5 rounded-full bg-app-accent px-3 py-1.5 text-sm font-bold leading-none text-app-text shadow-sm">
+    <FileText className="h-4 w-4" />
     {text}
   </span>
 );
 
 export const AppBadge = ({ text }: { text: string }) => (
-  <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-[#1E40AF] text-white rounded-full text-[10px] md:text-xs font-bold leading-none tracking-wider uppercase shadow-sm whitespace-nowrap">
-    <LayoutDashboard className="w-3 h-3" />
+  <span className="inline-flex items-center gap-1.5 rounded-full bg-app-link px-3 py-1.5 text-sm font-bold leading-none text-white shadow-sm">
+    <LayoutDashboard className="h-4 w-4" />
     {text}
   </span>
 );
 
-export const FlowBox = ({ title, desc, badges = [], onClick, isActive }: { title: string, desc?: React.ReactNode, badges?: React.ReactNode[], onClick?: () => void, isActive?: boolean }) => (
-  <div onClick={onClick} className={`bg-white/5 border rounded-lg p-3 md:p-4 shadow-sm flex flex-col items-center justify-center text-center w-full min-h-[100px] relative z-10 transition-colors ${onClick ? 'cursor-pointer' : ''} ${isActive ? 'border-[#D4AF37]' : 'border-white/10 hover:border-white/20'}`}>
-    <h3 className="font-bold text-[#F8FAFC] text-sm md:text-base leading-tight mb-1">{title}</h3>
-    {desc && <p className="text-xs text-white/70 mb-2">{desc}</p>}
+export const FlowBox = ({
+  title,
+  desc,
+  badges = [],
+  onClick,
+  isActive,
+}: {
+  title: string;
+  desc?: React.ReactNode;
+  badges?: React.ReactNode[];
+  onClick?: () => void;
+  isActive?: boolean;
+}) => (
+  <div
+    onClick={onClick}
+    className={`app-card flex w-full min-h-[110px] flex-col items-center justify-center rounded-lg p-4 text-center shadow-sm transition-colors md:p-5 ${
+      onClick ? 'cursor-pointer' : ''
+    } ${isActive ? 'border-2 border-app-accent ring-2 ring-app-accent/20' : ''}`}
+  >
+    <h3 className="mb-1 text-base font-bold leading-tight text-app-text md:text-lg">{title}</h3>
+    {desc && <p className="mb-2 text-sm text-app-text-muted">{desc}</p>}
     {badges.length > 0 && (
-      <div className="flex flex-wrap items-center justify-center gap-1.5 mt-auto pt-2">
+      <div className="mt-auto flex flex-wrap items-center justify-center gap-2 pt-2">
         {badges.map((badge, i) => React.cloneElement(badge as React.ReactElement, { key: i }))}
       </div>
     )}
@@ -30,15 +47,15 @@ export const FlowBox = ({ title, desc, badges = [], onClick, isActive }: { title
 );
 
 export const ArrowH = () => (
-  <div className="flex items-center justify-center px-1 md:px-2 shrink-0 text-[#334155] hidden sm:flex relative">
-    <div className="w-8 h-0.5 bg-[#334155]"></div>
-    <div className="absolute right-1 md:right-2 w-0 h-0 border-t-[5px] border-t-transparent border-b-[5px] border-b-transparent border-l-[8px] border-l-[#334155]"></div>
+  <div className="relative hidden shrink-0 items-center justify-center px-1 text-app-text-muted md:flex md:px-2">
+    <div className="h-0.5 w-8 bg-app-border" />
+    <div className="absolute right-1 h-0 w-0 border-b-[5px] border-l-[8px] border-t-[5px] border-b-transparent border-l-app-border border-t-transparent md:right-2" />
   </div>
 );
 
 export const ArrowV = () => (
-  <div className="flex items-center justify-center py-2 shrink-0 text-[#334155] sm:hidden relative h-8 w-6">
-    <div className="absolute left-1/2 -translate-x-1/2 w-0.5 h-6 bg-[#334155]"></div>
-    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-t-[8px] border-t-[#334155]"></div>
+  <div className="relative flex h-8 w-6 shrink-0 items-center justify-center py-2 text-app-text-muted sm:hidden">
+    <div className="absolute left-1/2 h-6 w-0.5 -translate-x-1/2 bg-app-border" />
+    <div className="absolute bottom-0 left-1/2 h-0 w-0 -translate-x-1/2 border-l-[5px] border-r-[5px] border-t-[8px] border-l-transparent border-r-transparent border-t-app-border" />
   </div>
 );

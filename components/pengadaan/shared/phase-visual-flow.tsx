@@ -22,8 +22,8 @@ function FlowConnectorHorizontal() {
       className="flex w-8 shrink-0 items-center justify-center self-center sm:w-10"
       aria-hidden
     >
-      <div className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] sm:h-9 sm:w-9">
-        <ArrowRight className="h-4 w-4 text-white/35" strokeWidth={2} />
+      <div className="flex h-8 w-8 items-center justify-center rounded-full border border-app-border bg-app-card-muted sm:h-9 sm:w-9">
+        <ArrowRight className="h-4 w-4 text-app-text-muted" strokeWidth={2} />
       </div>
     </div>
   );
@@ -37,8 +37,8 @@ function FlowConnectorDown({ alignEnd }: { alignEnd?: boolean }) {
     >
       <div className="flex flex-col items-center">
         <div className="h-3 w-px bg-white/15" />
-        <div className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] sm:h-9 sm:w-9">
-          <ArrowDown className="h-4 w-4 text-white/35" strokeWidth={2} />
+        <div className="flex h-8 w-8 items-center justify-center rounded-full border border-app-border bg-app-card-muted sm:h-9 sm:w-9">
+          <ArrowDown className="h-4 w-4 text-app-text-muted" strokeWidth={2} />
         </div>
         <div className="h-3 w-px bg-white/15" />
       </div>
@@ -52,8 +52,8 @@ function FlowSegmentGap() {
       className="flex w-6 shrink-0 items-center justify-center self-center sm:w-8"
       aria-hidden
     >
-      <div className="hidden h-14 w-px border-l border-dashed border-white/20 sm:block" />
-      <div className="h-10 w-px border-l border-dashed border-white/25 sm:hidden" />
+      <div className="hidden h-14 w-px border-l border-dashed border-app-border sm:block" />
+      <div className="h-10 w-px border-l border-dashed border-app-border sm:hidden" />
     </div>
   );
 }
@@ -67,14 +67,14 @@ function FlowStepIcon({
 }) {
   const boxClass = `flex h-10 w-10 shrink-0 items-center justify-center rounded-lg transition-all ${
     isActive
-      ? 'bg-[#D4AF37] text-[#0F172A] shadow-[0_0_18px_rgba(212,175,55,0.45)]'
-      : 'bg-white/[0.06] text-white/45 group-hover:text-white/65'
+      ? 'bg-app-accent text-app-text shadow-md'
+      : 'bg-white text-app-text-muted group-hover:text-app-text'
   }`;
 
   if (node.apps?.length) {
     return (
       <div
-        className={`${boxClass} ${isActive ? 'bg-white ring-2 ring-[#D4AF37]' : 'bg-white/[0.08]'}`}
+        className={`${boxClass} ${isActive ? 'bg-white ring-2 ring-app-accent' : 'bg-app-card-muted'}`}
       >
         <AppLogoStrip apps={node.apps} size="sm" className="gap-0.5" />
       </div>
@@ -105,27 +105,27 @@ function FlowStepCard({
     <button
       type="button"
       onClick={onClick}
-      className={`group flex h-full w-full min-w-0 flex-col rounded-xl border p-3.5 text-left transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0F172A] sm:p-4 ${
+      className={`group flex h-full w-full min-w-0 flex-col rounded-xl border p-3.5 text-left transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-app-accent/50 focus-visible:ring-offset-2 focus-visible:ring-offset-app-page sm:p-4 ${
         isActive
-          ? 'border-[#D4AF37]/80 bg-[#D4AF37]/[0.06] shadow-[0_0_0_1px_rgba(212,175,55,0.2)]'
-          : 'border-white/10 bg-white/[0.03] hover:border-white/20 hover:bg-white/[0.06]'
+          ? 'border-app-accent bg-amber-50 shadow-sm'
+          : 'app-card-interactive border-app-border bg-white'
       }`}
     >
       <div className="flex items-start justify-between gap-2">
         <FlowStepIcon node={node} isActive={isActive} />
         <span
           className={`text-sm font-bold tabular-nums leading-none ${
-            isActive ? 'text-white/30' : 'text-white/20'
+            isActive ? 'text-app-accent' : 'text-app-border'
           }`}
         >
           {String(stepNum).padStart(2, '0')}
         </span>
       </div>
 
-      <h3 className="mt-3 text-sm font-bold leading-snug text-[#F8FAFC] sm:text-base">
+      <h3 className="mt-3 text-sm font-bold leading-snug text-app-text sm:text-base">
         {node.label}
       </h3>
-      <p className="mt-1.5 text-[11px] leading-relaxed text-white/55 sm:mt-2 sm:text-xs">
+      <p className="mt-1.5 text-sm leading-relaxed text-app-text-muted sm:mt-2">
         {node.flowSummary}
       </p>
     </button>
@@ -186,7 +186,7 @@ export function PhaseVisualFlow({
   return (
     <div className="w-full">
       {flowTitle ? (
-        <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.18em] text-white/40">
+        <p className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-app-text-muted">
           {flowTitle}
         </p>
       ) : null}
@@ -217,7 +217,7 @@ export function PhaseVisualFlow({
         })}
       </div>
 
-      <p className="mt-3 text-center text-[11px] text-white/40 sm:hidden">
+      <p className="mt-3 text-center text-[11px] text-app-text-muted sm:hidden">
         {multiRow
           ? 'Geser ke samping per baris untuk melihat seluruh alur'
           : 'Geser ke samping untuk melihat seluruh alur'}

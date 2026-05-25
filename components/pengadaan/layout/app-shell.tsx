@@ -34,20 +34,17 @@ export function AppShell({ view, onBackToPortal, children }: AppShellProps) {
   const isWideDetail = WIDE_DETAIL_VIEWS.includes(view);
 
   return (
-    <div
-      className="min-h-screen bg-[#0F172A] flex flex-col items-center justify-center p-3 md:p-8 lg:p-10 font-sans text-[#F8FAFC]"
-      style={{ backgroundColor: '#0F172A', color: '#F8FAFC' }}
-    >
+    <div className="flex min-h-screen flex-col items-center justify-center bg-app-page p-3 font-sans text-app-text md:p-8 lg:p-10">
       <div
-        className={`w-full rounded-xl shadow-2xl bg-gradient-to-br from-[#0F172A] to-[#1E293B] overflow-hidden flex flex-col border border-white/10 relative ${
+        className={`relative flex w-full flex-col overflow-hidden rounded-xl border border-app-border bg-app-surface shadow-lg ${
           isPortal || isWideDetail
             ? 'max-w-[min(100%,96rem)] min-h-[min(600px)]'
             : 'max-w-5xl min-h-[600px]'
         }`}
       >
-        <header className="bg-[#1E293B] text-[#F8FAFC] p-4 md:p-5 flex items-center justify-between shrink-0 border-b-[3px] border-[#D4AF37]">
-          <div className="flex items-center gap-3 md:gap-4 min-w-0">
-            <div className="h-12 w-12 md:h-14 md:w-14 shrink-0 rounded-lg overflow-hidden bg-[#334155] ring-1 ring-white/10 flex items-center justify-center p-1.5">
+        <header className="flex shrink-0 items-center justify-between border-b-[3px] border-[var(--app-header-accent)] bg-app-header p-4 text-[var(--app-text-on-header)] md:p-5">
+          <div className="flex min-w-0 items-center gap-3 md:gap-4">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-white/95 p-1.5 ring-1 ring-white/30 md:h-14 md:w-14">
               <img
                 src={WINGDIK_LOGO_PATH}
                 alt="Logo Wing Pendidikan 600"
@@ -55,34 +52,34 @@ export function AppShell({ view, onBackToPortal, children }: AppShellProps) {
               />
             </div>
             <div className="min-w-0">
-              <h1 className="text-lg md:text-xl font-bold leading-tight tracking-wide truncate">
+              <h1 className="truncate text-lg font-bold leading-tight tracking-normal md:text-xl">
                 WING PENDIDIKAN 600 / PEMBEKALAN
               </h1>
-              <p className="text-xs text-white/70">
+              <p className="text-sm text-[var(--app-header-muted)] md:text-[0.9375rem]">
                 Materi Pengenalan Alur Pengadaan Barang & Jasa Satker TNI AU
               </p>
             </div>
           </div>
-          <div className="flex items-center gap-2 shrink-0">
+          <div className="flex shrink-0 items-center gap-2">
             {!isPortal && onBackToPortal && (
               <button
                 type="button"
                 onClick={onBackToPortal}
-                className="text-[10px] sm:text-xs font-medium px-3 py-1 rounded-full border border-white/20 text-white/80 hover:bg-white/10 transition-colors"
+                className="rounded-full border border-white/35 px-3.5 py-1.5 text-sm font-medium text-white transition-colors hover:bg-white/15"
               >
                 ← Portal
               </button>
             )}
             {isPortal && (
-              <span className="text-[10px] sm:text-xs font-bold px-3 py-1 bg-[#D4AF37] text-black rounded-full uppercase tracking-wider">
-                Alur Pengadaan 
+              <span className="rounded-full bg-[var(--app-accent)] px-3.5 py-1.5 text-sm font-bold text-[var(--app-text)]">
+                Alur Pengadaan
               </span>
             )}
           </div>
         </header>
 
         <main
-          className={`flex-1 overflow-y-auto relative ${
+          className={`relative flex-1 overflow-y-auto bg-app-page ${
             isPortal ? 'p-6 md:p-10 lg:p-12' : 'p-4 md:p-8'
           }`}
         >

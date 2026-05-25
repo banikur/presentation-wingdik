@@ -2,18 +2,18 @@
 
 export const DocumentGalleryFase1Mock = ({ activeTab, setActiveTab }: { activeTab: string, setActiveTab: (t: string) => void }) => {
   return (
-    <div className="mt-8 bg-[#1E293B] border border-white/10 rounded-xl overflow-hidden shadow-inner flex flex-col sm:flex-row min-h-[350px]">
-      <div className="w-full sm:w-56 bg-white/5 border-b sm:border-b-0 sm:border-r border-white/10 flex flex-row sm:flex-col shrink-0 overflow-x-auto sm:overflow-visible">
-        <div className="p-3 text-[10px] font-bold text-white/50 uppercase tracking-wider hidden sm:block shrink-0">Galeri Dokumen Fase 1</div>
-        <button onClick={() => setActiveTab('Skadik')} className={`px-4 py-3 text-left text-sm font-medium transition-colors whitespace-nowrap sm:whitespace-normal ${activeTab === 'Skadik' ? 'bg-[#D4AF37]/20 text-[#D4AF37] border-b-2 sm:border-b-0 sm:border-l-2 border-[#D4AF37]' : 'text-white/70 hover:bg-white/5'}`}>1. Renbut Skadik</button>
-        <button onClick={() => setActiveTab('Wingdik')} className={`px-4 py-3 text-left text-sm font-medium transition-colors whitespace-nowrap sm:whitespace-normal ${activeTab === 'Wingdik' ? 'bg-[#D4AF37]/20 text-[#D4AF37] border-b-2 sm:border-b-0 sm:border-l-2 border-[#D4AF37]' : 'text-white/70 hover:bg-white/5'}`}>2. Renbut Wingdik</button>
-        <button onClick={() => setActiveTab('Pusdik')} className={`px-4 py-3 text-left text-sm font-medium transition-colors whitespace-nowrap sm:whitespace-normal ${activeTab === 'Pusdik' ? 'bg-[#D4AF37]/20 text-[#D4AF37] border-b-2 sm:border-b-0 sm:border-l-2 border-[#D4AF37]' : 'text-white/70 hover:bg-white/5'}`}>3. Renbut Pusdik</button>
-        <button onClick={() => setActiveTab('Kodik')} className={`px-4 py-3 text-left text-sm font-medium transition-colors whitespace-nowrap sm:whitespace-normal ${activeTab === 'Kodik' ? 'bg-[#D4AF37]/20 text-[#D4AF37] border-b-2 sm:border-b-0 sm:border-l-2 border-[#D4AF37]' : 'text-white/70 hover:bg-white/5'}`}>4. Renbut Kodik</button>
-        <button onClick={() => setActiveTab('Mabes AU')} className={`px-4 py-3 text-left text-sm font-medium transition-colors whitespace-nowrap sm:whitespace-normal ${activeTab === 'Mabes AU' ? 'bg-[#D4AF37]/20 text-[#D4AF37] border-b-2 sm:border-b-0 sm:border-l-2 border-[#D4AF37]' : 'text-white/70 hover:bg-white/5'}`}>5. Usulan Mabes AU</button>
+    <div className="mt-8 bg-slate-100 border border-app-border rounded-xl overflow-hidden shadow-inner flex flex-col sm:flex-row min-h-[350px]">
+      <div className="w-full sm:w-56 bg-white border-b sm:border-b-0 sm:border-r border-app-border flex flex-row sm:flex-col shrink-0 overflow-x-auto sm:overflow-visible">
+        <div className="p-3 text-sm font-bold text-app-text-muted uppercase tracking-wider hidden sm:block shrink-0">Galeri Dokumen Fase 1</div>
+        <button onClick={() => setActiveTab('Skadik')} className={`px-4 py-3 text-left text-sm font-medium transition-colors whitespace-nowrap sm:whitespace-normal ${activeTab === 'Skadik' ? 'bg-app-accent/20 text-app-accent border-b-2 sm:border-b-0 sm:border-l-2 border-app-accent' : 'text-app-text-muted hover:bg-white'}`}>1. Renbut Skadik</button>
+        <button onClick={() => setActiveTab('Wingdik')} className={`px-4 py-3 text-left text-sm font-medium transition-colors whitespace-nowrap sm:whitespace-normal ${activeTab === 'Wingdik' ? 'bg-app-accent/20 text-app-accent border-b-2 sm:border-b-0 sm:border-l-2 border-app-accent' : 'text-app-text-muted hover:bg-white'}`}>2. Renbut Wingdik</button>
+        <button onClick={() => setActiveTab('Pusdik')} className={`px-4 py-3 text-left text-sm font-medium transition-colors whitespace-nowrap sm:whitespace-normal ${activeTab === 'Pusdik' ? 'bg-app-accent/20 text-app-accent border-b-2 sm:border-b-0 sm:border-l-2 border-app-accent' : 'text-app-text-muted hover:bg-white'}`}>3. Renbut Pusdik</button>
+        <button onClick={() => setActiveTab('Kodik')} className={`px-4 py-3 text-left text-sm font-medium transition-colors whitespace-nowrap sm:whitespace-normal ${activeTab === 'Kodik' ? 'bg-app-accent/20 text-app-accent border-b-2 sm:border-b-0 sm:border-l-2 border-app-accent' : 'text-app-text-muted hover:bg-white'}`}>4. Renbut Kodik</button>
+        <button onClick={() => setActiveTab('Mabes AU')} className={`px-4 py-3 text-left text-sm font-medium transition-colors whitespace-nowrap sm:whitespace-normal ${activeTab === 'Mabes AU' ? 'bg-app-accent/20 text-app-accent border-b-2 sm:border-b-0 sm:border-l-2 border-app-accent' : 'text-app-text-muted hover:bg-white'}`}>5. Usulan Mabes AU</button>
       </div>
 
-      <div className="p-4 md:p-6 flex-1 bg-slate-100 text-slate-900 border-b sm:border-b-0 sm:border-r border-white/10 font-serif overflow-y-auto" style={{ maxHeight: '450px' }}>
-        <div className="absolute top-0 right-0 py-1 px-3 bg-[#1E40AF] text-[#F8FAFC] text-[10px] font-bold tracking-wider uppercase rounded-bl-lg font-sans">Contoh Dokumen</div>
+      <div className="p-4 md:p-6 flex-1 bg-slate-100 text-slate-900 border-b sm:border-b-0 sm:border-r border-app-border font-serif overflow-y-auto" style={{ maxHeight: '450px' }}>
+        <div className="absolute top-0 right-0 py-1 px-3 bg-[#1E40AF] text-app-text text-sm font-bold tracking-wider uppercase rounded-bl-lg font-sans">Contoh Dokumen</div>
         
         {activeTab === 'Renbut Satuan' && (
           <div className="animate-in fade-in flex flex-col">

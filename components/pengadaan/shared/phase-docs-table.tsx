@@ -29,7 +29,7 @@ export function PhaseDocsTable({ phase, node, showTitle = true }: PhaseDocsTable
       emptyHint={
         <>
           Belum ada file di{' '}
-          <span className="font-mono text-[10px] text-[#D4AF37]/80">
+          <span className="font-mono text-sm text-app-accent/80">
             public/docs/fase{phase}/{node.imgFolder}/
           </span>
         </>

@@ -6,15 +6,15 @@ export const DocumentGalleryFase5Mock = () => {
   const [activeTab, setActiveTab] = useState('SAKTI Aset');
   
   return (
-    <div className="mt-8 bg-[#1E293B] border border-white/10 rounded-xl overflow-hidden shadow-inner flex flex-col sm:flex-row min-h-[350px]">
-      <div className="w-full sm:w-56 bg-white/5 border-b sm:border-b-0 sm:border-r border-white/10 flex flex-row sm:flex-col shrink-0 overflow-x-auto sm:overflow-visible">
-        <div className="p-3 text-[10px] font-bold text-white/50 uppercase tracking-wider hidden sm:block shrink-0">Aplikasi terkait</div>
-        <button onClick={() => setActiveTab('SAKTI Aset')} className={`px-4 py-3 text-left text-sm font-medium transition-colors whitespace-nowrap sm:whitespace-normal ${activeTab === 'SAKTI Aset' ? 'bg-[#D4AF37]/20 text-[#D4AF37] border-b-2 sm:border-b-0 sm:border-l-2 border-[#D4AF37]' : 'text-white/70 hover:bg-white/5'}`}>1. SAKTI Modul Aset</button>
-        <button onClick={() => setActiveTab('SIMAK BMN')} className={`px-4 py-3 text-left text-sm font-medium transition-colors whitespace-nowrap sm:whitespace-normal ${activeTab === 'SIMAK BMN' ? 'bg-[#D4AF37]/20 text-[#D4AF37] border-b-2 sm:border-b-0 sm:border-l-2 border-[#D4AF37]' : 'text-white/70 hover:bg-white/5'}`}>2. SIMAK BMN</button>
+    <div className="mt-8 bg-slate-100 border border-app-border rounded-xl overflow-hidden shadow-inner flex flex-col sm:flex-row min-h-[350px]">
+      <div className="w-full sm:w-56 bg-white border-b sm:border-b-0 sm:border-r border-app-border flex flex-row sm:flex-col shrink-0 overflow-x-auto sm:overflow-visible">
+        <div className="p-3 text-sm font-bold text-app-text-muted uppercase tracking-wider hidden sm:block shrink-0">Aplikasi terkait</div>
+        <button onClick={() => setActiveTab('SAKTI Aset')} className={`px-4 py-3 text-left text-sm font-medium transition-colors whitespace-nowrap sm:whitespace-normal ${activeTab === 'SAKTI Aset' ? 'bg-app-accent/20 text-app-accent border-b-2 sm:border-b-0 sm:border-l-2 border-app-accent' : 'text-app-text-muted hover:bg-white'}`}>1. SAKTI Modul Aset</button>
+        <button onClick={() => setActiveTab('SIMAK BMN')} className={`px-4 py-3 text-left text-sm font-medium transition-colors whitespace-nowrap sm:whitespace-normal ${activeTab === 'SIMAK BMN' ? 'bg-app-accent/20 text-app-accent border-b-2 sm:border-b-0 sm:border-l-2 border-app-accent' : 'text-app-text-muted hover:bg-white'}`}>2. SIMAK BMN</button>
       </div>
 
-      <div className="p-4 md:p-6 flex-1 bg-slate-100 text-slate-900 border-b sm:border-b-0 sm:border-r border-white/10 font-serif overflow-y-auto relative" style={{ maxHeight: '450px' }}>
-        <div className="absolute top-0 right-0 py-1 px-3 bg-red-600 text-[#F8FAFC] text-[10px] font-bold tracking-wider uppercase rounded-bl-lg font-sans">Screenshot UI</div>
+      <div className="p-4 md:p-6 flex-1 bg-slate-100 text-slate-900 border-b sm:border-b-0 sm:border-r border-app-border font-serif overflow-y-auto relative" style={{ maxHeight: '450px' }}>
+        <div className="absolute top-0 right-0 py-1 px-3 bg-red-600 text-app-text text-sm font-bold tracking-wider uppercase rounded-bl-lg font-sans">Screenshot UI</div>
         
         {activeTab === 'SAKTI Aset' && (
           <div className="animate-in fade-in flex flex-col h-full border border-slate-300 rounded shadow-sm bg-white overflow-hidden">

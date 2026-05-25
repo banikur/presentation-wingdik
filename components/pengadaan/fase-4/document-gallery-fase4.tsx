@@ -6,12 +6,12 @@ export const DocumentGalleryFase4Mock = () => {
   const [activeTab, setActiveTab] = useState('RAB');
   
   return (
-    <div className="mt-8 bg-[#1E293B] border border-white/10 rounded-xl overflow-hidden shadow-inner flex flex-col sm:flex-row min-h-[300px]">
-       <div className="w-full sm:w-48 bg-white/5 border-b sm:border-b-0 sm:border-r border-white/10 flex flex-row sm:flex-col shrink-0 overflow-x-auto sm:overflow-visible">
-          <div className="p-3 text-[10px] font-bold text-white/50 uppercase tracking-wider hidden sm:block shrink-0">Galeri Dokumen (Contoh)</div>
-          <button onClick={() => setActiveTab('RAB')} className={`px-4 py-3 text-left text-sm font-medium transition-colors whitespace-nowrap sm:whitespace-normal ${activeTab === 'RAB' ? 'bg-[#D4AF37]/20 text-[#D4AF37] border-b-2 sm:border-b-0 sm:border-l-2 border-[#D4AF37]' : 'text-white/70 hover:bg-white/5'}`}>Draf RAB</button>
-          <button onClick={() => setActiveTab('SPPH')} className={`px-4 py-3 text-left text-sm font-medium transition-colors whitespace-nowrap sm:whitespace-normal ${activeTab === 'SPPH' ? 'bg-[#D4AF37]/20 text-[#D4AF37] border-b-2 sm:border-b-0 sm:border-l-2 border-[#D4AF37]' : 'text-white/70 hover:bg-white/5'}`}>Surat SPPH</button>
-          <button onClick={() => setActiveTab('BAST')} className={`px-4 py-3 text-left text-sm font-medium transition-colors whitespace-nowrap sm:whitespace-normal ${activeTab === 'BAST' ? 'bg-[#D4AF37]/20 text-[#D4AF37] border-b-2 sm:border-b-0 sm:border-l-2 border-[#D4AF37]' : 'text-white/70 hover:bg-white/5'}`}>Draft BAST</button>
+    <div className="mt-8 bg-slate-100 border border-app-border rounded-xl overflow-hidden shadow-inner flex flex-col sm:flex-row min-h-[300px]">
+       <div className="w-full sm:w-48 bg-white border-b sm:border-b-0 sm:border-r border-app-border flex flex-row sm:flex-col shrink-0 overflow-x-auto sm:overflow-visible">
+          <div className="p-3 text-sm font-bold text-app-text-muted uppercase tracking-wider hidden sm:block shrink-0">Galeri Dokumen (Contoh)</div>
+          <button onClick={() => setActiveTab('RAB')} className={`px-4 py-3 text-left text-sm font-medium transition-colors whitespace-nowrap sm:whitespace-normal ${activeTab === 'RAB' ? 'bg-app-accent/20 text-app-accent border-b-2 sm:border-b-0 sm:border-l-2 border-app-accent' : 'text-app-text-muted hover:bg-white'}`}>Draf RAB</button>
+          <button onClick={() => setActiveTab('SPPH')} className={`px-4 py-3 text-left text-sm font-medium transition-colors whitespace-nowrap sm:whitespace-normal ${activeTab === 'SPPH' ? 'bg-app-accent/20 text-app-accent border-b-2 sm:border-b-0 sm:border-l-2 border-app-accent' : 'text-app-text-muted hover:bg-white'}`}>Surat SPPH</button>
+          <button onClick={() => setActiveTab('BAST')} className={`px-4 py-3 text-left text-sm font-medium transition-colors whitespace-nowrap sm:whitespace-normal ${activeTab === 'BAST' ? 'bg-app-accent/20 text-app-accent border-b-2 sm:border-b-0 sm:border-l-2 border-app-accent' : 'text-app-text-muted hover:bg-white'}`}>Draft BAST</button>
        </div>
        <div className="p-4 md:p-6 flex-1 bg-white text-slate-800 text-sm overflow-y-auto relative" style={{ maxHeight: '400px' }}>
           {activeTab === 'RAB' && (

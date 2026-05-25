@@ -64,7 +64,7 @@ export function ImageLightbox({
           e.stopPropagation();
           onClose();
         }}
-        className="absolute right-4 top-4 z-10 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/50 text-white transition-colors hover:bg-white/15"
+        className="absolute right-4 top-4 z-10 inline-flex h-10 w-10 items-center justify-center rounded-full border border-app-border bg-black/50 text-white transition-colors hover:bg-white/15"
         aria-label="Tutup"
       >
         <X className="h-5 w-5" />
@@ -77,7 +77,7 @@ export function ImageLightbox({
             e.stopPropagation();
             onPrev();
           }}
-          className="absolute left-2 top-1/2 z-10 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/50 text-white hover:bg-white/15 sm:left-4"
+          className="absolute left-2 top-1/2 z-10 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-app-border bg-black/50 text-white hover:bg-white/15 sm:left-4"
           aria-label="Gambar sebelumnya"
         >
           <ChevronLeft className="h-6 w-6" />
@@ -92,7 +92,7 @@ export function ImageLightbox({
             e.stopPropagation();
             onNext();
           }}
-          className="absolute right-2 top-1/2 z-10 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/50 text-white hover:bg-white/15 sm:right-4"
+          className="absolute right-2 top-1/2 z-10 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-app-border bg-black/50 text-white hover:bg-white/15 sm:right-4"
           aria-label="Gambar berikutnya"
         >
           <ChevronRight className="h-6 w-6" />
@@ -109,7 +109,7 @@ export function ImageLightbox({
           className="max-h-[80vh] w-auto max-w-full object-contain shadow-2xl"
         />
         {(counter || alt) && (
-          <p className="max-w-full truncate px-2 text-center text-xs text-white/70">
+          <p className="max-w-full truncate px-2 text-center text-xs text-app-text-muted">
             {counter ? `${counter} · ` : ''}
             {alt}
           </p>

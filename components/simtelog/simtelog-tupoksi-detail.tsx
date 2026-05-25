@@ -84,35 +84,33 @@ function ImageSlidePreview({
 
   return (
     <div className="flex min-h-[300px] flex-col">
-      <div className="relative min-h-[240px] flex-1 overflow-hidden rounded-lg border border-white/10 bg-[#0F172A]">
+      <div className="relative min-h-[240px] flex-1 overflow-hidden rounded-lg border border-app-border bg-slate-100">
         {loading ? (
-          <div className="flex h-full min-h-[240px] flex-col items-center justify-center gap-2 text-white/50">
-            <Loader2 className="h-8 w-8 animate-spin text-[#D4AF37]/60" />
-            <p className="text-xs">Memuat daftar gambar…</p>
+          <div className="flex h-full min-h-[240px] flex-col items-center justify-center gap-2 text-app-text-muted">
+            <Loader2 className="h-8 w-8 animate-spin text-app-accent" />
+            <p className="text-sm">Memuat daftar gambar…</p>
           </div>
         ) : showPlaceholder ? (
-          <div className="flex h-full min-h-[240px] w-full flex-col items-center justify-center rounded-lg border border-dashed border-white/20 bg-[#0F172A]/80 px-4 py-8 text-center">
-            <ImageIcon className="mb-3 h-10 w-10 text-white/25" strokeWidth={1.25} />
-            <p className="text-xs font-medium text-white/50">Pratinjau tangkapan layar</p>
+          <div className="flex h-full min-h-[240px] w-full flex-col items-center justify-center rounded-lg border border-dashed border-app-border bg-app-card-muted px-4 py-8 text-center">
+            <ImageIcon className="mb-3 h-10 w-10 text-app-border" strokeWidth={1.25} />
+            <p className="text-sm font-medium text-app-text-muted">Pratinjau tangkapan layar</p>
             {roleHasNoImages ? (
               <>
-                <p className="mt-2 inline-flex items-center gap-1.5 rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide text-[#D4AF37]">
+                <p className="mt-2 inline-flex items-center gap-1.5 rounded-full border border-app-accent/40 bg-amber-50 px-3 py-1 text-sm font-semibold text-app-accent">
                   Belum ada tangkapan layar
                 </p>
-                <p className="mt-2 max-w-sm text-[11px] leading-relaxed text-white/55">
-                  Peran <strong className="text-white/75">{role.name}</strong> belum
-                  memiliki tangkapan layar pada materi pembekalan. Caption tetap akan
-                  muncul di sini bila gambar ditambahkan di folder berikut.
+                <p className="mt-2 max-w-sm text-sm leading-relaxed text-app-text-muted">
+                  Peran <strong className="text-app-text">{role.name}</strong> belum memiliki
+                  tangkapan layar pada materi pembekalan. Caption tetap akan muncul di sini bila
+                  gambar ditambahkan di folder berikut.
                 </p>
               </>
             ) : (
-              <p className="mt-2 text-[11px] text-white/45">
-                {fetchError
-                  ? 'Gagal memuat daftar file.'
-                  : 'Belum ada gambar untuk tupoksi ini.'}
+              <p className="mt-2 text-sm text-app-text-muted">
+                {fetchError ? 'Gagal memuat daftar file.' : 'Belum ada gambar untuk tupoksi ini.'}
               </p>
             )}
-            <p className="mt-2 font-mono text-[10px] text-[#D4AF37]/80">
+            <p className="mt-2 font-mono text-sm text-app-link">
               public/img/simtelog/{node.imgFolder}/
             </p>
           </div>
@@ -120,7 +118,7 @@ function ImageSlidePreview({
           <button
             type="button"
             onClick={() => setLightboxOpen(true)}
-            className="group absolute inset-0 flex h-full w-full cursor-zoom-in items-center justify-center p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/60"
+            className="group absolute inset-0 flex h-full w-full cursor-zoom-in items-center justify-center bg-white p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-app-link"
             aria-label="Perbesar gambar"
           >
             <img
@@ -130,8 +128,8 @@ function ImageSlidePreview({
               className="max-h-full max-w-full object-contain object-center"
               onError={() => setLoadFailed(true)}
             />
-            <span className="pointer-events-none absolute bottom-2 right-2 inline-flex items-center gap-1 rounded-md bg-black/60 px-2 py-1 text-[10px] font-medium text-white/90 opacity-0 transition-opacity group-hover:opacity-100">
-              <ZoomIn className="h-3.5 w-3.5" />
+            <span className="pointer-events-none absolute bottom-2 right-2 inline-flex items-center gap-1 rounded-md bg-app-header/85 px-2.5 py-1 text-sm font-medium text-white opacity-0 transition-opacity group-hover:opacity-100">
+              <ZoomIn className="h-4 w-4" />
               Klik untuk perbesar
             </span>
           </button>
@@ -152,7 +150,7 @@ function ImageSlidePreview({
       />
 
       {caption && hasImages && !showPlaceholder && (
-        <figcaption className="mt-3 border-l-2 border-[#D4AF37]/40 bg-white/[0.03] px-3 py-2 text-xs leading-relaxed text-white/75">
+        <figcaption className="mt-3 rounded-r-md border-l-4 border-app-accent bg-amber-50/80 px-3 py-2 text-sm leading-relaxed text-app-text">
           {caption}
         </figcaption>
       )}
@@ -163,11 +161,11 @@ function ImageSlidePreview({
           onClick={() => onImageIndexChange(Math.max(0, imageIndex - 1))}
           disabled={loading || !hasImages || imageIndex <= 0}
           aria-label="Gambar sebelumnya"
-          className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-white/15 bg-white/5 text-lg text-white/90 hover:bg-white/10 disabled:opacity-40"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-app-border bg-white text-lg text-app-text hover:bg-app-card-muted disabled:opacity-40"
         >
           ‹
         </button>
-        <span className="min-w-[3rem] text-center text-xs tabular-nums text-white/60">
+        <span className="min-w-[3.5rem] text-center text-sm tabular-nums text-app-text-muted">
           {loading ? '…' : hasImages ? `${imageIndex + 1} / ${total}` : '0 / 0'}
         </span>
         <button
@@ -175,7 +173,7 @@ function ImageSlidePreview({
           onClick={() => onImageIndexChange(Math.min(total - 1, imageIndex + 1))}
           disabled={loading || !hasImages || imageIndex >= total - 1}
           aria-label="Gambar berikutnya"
-          className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-white/15 bg-white/5 text-lg text-white/90 hover:bg-white/10 disabled:opacity-40"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-app-border bg-white text-lg text-app-text hover:bg-app-card-muted disabled:opacity-40"
         >
           ›
         </button>
@@ -187,7 +185,7 @@ function ImageSlidePreview({
 function DocPreviewPane({ node, activeDocFile }: { node: SimtelogNode; activeDocFile: string | null }) {
   if (!activeDocFile) {
     return (
-      <div className="flex min-h-[280px] items-center justify-center rounded-lg border border-dashed border-white/20 bg-[#0F172A]/80 p-6 text-center text-xs text-white/45">
+      <div className="flex min-h-[280px] items-center justify-center rounded-lg border border-dashed border-app-border bg-app-card-muted p-6 text-center text-base text-app-text-muted">
         Pilih dokumen di galeri untuk pratinjau
       </div>
     );
@@ -199,7 +197,7 @@ function DocPreviewPane({ node, activeDocFile }: { node: SimtelogNode; activeDoc
 
   if (isImage) {
     return (
-      <div className="relative min-h-[280px] overflow-hidden rounded-lg border border-white/10 bg-[#0F172A]">
+      <div className="relative min-h-[280px] overflow-hidden rounded-lg border border-app-border bg-slate-100">
         <img
           src={simtelogImageSrc(node.imgFolder, activeDocFile)}
           alt={activeDocFile}
@@ -211,7 +209,7 @@ function DocPreviewPane({ node, activeDocFile }: { node: SimtelogNode; activeDoc
 
   if (ext === '.pdf') {
     return (
-      <div className="min-h-[280px] overflow-hidden rounded-lg border border-white/10 bg-white">
+      <div className="min-h-[280px] overflow-hidden rounded-lg border border-app-border bg-white">
         <iframe
           title={activeDocFile}
           src={simtelogDocSrc(node.imgFolder, activeDocFile)}
@@ -222,13 +220,13 @@ function DocPreviewPane({ node, activeDocFile }: { node: SimtelogNode; activeDoc
   }
 
   return (
-    <div className="flex min-h-[280px] flex-col items-center justify-center gap-3 rounded-lg border border-white/10 bg-[#0F172A]/80 p-6 text-center">
-      <FileText className="h-10 w-10 text-[#D4AF37]/60" />
-      <p className="text-sm text-white/70">{formatDocDisplayName(activeDocFile)}</p>
+    <div className="flex min-h-[280px] flex-col items-center justify-center gap-3 rounded-lg border border-app-border bg-app-card-muted p-6 text-center">
+      <FileText className="h-10 w-10 text-app-accent" />
+      <p className="text-base text-app-text">{formatDocDisplayName(activeDocFile)}</p>
       <a
         href={simtelogDocSrc(node.imgFolder, activeDocFile)}
         download={activeDocFile}
-        className="rounded-md border border-[#D4AF37]/45 bg-[#D4AF37]/10 px-3 py-1.5 text-xs font-semibold text-[#D4AF37] hover:bg-[#D4AF37]/20"
+        className="rounded-md border border-app-accent bg-amber-50 px-4 py-2 text-sm font-semibold text-app-accent hover:bg-amber-100"
       >
         Download file
       </a>
@@ -265,6 +263,10 @@ export function SimtelogTupoksiDetail({
   }, [docFiles, activeDocFile, docsLoading]);
 
   const demo = role.demo;
+  const tabActive =
+    'border-app-accent bg-amber-50 text-app-text font-semibold';
+  const tabIdle =
+    'border-app-border text-app-text-muted hover:border-app-border hover:bg-app-card-muted';
 
   return (
     <div
@@ -272,46 +274,42 @@ export function SimtelogTupoksiDetail({
       role="region"
       aria-label={`Demo ${tupoksi.title}`}
     >
-      <aside className="rounded-xl border border-white/10 bg-white/5 p-4 md:p-5">
-        <p className="text-[10px] font-bold uppercase tracking-wider text-[#D4AF37]">Tupoksi</p>
-        <h3 className="mt-1 text-xl font-bold text-[#F8FAFC]">{tupoksi.title}</h3>
-        <p className="mt-0.5 text-xs text-white/50">{role.name} · {role.fullname}</p>
+      <aside className="app-card rounded-xl p-4 md:p-5">
+        <p className="text-sm font-bold text-app-accent">Tupoksi</p>
+        <h3 className="mt-1 text-xl font-bold text-app-text md:text-2xl">{tupoksi.title}</h3>
+        <p className="mt-0.5 text-sm text-app-text-muted">
+          {role.name} · {role.fullname}
+        </p>
 
         <div className="mt-4">
-          <p className="text-[10px] font-semibold uppercase tracking-wider text-white/40">
-            Deskripsi
-          </p>
-          <p className="mt-1 text-sm leading-relaxed text-white/75">{tupoksi.desc}</p>
+          <p className="text-sm font-semibold text-app-text-muted">Deskripsi</p>
+          <p className="mt-1 text-base leading-relaxed text-app-text">{tupoksi.desc}</p>
         </div>
 
         <div className="mt-5">
-          <p className="text-[10px] font-semibold uppercase tracking-wider text-[#D4AF37]">
-            Contoh task - {demo.title}
-          </p>
-          <p className="mt-1 text-xs text-white/55">{demo.subtitle}</p>
-          <p className="mt-2 text-sm leading-relaxed text-white/70">{demo.context}</p>
+          <p className="text-sm font-semibold text-app-accent">Contoh task — {demo.title}</p>
+          <p className="mt-1 text-sm text-app-text-muted">{demo.subtitle}</p>
+          <p className="mt-2 text-base leading-relaxed text-app-text">{demo.context}</p>
         </div>
 
-        <div className="mt-5 max-h-[10rem] space-y-2 overflow-y-auto">
-          <p className="text-[10px] font-semibold uppercase tracking-wider text-white/40">
-            Langkah-langkah
-          </p>
+        <div className="mt-5 max-h-[12rem] space-y-2 overflow-y-auto">
+          <p className="text-sm font-semibold text-app-text-muted">Langkah-langkah</p>
           {demo.steps.map((s, i) => (
-            <div key={s.title} className="flex gap-2 text-xs text-white/75">
-              <span className="font-bold text-[#D4AF37]">{i + 1}.</span>
+            <div key={s.title} className="flex gap-2 text-sm text-app-text">
+              <span className="font-bold text-app-accent">{i + 1}.</span>
               <span>
-                <strong className="text-white/90">{s.title}</strong> - {s.desc}
+                <strong>{s.title}</strong> — {s.desc}
               </span>
             </div>
           ))}
         </div>
 
         {docFiles.length > 0 && (
-          <div className="mt-5 overflow-hidden rounded-xl border border-white/10 bg-[#1E293B]">
-            <p className="border-b border-white/10 bg-white/5 px-3 py-2 text-[10px] font-bold uppercase tracking-wider text-white/50">
+          <div className="mt-5 overflow-hidden rounded-xl border border-app-border bg-app-card-muted">
+            <p className="border-b border-app-border bg-white px-3 py-2.5 text-sm font-bold text-app-text-muted">
               Galeri dokumen
             </p>
-            <div className="max-h-[11rem] overflow-y-auto">
+            <div className="max-h-[12rem] overflow-y-auto">
               {docFiles.map((filename) => {
                 const active = activeDocFile === filename;
                 return (
@@ -322,10 +320,11 @@ export function SimtelogTupoksiDetail({
                       setActiveDocFile(filename);
                       setPreviewMode('doc');
                     }}
-                    className={`block w-full border-b border-white/5 px-3 py-2.5 text-left text-xs font-medium transition-colors last:border-0 ${active && previewMode === 'doc'
-                        ? 'bg-[#D4AF37]/20 text-[#D4AF37]'
-                        : 'text-white/70 hover:bg-white/5'
-                      }`}
+                    className={`block w-full border-b border-app-border-subtle px-3 py-3 text-left text-sm font-medium transition-colors last:border-0 ${
+                      active && previewMode === 'doc'
+                        ? 'bg-amber-50 text-app-accent'
+                        : 'text-app-text hover:bg-white'
+                    }`}
                   >
                     {formatDocDisplayName(filename)}
                   </button>
@@ -338,24 +337,23 @@ export function SimtelogTupoksiDetail({
         <SimtelogDocsTable node={node} />
 
         {role.warning && (
-          <div className="mt-4 rounded-lg border border-[#D4AF37]/35 bg-[#D4AF37]/10 px-3 py-2.5 text-xs text-white/80">
-            <span className="font-semibold text-[#D4AF37]">{role.warning.label}: </span>
+          <div className="mt-4 rounded-lg border border-app-accent/40 bg-amber-50 px-3 py-3 text-sm text-app-text">
+            <span className="font-semibold text-app-accent">{role.warning.label}: </span>
             {role.warning.text}
           </div>
         )}
       </aside>
 
-      <div className="rounded-xl border border-white/10 bg-white/5 p-4 md:p-5">
+      <div className="app-card rounded-xl p-4 md:p-5">
         <div className="mb-3 flex flex-wrap gap-2" role="tablist" aria-label="Mode pratinjau">
           <button
             type="button"
             role="tab"
             aria-selected={previewMode === 'slides'}
             onClick={() => setPreviewMode('slides')}
-            className={`rounded-lg border px-3 py-1.5 text-[11px] font-semibold transition-colors ${previewMode === 'slides'
-                ? 'border-[#D4AF37]/80 bg-[#D4AF37]/15 text-[#F8FAFC]'
-                : 'border-white/10 text-white/60 hover:border-white/20'
-              }`}
+            className={`rounded-lg border px-4 py-2 text-sm transition-colors ${
+              previewMode === 'slides' ? tabActive : tabIdle
+            }`}
           >
             Slide gambar
           </button>
@@ -365,10 +363,9 @@ export function SimtelogTupoksiDetail({
               role="tab"
               aria-selected={previewMode === 'doc'}
               onClick={() => setPreviewMode('doc')}
-              className={`rounded-lg border px-3 py-1.5 text-[11px] font-semibold transition-colors ${previewMode === 'doc'
-                  ? 'border-[#D4AF37]/80 bg-[#D4AF37]/15 text-[#F8FAFC]'
-                  : 'border-white/10 text-white/60 hover:border-white/20'
-                }`}
+              className={`rounded-lg border px-4 py-2 text-sm transition-colors ${
+                previewMode === 'doc' ? tabActive : tabIdle
+              }`}
             >
               Pratinjau dokumen
             </button>
@@ -377,8 +374,8 @@ export function SimtelogTupoksiDetail({
 
         {previewMode === 'slides' ? (
           <>
-            <p className="mb-3 text-[10px] font-semibold uppercase tracking-wider text-white/40">
-              Tangkapan layar - {tupoksi.title}
+            <p className="mb-3 text-sm font-semibold text-app-text-muted">
+              Tangkapan layar — {tupoksi.title}
             </p>
             <ImageSlidePreview
               role={role}
@@ -390,21 +387,19 @@ export function SimtelogTupoksiDetail({
           </>
         ) : (
           <>
-            <p className="mb-3 text-[10px] font-semibold uppercase tracking-wider text-white/40">
+            <p className="mb-3 text-sm font-semibold text-app-text-muted">
               {activeDocFile ? formatDocDisplayName(activeDocFile) : 'Dokumen'}
             </p>
             <DocPreviewPane node={node} activeDocFile={activeDocFile} />
           </>
         )}
 
-        <div className="mt-5 border border-white/10 bg-white/[0.03] p-4">
-          <p className="text-[10px] font-semibold uppercase tracking-wider text-[#D4AF37]">
-            Poin kunci
-          </p>
-          <ul className="mt-2 space-y-1.5">
+        <div className="mt-5 rounded-lg border border-app-border bg-app-card-muted p-4">
+          <p className="text-sm font-semibold text-app-accent">Poin kunci</p>
+          <ul className="mt-2 space-y-2">
             {demo.takeaways.map((t) => (
-              <li key={t} className="flex gap-2 text-xs text-white/75">
-                <span className="text-[#D4AF37]">→</span>
+              <li key={t} className="flex gap-2 text-sm text-app-text">
+                <span className="text-app-accent">→</span>
                 {t}
               </li>
             ))}

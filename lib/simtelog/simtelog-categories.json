@@ -1,18 +1,18 @@
 {
   "gudang": {
     "name": "Gudang & Stok",
-    "color": "#4da3ff"
+    "color": "#2563eb"
   },
   "admin": {
     "name": "Administrasi & Verifikasi",
-    "color": "#4dd9a0"
+    "color": "#059669"
   },
   "har": {
     "name": "Pemeliharaan & Komoditi",
-    "color": "#ff8a4d"
+    "color": "#ea580c"
   },
   "approval": {
     "name": "Approval & Workflow",
-    "color": "#b85dff"
+    "color": "#7c3aed"
   }
 }
