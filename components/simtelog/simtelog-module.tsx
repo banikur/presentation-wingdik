@@ -6,6 +6,7 @@ import {
   SIMTELOG_CATEGORIES,
   getRolesByCategory,
   getSimtelogRole,
+  isSimtelogRoleWithoutImages,
 } from '@/lib/simtelog/simtelog-data';
 import type { SimtelogRole, SimtelogScreen } from '@/lib/simtelog/simtelog-types';
 import { SimtelogTupoksiDetail } from './simtelog-tupoksi-detail';
@@ -102,27 +103,38 @@ function LandingScreen({ onSelectRole }: { onSelectRole: (id: string) => void })
                 <span className="text-[11px] text-white/40">{roles.length} Peran</span>
               </div>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                {roles.map((r) => (
-                  <button
-                    key={r.id}
-                    type="button"
-                    onClick={() => onSelectRole(r.id)}
-                    className="group flex min-h-[10rem] flex-col border border-white/10 bg-white/[0.04] p-5 text-left transition hover:border-white/25 hover:bg-white/[0.08]"
-                    style={{ borderLeftWidth: 3, borderLeftColor: cat.color }}
-                  >
-                    <span className="text-2xl">{r.icon}</span>
-                    <span className="mt-3 text-lg font-semibold text-[#F8FAFC]">{r.name}</span>
-                    <span className="mt-2 flex-1 text-sm leading-snug text-white/55">
-                      {r.tagline}
-                    </span>
-                    <span
-                      className="mt-3 text-[11px] font-semibold uppercase tracking-wide"
-                      style={{ color: cat.color }}
+                {roles.map((r) => {
+                  const noImg = isSimtelogRoleWithoutImages(r.id);
+                  return (
+                    <button
+                      key={r.id}
+                      type="button"
+                      onClick={() => onSelectRole(r.id)}
+                      className="group relative flex min-h-[10rem] flex-col border border-white/10 bg-white/[0.04] p-5 text-left transition hover:border-white/25 hover:bg-white/[0.08]"
+                      style={{ borderLeftWidth: 3, borderLeftColor: cat.color }}
                     >
-                      Lihat Tupoksi →
-                    </span>
-                  </button>
-                ))}
+                      {noImg && (
+                        <span
+                          className="absolute right-2 top-2 inline-flex items-center gap-1 rounded-full border border-white/15 bg-black/40 px-1.5 py-0.5 text-[9px] font-medium uppercase tracking-wide text-white/55"
+                          title="Belum ada tangkapan layar pada materi pembekalan"
+                        >
+                          Tanpa SS
+                        </span>
+                      )}
+                      <span className="text-2xl">{r.icon}</span>
+                      <span className="mt-3 text-lg font-semibold text-[#F8FAFC]">{r.name}</span>
+                      <span className="mt-2 flex-1 text-sm leading-snug text-white/55">
+                        {r.tagline}
+                      </span>
+                      <span
+                        className="mt-3 text-[11px] font-semibold uppercase tracking-wide"
+                        style={{ color: cat.color }}
+                      >
+                        Lihat Tupoksi →
+                      </span>
+                    </button>
+                  );
+                })}
               </div>
             </div>
           );

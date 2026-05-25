@@ -13,6 +13,8 @@ type ImageLightboxProps = {
   onNext?: () => void;
   hasPrev?: boolean;
   hasNext?: boolean;
+  /** Caption opsional yang muncul di bawah gambar (paragraf penjelasan). */
+  caption?: string;
 };
 
 export function ImageLightbox({
@@ -25,6 +27,7 @@ export function ImageLightbox({
   onNext,
   hasPrev = false,
   hasNext = false,
+  caption,
 }: ImageLightboxProps) {
   useEffect(() => {
     if (!open) return;
@@ -103,12 +106,17 @@ export function ImageLightbox({
         <img
           src={src}
           alt={alt}
-          className="max-h-[85vh] w-auto max-w-full object-contain shadow-2xl"
+          className="max-h-[80vh] w-auto max-w-full object-contain shadow-2xl"
         />
         {(counter || alt) && (
           <p className="max-w-full truncate px-2 text-center text-xs text-white/70">
             {counter ? `${counter} · ` : ''}
             {alt}
+          </p>
+        )}
+        {caption && (
+          <p className="max-w-[min(96vw,900px)] px-3 text-center text-sm leading-relaxed text-white/85">
+            {caption}
           </p>
         )}
       </div>

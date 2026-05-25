@@ -12,6 +12,8 @@ import {
 } from '@/lib/simtelog/simtelog-assets';
 import {
   filterSimtelogImagesForTupoksi,
+  getSimtelogImageCaption,
+  isSimtelogRoleWithoutImages,
   simtelogRoleImageFolder,
 } from '@/lib/simtelog/simtelog-data';
 import type { SimtelogRole } from '@/lib/simtelog/simtelog-types';
@@ -40,11 +42,13 @@ function assetNode(role: SimtelogRole, tupoksiIndex: number): SimtelogNode {
 }
 
 function ImageSlidePreview({
+  role,
   node,
   tupoksiTitle,
   imageIndex,
   onImageIndexChange,
 }: {
+  role: SimtelogRole;
   node: SimtelogNode;
   tupoksiTitle: string;
   imageIndex: number;
@@ -59,6 +63,8 @@ function ImageSlidePreview({
   const hasImages = total > 0;
   const currentFile = hasImages ? imgs[imageIndex] : undefined;
   const src = currentFile ? simtelogImageSrc(node.imgFolder, currentFile) : null;
+  const caption = getSimtelogImageCaption(role, currentFile);
+  const roleHasNoImages = isSimtelogRoleWithoutImages(role.id);
   const [loadFailed, setLoadFailed] = useState(false);
   const [lightboxOpen, setLightboxOpen] = useState(false);
 
@@ -88,11 +94,24 @@ function ImageSlidePreview({
           <div className="flex h-full min-h-[240px] w-full flex-col items-center justify-center rounded-lg border border-dashed border-white/20 bg-[#0F172A]/80 px-4 py-8 text-center">
             <ImageIcon className="mb-3 h-10 w-10 text-white/25" strokeWidth={1.25} />
             <p className="text-xs font-medium text-white/50">Pratinjau tangkapan layar</p>
-            <p className="mt-2 text-[11px] text-white/45">
-              {fetchError
-                ? 'Gagal memuat daftar file.'
-                : 'Belum ada gambar untuk tupoksi ini.'}
-            </p>
+            {roleHasNoImages ? (
+              <>
+                <p className="mt-2 inline-flex items-center gap-1.5 rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide text-[#D4AF37]">
+                  Belum ada tangkapan layar
+                </p>
+                <p className="mt-2 max-w-sm text-[11px] leading-relaxed text-white/55">
+                  Peran <strong className="text-white/75">{role.name}</strong> belum
+                  memiliki tangkapan layar pada materi pembekalan. Caption tetap akan
+                  muncul di sini bila gambar ditambahkan di folder berikut.
+                </p>
+              </>
+            ) : (
+              <p className="mt-2 text-[11px] text-white/45">
+                {fetchError
+                  ? 'Gagal memuat daftar file.'
+                  : 'Belum ada gambar untuk tupoksi ini.'}
+              </p>
+            )}
             <p className="mt-2 font-mono text-[10px] text-[#D4AF37]/80">
               public/img/simtelog/{node.imgFolder}/
             </p>
@@ -129,7 +148,14 @@ function ImageSlidePreview({
         onNext={() => onImageIndexChange(Math.min(total - 1, imageIndex + 1))}
         hasPrev={!loading && hasImages && imageIndex > 0}
         hasNext={!loading && hasImages && imageIndex < total - 1}
+        caption={caption}
       />
+
+      {caption && hasImages && !showPlaceholder && (
+        <figcaption className="mt-3 border-l-2 border-[#D4AF37]/40 bg-white/[0.03] px-3 py-2 text-xs leading-relaxed text-white/75">
+          {caption}
+        </figcaption>
+      )}
 
       <div className="mt-3 flex items-center justify-center gap-3">
         <button
@@ -355,6 +381,7 @@ export function SimtelogTupoksiDetail({
               Tangkapan layar - {tupoksi.title}
             </p>
             <ImageSlidePreview
+              role={role}
               node={node}
               tupoksiTitle={tupoksi.title}
               imageIndex={imageIndex}

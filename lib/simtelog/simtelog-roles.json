@@ -69,6 +69,12 @@
         "KaGPL bertanggung jawab atas akurasi data inventory gudang pangkalan.",
         "Adjustment harus melalui proses Reconcile Balances untuk diakui sistem."
       ]
+    },
+    "imageCaptions": {
+      "Kelola Inventory.jpeg": "Tampilan menu Inventory pada modul Pembekalan.",
+      "Inventory Adjustment.jpeg": "Aksi Current Balance pada menu Inventory Adjustments.",
+      "Add Items to Storeroom.jpeg": "Form pengenalan Part Number baru ke gudang tujuan.",
+      "Request Item.jpeg": "Formulir Request Item untuk PN yang belum terdaftar."
     }
   },
   {
@@ -137,6 +143,14 @@
         "Add Items to Storeroom adalah langkah administratif sebelum PN bisa ditransaksikan.",
         "KaGPD pegang kuasa di tingkat depo, lebih luas dari KaGPL."
       ]
+    },
+    "imageCaptions": {
+      "Kelola Gudang Depo.jpeg": "Tampilan menu Inventory milik gudang depo.",
+      "Inventory Adjustment.jpeg": "Aksi Adjustment Current Balance pada gudang depo.",
+      "Add Items to Storeroom.jpeg": "Form penambahan PN baru ke storeroom depo.",
+      "Bentuk 40170 (Distribusi Antar Satker).jpeg": "Bentuk 40170 untuk pengeluaran barang antar satker.",
+      "Bentuk 40170-1 (Distribusi Antar Satker).jpeg": "Bentuk 40170-1 untuk klaim warranty antar satker.",
+      "Bentuk 40400 (Distribusi Antar Satker).jpeg": "Bentuk 40400 untuk distribusi barang antar satker."
     }
   },
   {
@@ -201,6 +215,12 @@
         "Kasikal adalah gatekeeper administrasi pengeluaran antar satker.",
         "Setiap bentuk harus di-route sesuai jenjang persetujuan."
       ]
+    },
+    "imageCaptions": {
+      "Request Item.jpeg": "Form Request Item untuk diteruskan ke jalur item master.",
+      "Verifikasi Dokumen.jpeg": "Layar verifikasi dokumen pengeluaran barang.",
+      "Otorisasi Bentuk 40400.jpeg": "Layar otorisasi Bentuk 40400 oleh Kasikal.",
+      "Nota Dinas.jpeg": "Format nota dinas yang diterbitkan Kasikal."
     }
   },
   {
@@ -264,6 +284,11 @@
         "Request Item adalah jembatan antara kebutuhan operasional & registrasi sistem.",
         "Setelah verifikasi Binakatstand, request dikembalikan ke pemohon untuk di-close."
       ]
+    },
+    "imageCaptions": {
+      "Request Item.jpeg": "Form Request Item dari level Kasubsikal.",
+      "Verifikasi Awal.jpeg": "Layar verifikasi awal dokumen pengeluaran barang.",
+      "Pengeluaran Barang.jpeg": "Transaksi pengeluaran barang dari gudang skadron/sathar."
     }
   },
   {
@@ -328,6 +353,12 @@
         "KaTB fokus pada pergerakan barang internal satker.",
         "Bentuk 40220 ≠ 40400 - beda lingkup (dalam vs antar satker)."
       ]
+    },
+    "imageCaptions": {
+      "Administrasi Bench Stock.jpeg": "Menu administrasi bench stock pada modul Pembekalan.",
+      "Request Item.jpeg": "Form Request Item untuk kebutuhan bench stock.",
+      "Bentuk 40220.jpeg": "Bentuk 40220 untuk pemindahan barang dalam satu satker.",
+      "Laporan Bench Stock.jpeg": "Tampilan Bentuk 45100 - laporan pemakaian bench stock."
     }
   },
   {
@@ -394,6 +425,11 @@
         "Kabinakatstand adalah quality gate katalog - data salah di sini berdampak panjang.",
         "Proses Request Item butuh bolak-balik antara pemohon & Binakatstand."
       ]
+    },
+    "imageCaptions": {
+      "Req Item.jpeg": "Inbox Request Item baru yang masuk dari satker.",
+      "Lengkapi NSN.jpeg": "Form pelengkapan NSN dan atribut Item Master.",
+      "Route ke Pemohon.jpeg": "Aksi route balik item yang sudah lengkap ke pemohon."
     }
   },
   {
@@ -457,6 +493,12 @@
         "PALM melewati banyak jenjang persetujuan - sabar & teliti.",
         "Kasibinitem adalah inisiator, bukan penandatangan akhir."
       ]
+    },
+    "imageCaptions": {
+      "Administrasi Item.jpeg": "Menu administrasi item master pada modul Pembekalan.",
+      "Inisiasi PALM.jpeg": "Form inisiasi dokumen PALM oleh Kasibinitem.",
+      "Tanggal & No PALM.jpeg": "Pengisian tanggal dan nomor PALM pada header dokumen.",
+      "Route Workflow.jpeg": "Pengaturan route workflow PALM ke approver berikutnya."
     }
   },
   {
@@ -520,6 +562,12 @@
         "Bentuk 40510 fokus pada instruksi resmi pengeluaran & penerimaan.",
         "Kasimatkomoditi berperan di tingkat Dismatau, bukan satker pangkalan."
       ]
+    },
+    "imageCaptions": {
+      "Materiel Komoditi.jpeg": "Tampilan menu materiel komoditi pada modul Pembekalan.",
+      "Bentuk 40510.jpeg": "Bentuk 40510 - instruksi pengeluaran & penerimaan barang.",
+      "Workflow PALM.jpeg": "Posisi Kasimatkomoditi dalam workflow approval PALM.",
+      "Verifikasi Dokumen akhir .jpeg": "Layar verifikasi akhir dokumen pengeluaran komoditi."
     }
   },
   {
@@ -587,6 +635,12 @@
         "PKU adalah dasar legitimasi pekerjaan pemeliharaan.",
         "Bila ada scope tambahan saat berjalan, gunakan PKT (Bentuk 12001)."
       ]
+    },
+    "imageCaptions": {
+      "Nota Dinas.jpeg": "Format nota dinas yang diterbitkan Kasihar.",
+      "Koordinasi Teknis.jpeg": "Catatan koordinasi teknis dengan satker terkait.",
+      "Perintah Kerja Utama.jpeg": "Tampilan Perintah Kerja Utama (PKU) untuk satker pemelihara.",
+      "Bentuk 12001 (PKT).jpeg": "Bentuk 12001 - Perintah Kerja Tambahan (PKT)."
     }
   },
   {

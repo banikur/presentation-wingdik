@@ -109,3 +109,45 @@ export function filterSimtelogImagesForTupoksi(
 export function getSimtelogRoleFolderIds(): string[] {
   return Object.keys(SIMTELOG_ROLE_IMAGE_FOLDER);
 }
+
+/**
+ * Ambil caption untuk satu file gambar pada peran tertentu.
+ * Lookup case-sensitive dulu, fallback ke case-insensitive bila tidak ketemu.
+ * Return undefined bila peran belum punya caption sama sekali atau file tidak terdaftar.
+ */
+export function getSimtelogImageCaption(
+  roleOrId: SimtelogRole | string,
+  filename: string | undefined | null,
+): string | undefined {
+  if (!filename) return undefined;
+  const role =
+    typeof roleOrId === 'string' ? getSimtelogRole(roleOrId) : roleOrId;
+  const captions = role?.imageCaptions;
+  if (!captions) return undefined;
+  if (filename in captions) return captions[filename];
+  // fallback: case-insensitive
+  const lower = filename.toLowerCase();
+  for (const key of Object.keys(captions)) {
+    if (key.toLowerCase() === lower) return captions[key];
+  }
+  return undefined;
+}
+
+/**
+ * Daftar id peran yang BELUM punya gambar di public/img/simtelog/<folder>/.
+ * Berdasarkan audit (per 2026-05-25) - sumber tunggal kebenaran untuk badge UI.
+ * Catatan: bila gambar ditambahkan, hapus entri terkait di sini.
+ */
+export const SIMTELOG_ROLES_WITHOUT_IMAGES: ReadonlySet<string> = new Set([
+  'kasiminmat',
+  'kasubdisbinitem',
+  'sesdisbinitem',
+  'kadisbinitem',
+  'kasubdismatkomoditi',
+  'sesdismatau',
+  'kadismatau',
+]);
+
+export function isSimtelogRoleWithoutImages(roleId: string): boolean {
+  return SIMTELOG_ROLES_WITHOUT_IMAGES.has(roleId);
+}
