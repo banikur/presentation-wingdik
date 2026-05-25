@@ -141,17 +141,6 @@ export const FASE4_NODES: Fase4Node[] = [
     flowSummary: 'Verifikasi kelengkapan dokumen tagihan.',
   },
   {
-    id: 'penerbitan-spm',
-    label: 'Penerbitan SPM',
-    instansi: 'PPSPM satker',
-    outputDoc: 'Surat Perintah Membayar',
-    description:
-      'PPSPM menerbitkan Surat Perintah Membayar dan mengajukan ke KPPN.',
-    imgFolder: 'penerbitan-spm',
-    Icon: FileText,
-    flowSummary: 'Penerbitan SPM untuk pengajuan ke KPPN.',
-  },
-  {
     id: 'sp2d-kppn',
     label: 'SP2D - KPPN',
     instansi: 'KPPN',
@@ -161,6 +150,17 @@ export const FASE4_NODES: Fase4Node[] = [
     imgFolder: 'sp2d-kppn',
     Icon: Banknote,
     flowSummary: 'SP2D - pencairan dana; pengadaan selesai.',
+  },
+  {
+    id: 'penerbitan-spm',
+    label: 'Penerbitan SPM',
+    instansi: 'PPSPM satker',
+    outputDoc: 'Surat Perintah Membayar',
+    description:
+      'PPSPM menerbitkan Surat Perintah Membayar dan mengajukan ke KPPN.',
+    imgFolder: 'penerbitan-spm',
+    Icon: FileText,
+    flowSummary: 'Penerbitan SPM untuk pengajuan ke KPPN.',
   },
 ];
 
