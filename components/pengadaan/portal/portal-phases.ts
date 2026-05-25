@@ -26,7 +26,7 @@ export const PORTAL_PHASES: PortalPhase[] = [
     num: '05',
     title: 'Pendataan aset & persediaan',
     desc:
-      'Pencatatan aset dan persediaan pasca-pengadaan. Input dilakukan di SAKTI (modul persediaan/aset tetap) dan SIMAK BMN setelah SP2D terbit.',
+      'Pencatatan aset dan persediaan pasca-pengadaan.',
     apps: ['sakti', 'simak-bmn'],
   },
 ];
