@@ -9,7 +9,7 @@ export type AppLogoMeta = {
   id: AppId;
   name: string;
   shortName: string;
-  /** Path di public — ganti file PNG/SVG resmi di folder ini */
+  /** Path di public - ganti file PNG/SVG resmi di folder ini */
   logoSrc: string;
   accent: string;
 };

@@ -1,6 +1,6 @@
 # Gambar Fase 1
 
-Letakkan file gambar (`.png`, `.jpg`, `.jpeg`, `.webp`, `.gif`) di folder subfase. Aplikasi **otomatis mendeteksi** semua file di folder — tidak wajib mengisi `imgs` di kode.
+Letakkan file gambar (`.png`, `.jpg`, `.jpeg`, `.webp`, `.gif`) di folder subfase. Aplikasi **otomatis mendeteksi** semua file di folder - tidak wajib mengisi `imgs` di kode.
 
 ## Folder
 

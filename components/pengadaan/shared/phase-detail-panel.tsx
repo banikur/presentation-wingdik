@@ -111,7 +111,7 @@ function ImagePreview({
             <img
               key={src!}
               src={src!}
-              alt={`${node.label} — ${currentFile}`}
+              alt={`${node.label} - ${currentFile}`}
               className="max-h-full max-w-full object-contain object-center"
               onError={() => setLoadFailed(true)}
             />
@@ -126,7 +126,7 @@ function ImagePreview({
       <ImageLightbox
         open={lightboxOpen && !!src}
         src={src}
-        alt={`${node.label} — ${currentFile ?? ''}`}
+        alt={`${node.label} - ${currentFile ?? ''}`}
         counter={hasImages ? `${imageIndex + 1} / ${total}` : undefined}
         onClose={() => setLightboxOpen(false)}
         onPrev={goPrev}

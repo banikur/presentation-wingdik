@@ -1,4 +1,4 @@
-/** Konfigurasi persyaratan dokumen pengadaan — berkas pendukung fase 4 */
+/** Konfigurasi persyaratan dokumen pengadaan - berkas pendukung fase 4 */
 
 export type PaketTierId = 'under-10' | '10-50' | '50-200';
 
@@ -16,7 +16,7 @@ export const BERKAS_GROUP_A_UNDER_10 = 'Dokumen Persiapan (sebelum pemesanan)';
 export type BerkasChecklistItem = {
   no: number;
   name: string;
-  /** Kelompok waktu proses — untuk tampilan & Excel */
+  /** Kelompok waktu proses - untuk tampilan & Excel */
   processGroup?: string;
 };
 

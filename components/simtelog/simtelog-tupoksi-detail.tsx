@@ -107,7 +107,7 @@ function ImageSlidePreview({
             <img
               key={src!}
               src={src!}
-              alt={`${node.label} — ${currentFile}`}
+              alt={`${node.label} - ${currentFile}`}
               className="max-h-full max-w-full object-contain object-center"
               onError={() => setLoadFailed(true)}
             />
@@ -122,7 +122,7 @@ function ImageSlidePreview({
       <ImageLightbox
         open={lightboxOpen && !!src}
         src={src}
-        alt={`${node.label} — ${currentFile ?? ''}`}
+        alt={`${node.label} - ${currentFile ?? ''}`}
         counter={hasImages ? `${imageIndex + 1} / ${total}` : undefined}
         onClose={() => setLightboxOpen(false)}
         onPrev={() => onImageIndexChange(Math.max(0, imageIndex - 1))}
@@ -260,7 +260,7 @@ export function SimtelogTupoksiDetail({
 
         <div className="mt-5">
           <p className="text-[10px] font-semibold uppercase tracking-wider text-[#D4AF37]">
-            Contoh task — {demo.title}
+            Contoh task - {demo.title}
           </p>
           <p className="mt-1 text-xs text-white/55">{demo.subtitle}</p>
           <p className="mt-2 text-sm leading-relaxed text-white/70">{demo.context}</p>
@@ -274,7 +274,7 @@ export function SimtelogTupoksiDetail({
             <div key={s.title} className="flex gap-2 text-xs text-white/75">
               <span className="font-bold text-[#D4AF37]">{i + 1}.</span>
               <span>
-                <strong className="text-white/90">{s.title}</strong> — {s.desc}
+                <strong className="text-white/90">{s.title}</strong> - {s.desc}
               </span>
             </div>
           ))}
@@ -296,11 +296,10 @@ export function SimtelogTupoksiDetail({
                       setActiveDocFile(filename);
                       setPreviewMode('doc');
                     }}
-                    className={`block w-full border-b border-white/5 px-3 py-2.5 text-left text-xs font-medium transition-colors last:border-0 ${
-                      active && previewMode === 'doc'
+                    className={`block w-full border-b border-white/5 px-3 py-2.5 text-left text-xs font-medium transition-colors last:border-0 ${active && previewMode === 'doc'
                         ? 'bg-[#D4AF37]/20 text-[#D4AF37]'
                         : 'text-white/70 hover:bg-white/5'
-                    }`}
+                      }`}
                   >
                     {formatDocDisplayName(filename)}
                   </button>
@@ -327,11 +326,10 @@ export function SimtelogTupoksiDetail({
             role="tab"
             aria-selected={previewMode === 'slides'}
             onClick={() => setPreviewMode('slides')}
-            className={`rounded-lg border px-3 py-1.5 text-[11px] font-semibold transition-colors ${
-              previewMode === 'slides'
+            className={`rounded-lg border px-3 py-1.5 text-[11px] font-semibold transition-colors ${previewMode === 'slides'
                 ? 'border-[#D4AF37]/80 bg-[#D4AF37]/15 text-[#F8FAFC]'
                 : 'border-white/10 text-white/60 hover:border-white/20'
-            }`}
+              }`}
           >
             Slide gambar
           </button>
@@ -341,11 +339,10 @@ export function SimtelogTupoksiDetail({
               role="tab"
               aria-selected={previewMode === 'doc'}
               onClick={() => setPreviewMode('doc')}
-              className={`rounded-lg border px-3 py-1.5 text-[11px] font-semibold transition-colors ${
-                previewMode === 'doc'
+              className={`rounded-lg border px-3 py-1.5 text-[11px] font-semibold transition-colors ${previewMode === 'doc'
                   ? 'border-[#D4AF37]/80 bg-[#D4AF37]/15 text-[#F8FAFC]'
                   : 'border-white/10 text-white/60 hover:border-white/20'
-              }`}
+                }`}
             >
               Pratinjau dokumen
             </button>
@@ -355,7 +352,7 @@ export function SimtelogTupoksiDetail({
         {previewMode === 'slides' ? (
           <>
             <p className="mb-3 text-[10px] font-semibold uppercase tracking-wider text-white/40">
-              Tangkapan layar — {tupoksi.title}
+              Tangkapan layar - {tupoksi.title}
             </p>
             <ImageSlidePreview
               node={node}

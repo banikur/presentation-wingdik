@@ -1,4 +1,4 @@
-# Berkas pendukung — paket Rp 10 juta – 50 juta
+# Berkas pendukung - paket Rp 10 juta – 50 juta
 
 Letakkan file unduhan checklist kategori ini di folder ini.
 

@@ -37,7 +37,7 @@
     ],
     "warning": {
       "label": "Perhatian",
-      "text": "Setiap adjustment inventory harus dipastikan akurat — Physical Count harus sesuai hasil pengecekan fisik sebelum klik Reconcile Balances."
+      "text": "Setiap adjustment inventory harus dipastikan akurat - Physical Count harus sesuai hasil pengecekan fisik sebelum klik Reconcile Balances."
     },
     "demo": {
       "title": "Inventory Adjustment Non-Komponen",
@@ -109,7 +109,7 @@
     ],
     "warning": {
       "label": "Perhatian",
-      "text": "Pastikan Site dan Storeroom tujuan sudah benar sebelum klik OK — PN yang salah dikenalkan ke gudang sulit di-rollback."
+      "text": "Pastikan Site dan Storeroom tujuan sudah benar sebelum klik OK - PN yang salah dikenalkan ke gudang sulit di-rollback."
     },
     "demo": {
       "title": "Add Items to Storeroom",
@@ -130,7 +130,7 @@
         },
         {
           "title": "Konfirmasi",
-          "desc": "Klik OK — PN otomatis terdaftar di gudang tujuan."
+          "desc": "Klik OK - PN otomatis terdaftar di gudang tujuan."
         }
       ],
       "takeaways": [
@@ -176,7 +176,7 @@
     ],
     "warning": null,
     "demo": {
-      "title": "Bentuk 40400 — Pengeluaran Antar Satker",
+      "title": "Bentuk 40400 - Pengeluaran Antar Satker",
       "subtitle": "Memproses pengeluaran barang Suku Cadang antar satker melalui Bentuk 40400.",
       "context": "Satker lain mengajukan permintaan barang. Sebagai Kasikal, kamu generate Bentuk 40400 sebagai dasar pengeluaran resmi.",
       "steps": [
@@ -249,7 +249,7 @@
         },
         {
           "title": "Buat REQITEM Baru",
-          "desc": "Klik New REQITEM — nama pemohon otomatis terisi."
+          "desc": "Klik New REQITEM - nama pemohon otomatis terisi."
         },
         {
           "title": "Isi Detail PN",
@@ -283,7 +283,7 @@
       {
         "icon": "📊",
         "title": "Laporan Bench Stock",
-        "desc": "Membuat Bentuk 45100 — laporan pemakaian materiel."
+        "desc": "Membuat Bentuk 45100 - laporan pemakaian materiel."
       },
       {
         "icon": "📝",
@@ -303,7 +303,7 @@
     ],
     "warning": null,
     "demo": {
-      "title": "Bentuk 40220 — Pemindahan Dalam Satker",
+      "title": "Bentuk 40220 - Pemindahan Dalam Satker",
       "subtitle": "Memindahkan barang Suku Cadang dari satu unit ke unit lain dalam satker yang sama.",
       "context": "Barang Suku Cadang perlu dipindah antar unit dalam satkermu. Bentuk 40220 menjadi dokumen resminya.",
       "steps": [
@@ -326,7 +326,7 @@
       ],
       "takeaways": [
         "KaTB fokus pada pergerakan barang internal satker.",
-        "Bentuk 40220 ≠ 40400 — beda lingkup (dalam vs antar satker)."
+        "Bentuk 40220 ≠ 40400 - beda lingkup (dalam vs antar satker)."
       ]
     }
   },
@@ -366,7 +366,7 @@
     ],
     "warning": {
       "label": "Penting",
-      "text": "Data NSN, pabrikan, dan asal negara harus diisi dengan akurat — kesalahan di sini akan terbawa ke seluruh proses pembekalan selanjutnya."
+      "text": "Data NSN, pabrikan, dan asal negara harus diisi dengan akurat - kesalahan di sini akan terbawa ke seluruh proses pembekalan selanjutnya."
     },
     "demo": {
       "title": "Verifikasi Request Item",
@@ -391,7 +391,7 @@
         }
       ],
       "takeaways": [
-        "Kabinakatstand adalah quality gate katalog — data salah di sini berdampak panjang.",
+        "Kabinakatstand adalah quality gate katalog - data salah di sini berdampak panjang.",
         "Proses Request Item butuh bolak-balik antara pemohon & Binakatstand."
       ]
     }
@@ -432,7 +432,7 @@
     ],
     "warning": null,
     "demo": {
-      "title": "PALM — Penetapan Alokasi Lebih Materiel",
+      "title": "PALM - Penetapan Alokasi Lebih Materiel",
       "subtitle": "Membuat dokumen PALM dan menjalankan workflow persetujuan.",
       "context": "UP/Kontrak baru membutuhkan PALM. Sebagai Kasibinitem, kamu mulai dari pengisian header sampai routing.",
       "steps": [
@@ -454,7 +454,7 @@
         }
       ],
       "takeaways": [
-        "PALM melewati banyak jenjang persetujuan — sabar & teliti.",
+        "PALM melewati banyak jenjang persetujuan - sabar & teliti.",
         "Kasibinitem adalah inisiator, bukan penandatangan akhir."
       ]
     }
@@ -495,7 +495,7 @@
     ],
     "warning": null,
     "demo": {
-      "title": "Bentuk 40510 — Instruksi Pengeluaran & Penerimaan",
+      "title": "Bentuk 40510 - Instruksi Pengeluaran & Penerimaan",
       "subtitle": "Memproses instruksi pengeluaran & penerimaan barang di tingkat Dismatau.",
       "context": "Instruksi pengeluaran & penerimaan masuk untuk diproses. Bentuk 40510 jadi dokumen resminya.",
       "steps": [
@@ -559,10 +559,10 @@
     ],
     "warning": {
       "label": "Perhatian",
-      "text": "PKU adalah dokumen dasar — pastikan ruang lingkup pekerjaan jelas sebelum diterbitkan. PKT hanya untuk pekerjaan tambahan, bukan pengganti PKU."
+      "text": "PKU adalah dokumen dasar - pastikan ruang lingkup pekerjaan jelas sebelum diterbitkan. PKT hanya untuk pekerjaan tambahan, bukan pengganti PKU."
     },
     "demo": {
-      "title": "PKU — Perintah Kerja Utama",
+      "title": "PKU - Perintah Kerja Utama",
       "subtitle": "Menerbitkan Perintah Kerja Utama untuk pekerjaan pemeliharaan.",
       "context": "Sebuah pekerjaan pemeliharaan perlu diinisiasi. PKU jadi dokumen dasarnya.",
       "steps": [
@@ -686,10 +686,10 @@
     ],
     "warning": {
       "label": "Catatan",
-      "text": "Sebagai jenjang persetujuan, fokus utama adalah review — bukan inisiasi dokumen. Pastikan setiap dokumen yang lolos dari sini sudah benar-benar siap."
+      "text": "Sebagai jenjang persetujuan, fokus utama adalah review - bukan inisiasi dokumen. Pastikan setiap dokumen yang lolos dari sini sudah benar-benar siap."
     },
     "demo": {
-      "title": "Approval PALM — Sub Dinas",
+      "title": "Approval PALM - Sub Dinas",
       "subtitle": "Mereview & meneruskan dokumen PALM dari Kasibinitem ke Sesdisbinitem.",
       "context": "PALM dari Kasibinitem masuk inbox-mu untuk approval di tingkat Sub Dinas.",
       "steps": [
@@ -707,7 +707,7 @@
         }
       ],
       "takeaways": [
-        "Approval workflow PALM melewati banyak jenjang — Kasubdisbinitem adalah lapis ke-2.",
+        "Approval workflow PALM melewati banyak jenjang - Kasubdisbinitem adalah lapis ke-2.",
         "Tugas utama: memastikan kualitas dokumen sebelum naik ke jenjang lebih tinggi."
       ]
     }
@@ -747,7 +747,7 @@
     ],
     "warning": null,
     "demo": {
-      "title": "Approval PALM — Sekretariat",
+      "title": "Approval PALM - Sekretariat",
       "subtitle": "Meneruskan PALM dari Kasubdisbinitem ke Kadisbinitem.",
       "context": "Dokumen PALM sampai di sekretariat Dinas Bina Item, kamu meneruskan ke Kadis.",
       "steps": [
@@ -805,7 +805,7 @@
     ],
     "warning": null,
     "demo": {
-      "title": "Approval PALM — Kepala Dinas",
+      "title": "Approval PALM - Kepala Dinas",
       "subtitle": "Memberikan persetujuan & meneruskan ke jalur Materiel Komoditi.",
       "context": "PALM sampai ke meja Kadis sebagai persetujuan final di jalur Bina Item.",
       "steps": [
@@ -863,7 +863,7 @@
     ],
     "warning": null,
     "demo": {
-      "title": "Approval PALM — Sub Dinas Matkomoditi",
+      "title": "Approval PALM - Sub Dinas Matkomoditi",
       "subtitle": "Mereview & meneruskan PALM dari Kasimatkomoditi ke Sesdismatau.",
       "context": "PALM masuk ke jenjang Sub Dinas Materiel Komoditi untuk approval.",
       "steps": [
@@ -921,7 +921,7 @@
     ],
     "warning": null,
     "demo": {
-      "title": "Approval PALM — Sekretariat Dismatau",
+      "title": "Approval PALM - Sekretariat Dismatau",
       "subtitle": "Meneruskan PALM dari Kasubdismatkomoditi ke Kadismatau.",
       "context": "PALM sampai di sekretariat Dinas Materiel TNI AU.",
       "steps": [

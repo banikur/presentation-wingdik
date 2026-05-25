@@ -1,4 +1,4 @@
-/** Ringkasan resmi SIMTELOG — sumber: publikasi TNI AU / Disinfolahtaau */
+/** Ringkasan resmi SIMTELOG - sumber: publikasi TNI AU / Disinfolahtaau */
 
 export const SIMTELOG_FULL_NAME =
   'Sistem Informasi Manajemen Terintegrasi Logistik';

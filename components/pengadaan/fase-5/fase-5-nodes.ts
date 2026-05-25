@@ -9,7 +9,7 @@ export const FASE5_NODES: Fase5Node[] = [
   {
     id: 'sakti-aset',
     label: 'Input SAKTI',
-    instansi: 'Modul persediaan / aset tetap — SAKTI',
+    instansi: 'Modul persediaan / aset tetap - SAKTI',
     outputDoc: 'Barang tercatat SAKTI',
     description:
       'Pencatatan barang masuk di modul Persediaan atau Aset Tetap SAKTI, triggered setelah SP2D terbit dari Fase 4.',

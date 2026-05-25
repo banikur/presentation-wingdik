@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Wing Pendidikan 600 / Pembekalan — Materi Pengenalan Tupoksi SIMTELOGAU</title>
+<title>Wing Pendidikan 600 / Pembekalan - Materi Pengenalan Tupoksi SIMTELOGAU</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -280,7 +280,7 @@
 
 <script>
 /* =========================================================
-   DATA — edit di sini untuk customize/expand role.
+   DATA - edit di sini untuk customize/expand role.
    Setiap role punya struktur sama → tinggal ganti isinya.
    ========================================================= */
 const CATEGORIES = {
@@ -303,7 +303,7 @@ const ROLES = [
       { icon: '📝', title: 'Request Item', desc: 'Mengajukan PN baru ke Binakatstand bila belum terdaftar di Item Master.' },
     ],
     docs: ['Inventory', 'Form Request Item', 'Item Master', 'Component'],
-    warning: { label: 'Perhatian', text: 'Setiap adjustment inventory harus dipastikan akurat — Physical Count harus sesuai hasil pengecekan fisik sebelum klik Reconcile Balances.' },
+    warning: { label: 'Perhatian', text: 'Setiap adjustment inventory harus dipastikan akurat - Physical Count harus sesuai hasil pengecekan fisik sebelum klik Reconcile Balances.' },
     demo: {
       title: 'Inventory Adjustment Non-Komponen',
       subtitle: 'Menyesuaikan Current Balance & Physical Count barang non-komponen agar data sistem sinkron dengan kondisi gudang.',
@@ -333,7 +333,7 @@ const ROLES = [
       { icon: '🔄', title: 'Distribusi Antar Satker', desc: 'Memproses permintaan barang dari satker lain melalui bentuk pengeluaran.' },
     ],
     docs: ['Item Master', 'Inventory', 'Bentuk 40400', 'Component'],
-    warning: { label: 'Perhatian', text: 'Pastikan Site dan Storeroom tujuan sudah benar sebelum klik OK — PN yang salah dikenalkan ke gudang sulit di-rollback.' },
+    warning: { label: 'Perhatian', text: 'Pastikan Site dan Storeroom tujuan sudah benar sebelum klik OK - PN yang salah dikenalkan ke gudang sulit di-rollback.' },
     demo: {
       title: 'Add Items to Storeroom',
       subtitle: 'Mengenalkan Part Number baru ke gudang tujuan secara sistem.',
@@ -342,7 +342,7 @@ const ROLES = [
         { title: 'Buka Item Master', desc: 'Klik Go To → Item Master, lalu ketik PN yang akan ditambahkan.' },
         { title: 'Pilih Action', desc: 'Klik Select Action → Add Items To Storeroom.' },
         { title: 'Tentukan Site & Storeroom', desc: 'Pilih Site (Lanud/Depo) dan Storeroom (GPL/GPD) tujuan.' },
-        { title: 'Konfirmasi', desc: 'Klik OK — PN otomatis terdaftar di gudang tujuan.' },
+        { title: 'Konfirmasi', desc: 'Klik OK - PN otomatis terdaftar di gudang tujuan.' },
       ],
       takeaways: [
         'Add Items to Storeroom adalah langkah administratif sebelum PN bisa ditransaksikan.',
@@ -364,7 +364,7 @@ const ROLES = [
     docs: ['Bentuk 40400', 'Form Request Item', 'Nota Dinas'],
     warning: null,
     demo: {
-      title: 'Bentuk 40400 — Pengeluaran Antar Satker',
+      title: 'Bentuk 40400 - Pengeluaran Antar Satker',
       subtitle: 'Memproses pengeluaran barang Suku Cadang antar satker melalui Bentuk 40400.',
       context: 'Satker lain mengajukan permintaan barang. Sebagai Kasikal, kamu generate Bentuk 40400 sebagai dasar pengeluaran resmi.',
       steps: [
@@ -398,7 +398,7 @@ const ROLES = [
       context: 'PN tertentu belum terdaftar di aplikasi. Sebagai Kasubsikal, kamu submit form request ke Binakatstand.',
       steps: [
         { title: 'Buka Form Request', desc: 'Go To → Pembekalan → Form Request Item.' },
-        { title: 'Buat REQITEM Baru', desc: 'Klik New REQITEM — nama pemohon otomatis terisi.' },
+        { title: 'Buat REQITEM Baru', desc: 'Klik New REQITEM - nama pemohon otomatis terisi.' },
         { title: 'Isi Detail PN', desc: 'Isi No urut, PN, Nama Barang, Satuan, Component, Komoditi.' },
         { title: 'Route ke Binakat', desc: 'Klik Save → Route → Route ke Binakat → OK.' },
       ],
@@ -415,14 +415,14 @@ const ROLES = [
     scenario: 'Ada kebutuhan memindahkan barang Suku Cadang dari satu unit ke unit lain dalam satkermu. Sebagai KaTB, kamu memproses Bentuk 40220.',
     tupoksi: [
       { icon: '🔄', title: 'Bentuk 40220', desc: 'Pemindahan barang dalam satu satker.' },
-      { icon: '📊', title: 'Laporan Bench Stock', desc: 'Membuat Bentuk 45100 — laporan pemakaian materiel.' },
+      { icon: '📊', title: 'Laporan Bench Stock', desc: 'Membuat Bentuk 45100 - laporan pemakaian materiel.' },
       { icon: '📝', title: 'Request Item', desc: 'Mengajukan PN baru ke Binakatstand.' },
       { icon: '📋', title: 'Administrasi Bench Stock', desc: 'Mengelola dokumen-dokumen terkait bench stock.' },
     ],
     docs: ['Bentuk 40220', 'Bentuk 45100', 'Form Request Item'],
     warning: null,
     demo: {
-      title: 'Bentuk 40220 — Pemindahan Dalam Satker',
+      title: 'Bentuk 40220 - Pemindahan Dalam Satker',
       subtitle: 'Memindahkan barang Suku Cadang dari satu unit ke unit lain dalam satker yang sama.',
       context: 'Barang Suku Cadang perlu dipindah antar unit dalam satkermu. Bentuk 40220 menjadi dokumen resminya.',
       steps: [
@@ -433,7 +433,7 @@ const ROLES = [
       ],
       takeaways: [
         'KaTB fokus pada pergerakan barang internal satker.',
-        'Bentuk 40220 ≠ 40400 — beda lingkup (dalam vs antar satker).',
+        'Bentuk 40220 ≠ 40400 - beda lingkup (dalam vs antar satker).',
       ],
     },
   },
@@ -449,7 +449,7 @@ const ROLES = [
       { icon: '↩️', title: 'Route ke Pemohon', desc: 'Mengembalikan request yang sudah dilengkapi.' },
     ],
     docs: ['Form Request Item', 'Item Master'],
-    warning: { label: 'Penting', text: 'Data NSN, pabrikan, dan asal negara harus diisi dengan akurat — kesalahan di sini akan terbawa ke seluruh proses pembekalan selanjutnya.' },
+    warning: { label: 'Penting', text: 'Data NSN, pabrikan, dan asal negara harus diisi dengan akurat - kesalahan di sini akan terbawa ke seluruh proses pembekalan selanjutnya.' },
     demo: {
       title: 'Verifikasi Request Item',
       subtitle: 'Memeriksa Request Item yang masuk dan melengkapi data katalog.',
@@ -461,7 +461,7 @@ const ROLES = [
         { title: 'Route ke Pemohon', desc: 'Save → Route → Route ke Pemohon → OK.' },
       ],
       takeaways: [
-        'Kabinakatstand adalah quality gate katalog — data salah di sini berdampak panjang.',
+        'Kabinakatstand adalah quality gate katalog - data salah di sini berdampak panjang.',
         'Proses Request Item butuh bolak-balik antara pemohon & Binakatstand.',
       ],
     },
@@ -480,7 +480,7 @@ const ROLES = [
     docs: ['PALM', 'UP/Kontrak'],
     warning: null,
     demo: {
-      title: 'PALM — Penetapan Alokasi Lebih Materiel',
+      title: 'PALM - Penetapan Alokasi Lebih Materiel',
       subtitle: 'Membuat dokumen PALM dan menjalankan workflow persetujuan.',
       context: 'UP/Kontrak baru membutuhkan PALM. Sebagai Kasibinitem, kamu mulai dari pengisian header sampai routing.',
       steps: [
@@ -490,7 +490,7 @@ const ROLES = [
         { title: 'Pantau Workflow', desc: 'Cek inbox saat dokumen kembali untuk tahap berikutnya.' },
       ],
       takeaways: [
-        'PALM melewati banyak jenjang persetujuan — sabar & teliti.',
+        'PALM melewati banyak jenjang persetujuan - sabar & teliti.',
         'Kasibinitem adalah inisiator, bukan penandatangan akhir.',
       ],
     },
@@ -509,7 +509,7 @@ const ROLES = [
     docs: ['Bentuk 40510', 'PALM'],
     warning: null,
     demo: {
-      title: 'Bentuk 40510 — Instruksi Pengeluaran & Penerimaan',
+      title: 'Bentuk 40510 - Instruksi Pengeluaran & Penerimaan',
       subtitle: 'Memproses instruksi pengeluaran & penerimaan barang di tingkat Dismatau.',
       context: 'Instruksi pengeluaran & penerimaan masuk untuk diproses. Bentuk 40510 jadi dokumen resminya.',
       steps: [
@@ -536,9 +536,9 @@ const ROLES = [
       { icon: '🔍', title: 'Koordinasi Teknis', desc: 'Berkoordinasi dengan unit teknis pelaksana.' },
     ],
     docs: ['PKU', 'Bentuk 12001 (PKT)', 'Nota Dinas'],
-    warning: { label: 'Perhatian', text: 'PKU adalah dokumen dasar — pastikan ruang lingkup pekerjaan jelas sebelum diterbitkan. PKT hanya untuk pekerjaan tambahan, bukan pengganti PKU.' },
+    warning: { label: 'Perhatian', text: 'PKU adalah dokumen dasar - pastikan ruang lingkup pekerjaan jelas sebelum diterbitkan. PKT hanya untuk pekerjaan tambahan, bukan pengganti PKU.' },
     demo: {
-      title: 'PKU — Perintah Kerja Utama',
+      title: 'PKU - Perintah Kerja Utama',
       subtitle: 'Menerbitkan Perintah Kerja Utama untuk pekerjaan pemeliharaan.',
       context: 'Sebuah pekerjaan pemeliharaan perlu diinisiasi. PKU jadi dokumen dasarnya.',
       steps: [
@@ -594,9 +594,9 @@ const ROLES = [
       { icon: '↩️', title: 'Kembalikan Bila Salah', desc: 'Mengembalikan ke pemohon bila ditemukan ketidaksesuaian.' },
     ],
     docs: ['PALM'],
-    warning: { label: 'Catatan', text: 'Sebagai jenjang persetujuan, fokus utama adalah review — bukan inisiasi dokumen. Pastikan setiap dokumen yang lolos dari sini sudah benar-benar siap.' },
+    warning: { label: 'Catatan', text: 'Sebagai jenjang persetujuan, fokus utama adalah review - bukan inisiasi dokumen. Pastikan setiap dokumen yang lolos dari sini sudah benar-benar siap.' },
     demo: {
-      title: 'Approval PALM — Sub Dinas',
+      title: 'Approval PALM - Sub Dinas',
       subtitle: 'Mereview & meneruskan dokumen PALM dari Kasibinitem ke Sesdisbinitem.',
       context: 'PALM dari Kasibinitem masuk inbox-mu untuk approval di tingkat Sub Dinas.',
       steps: [
@@ -605,7 +605,7 @@ const ROLES = [
         { title: 'Route ke Sesdisbinitem', desc: 'Klik Route → Route ke Persetujuan Sesdisbinitem → OK.' },
       ],
       takeaways: [
-        'Approval workflow PALM melewati banyak jenjang — Kasubdisbinitem adalah lapis ke-2.',
+        'Approval workflow PALM melewati banyak jenjang - Kasubdisbinitem adalah lapis ke-2.',
         'Tugas utama: memastikan kualitas dokumen sebelum naik ke jenjang lebih tinggi.',
       ],
     },
@@ -624,7 +624,7 @@ const ROLES = [
     docs: ['PALM'],
     warning: null,
     demo: {
-      title: 'Approval PALM — Sekretariat',
+      title: 'Approval PALM - Sekretariat',
       subtitle: 'Meneruskan PALM dari Kasubdisbinitem ke Kadisbinitem.',
       context: 'Dokumen PALM sampai di sekretariat Dinas Bina Item, kamu meneruskan ke Kadis.',
       steps: [
@@ -652,7 +652,7 @@ const ROLES = [
     docs: ['PALM'],
     warning: null,
     demo: {
-      title: 'Approval PALM — Kepala Dinas',
+      title: 'Approval PALM - Kepala Dinas',
       subtitle: 'Memberikan persetujuan & meneruskan ke jalur Materiel Komoditi.',
       context: 'PALM sampai ke meja Kadis sebagai persetujuan final di jalur Bina Item.',
       steps: [
@@ -680,7 +680,7 @@ const ROLES = [
     docs: ['PALM'],
     warning: null,
     demo: {
-      title: 'Approval PALM — Sub Dinas Matkomoditi',
+      title: 'Approval PALM - Sub Dinas Matkomoditi',
       subtitle: 'Mereview & meneruskan PALM dari Kasimatkomoditi ke Sesdismatau.',
       context: 'PALM masuk ke jenjang Sub Dinas Materiel Komoditi untuk approval.',
       steps: [
@@ -708,7 +708,7 @@ const ROLES = [
     docs: ['PALM'],
     warning: null,
     demo: {
-      title: 'Approval PALM — Sekretariat Dismatau',
+      title: 'Approval PALM - Sekretariat Dismatau',
       subtitle: 'Meneruskan PALM dari Kasubdismatkomoditi ke Kadismatau.',
       context: 'PALM sampai di sekretariat Dinas Materiel TNI AU.',
       steps: [

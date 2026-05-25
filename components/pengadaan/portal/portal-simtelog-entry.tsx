@@ -13,7 +13,7 @@ export function PortalSimtelogEntry({ onSelect }: PortalSimtelogEntryProps) {
       aria-label="Modul SIMTELOG"
     >
       <p className="mb-4 text-center text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
-        Modul terpisah — Pembekalan SIMTELOGAU
+        Modul terpisah - Pembekalan SIMTELOGAU
       </p>
 
       <button
@@ -31,7 +31,7 @@ export function PortalSimtelogEntry({ onSelect }: PortalSimtelogEntryProps) {
         <div className="pointer-events-none min-w-0 flex-1">
           <h3 className="text-lg font-bold text-[#F8FAFC]">SIMTELOGAU</h3>
           <p className="mt-1 text-sm text-white/70 leading-relaxed">
-            Pengenalan tupoksi modul Pembekalan — 16 peran, 4 bidang, contoh task per peran
+            Pengenalan tupoksi modul Pembekalan - 16 peran, 4 bidang, contoh task per peran
             (sumber: materi pembekalan SIMTELOG).
           </p>
           <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-[#D4AF37] group-hover:text-[#f0d060]">

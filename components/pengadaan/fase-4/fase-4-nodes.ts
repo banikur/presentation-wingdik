@@ -116,7 +116,7 @@ export const FASE4_NODES: Fase4Node[] = [
       'Kelengkapan berkas disesuaikan nilai paket: di bawah 10 juta (18 dokumen), di bawah 50 juta (26 dokumen), atau di atas 50 juta (32 dokumen). Checklist dapat diunduh dalam format Excel.',
     imgFolder: 'berkas-under-10jt',
     Icon: FileCheck,
-    flowSummary: 'Melengkapi dokumen administrasi — ceklis berbeda per nilai paket.',
+    flowSummary: 'Melengkapi dokumen administrasi - ceklis berbeda per nilai paket.',
   },
   {
     id: 'bast-diterima',
@@ -127,7 +127,7 @@ export const FASE4_NODES: Fase4Node[] = [
       'Bukti Serah Terima (BAST) diterima setelah barang/jasa sesuai kontrak. Dasar verifikasi tagihan dan pembayaran.',
     imgFolder: 'bast-diterima',
     Icon: ClipboardCheck,
-    flowSummary: 'BAST — serah terima hasil pengadaan.',
+    flowSummary: 'BAST - serah terima hasil pengadaan.',
   },
   {
     id: 'verifikasi-tagihan',
@@ -142,14 +142,14 @@ export const FASE4_NODES: Fase4Node[] = [
   },
   {
     id: 'sp2d-kppn',
-    label: 'SP2D — KPPN',
+    label: 'SP2D - KPPN',
     instansi: 'KPPN',
     outputDoc: 'SP2D',
     description:
       'KPPN menerbitkan Surat Perintah Pencairan Dana. Dana ditransfer ke rekening penyedia. Fase pengadaan selesai.',
     imgFolder: 'sp2d-kppn',
     Icon: Banknote,
-    flowSummary: 'SP2D — pencairan dana; pengadaan selesai.',
+    flowSummary: 'SP2D - pencairan dana; pengadaan selesai.',
   },
   {
     id: 'penerbitan-spm',

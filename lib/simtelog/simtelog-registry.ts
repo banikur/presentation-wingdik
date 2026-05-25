@@ -1,6 +1,6 @@
 import { SIMTELOG_ROLE_IMAGE_FOLDER } from './simtelog-data';
 
-/** Semua folder valid di public/img|docs/simtelog (satu tingkat — per nama peran) */
+/** Semua folder valid di public/img|docs/simtelog (satu tingkat - per nama peran) */
 export const SIMTELOG_FOLDERS = [
   ...new Set(Object.values(SIMTELOG_ROLE_IMAGE_FOLDER)),
   'gudang-stok',

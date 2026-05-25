@@ -1,4 +1,4 @@
-# Berkas pendukung — paket &lt; Rp 10 juta
+# Berkas pendukung - paket &lt; Rp 10 juta
 
 Letakkan file unduhan checklist kategori ini di folder ini (PDF, DOCX, XLSX, dll.).
 

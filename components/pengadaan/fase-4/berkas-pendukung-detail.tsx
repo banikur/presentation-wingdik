@@ -93,7 +93,7 @@ function ImagePreview({
             <img
               key={src!}
               src={src!}
-              alt={`${node.label} — ${currentFile}`}
+              alt={`${node.label} - ${currentFile}`}
               className="max-h-full max-w-full object-contain object-center"
               onError={() => setLoadFailed(true)}
             />
@@ -108,7 +108,7 @@ function ImagePreview({
       <ImageLightbox
         open={lightboxOpen && !!src}
         src={src}
-        alt={`${node.label} — ${currentFile ?? ''}`}
+        alt={`${node.label} - ${currentFile ?? ''}`}
         counter={hasImages ? `${imageIndex + 1} / ${total}` : undefined}
         onClose={() => setLightboxOpen(false)}
         onPrev={() => onImageIndexChange(Math.max(0, imageIndex - 1))}
@@ -194,11 +194,10 @@ export function BerkasPendukungDetail({
                   role="tab"
                   aria-selected={active}
                   onClick={() => handleTierChange(t.id)}
-                  className={`flex flex-1 flex-col rounded-lg border px-3 py-2.5 text-left transition-all sm:min-w-[7rem] ${
-                    active
+                  className={`flex flex-1 flex-col rounded-lg border px-3 py-2.5 text-left transition-all sm:min-w-[7rem] ${active
                       ? 'border-[#D4AF37]/80 bg-[#D4AF37]/15 text-[#F8FAFC]'
                       : 'border-white/10 bg-[#0F172A]/40 text-white/70 hover:border-white/20'
-                  }`}
+                    }`}
                 >
                   <span className="text-xs font-bold">{t.shortLabel}</span>
                   <span className={`mt-0.5 text-[10px] ${active ? 'text-white/70' : 'text-white/45'}`}>
@@ -218,7 +217,7 @@ export function BerkasPendukungDetail({
         <div className="mt-5">
           <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
             <p className="text-[10px] font-semibold uppercase tracking-wider text-white/40">
-              Checklist — {tier.categoryTitle}
+              Checklist - {tier.categoryTitle}
             </p>
             <a
               href={checklistDownloadUrl(tierId)}
@@ -288,7 +287,7 @@ export function BerkasPendukungDetail({
 
       <div className="rounded-xl border border-white/10 bg-white/5 p-4 md:p-5">
         <p className="mb-1 text-[10px] font-semibold uppercase tracking-wider text-white/40">
-          Pratinjau gambar — {tier.shortLabel}
+          Pratinjau gambar - {tier.shortLabel}
         </p>
         <p className="mb-3 text-[11px] text-white/45">{tier.rangeLabel}</p>
         <ImagePreview

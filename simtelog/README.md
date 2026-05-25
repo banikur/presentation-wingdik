@@ -9,8 +9,8 @@ Sumber: `materi-pembekalan-simtelogau.html`
 
 ## Alur layar
 
-1. **Beranda** — pilih peran (16 tupoksi)
-2. **Halaman peran** — skenario, kartu TPF, demo + pratinjau di bawah
+1. **Beranda** - pilih peran (16 tupoksi)
+2. **Halaman peran** - skenario, kartu TPF, demo + pratinjau di bawah
 
 ## Screenshot & dokumen per peran
 
