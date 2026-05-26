@@ -12,6 +12,7 @@ export type AppView =
   | 'fase-4'
   | 'fase-5'
   | 'simtelog'
+  | 'simtelog-flow'
   | 'summary';
 
 type AppShellProps = {
@@ -27,6 +28,7 @@ const WIDE_DETAIL_VIEWS: AppView[] = [
   'fase-4',
   'fase-5',
   'simtelog',
+  'simtelog-flow',
 ];
 
 export function AppShell({ view, onBackToPortal, children }: AppShellProps) {

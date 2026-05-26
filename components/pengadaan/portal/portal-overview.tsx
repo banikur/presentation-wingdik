@@ -5,13 +5,19 @@ import { PortalFlowArrow } from './portal-flow-arrow';
 import { AppLogoStrip } from '@/components/pengadaan/shared/app-logo';
 import { PORTAL_PHASES } from './portal-phases';
 import { PortalSimtelogEntry } from './portal-simtelog-entry';
+import { PortalSimtelogFlowEntry } from './portal-simtelog-flow-entry';
 
 type PortalOverviewProps = {
   onSelectPhase: (phase: 1 | 2 | 3 | 4 | 5) => void;
   onSelectSimtelog: () => void;
+  onSelectSimtelogFlow: () => void;
 };
 
-export function PortalOverview({ onSelectPhase, onSelectSimtelog }: PortalOverviewProps) {
+export function PortalOverview({
+  onSelectPhase,
+  onSelectSimtelog,
+  onSelectSimtelogFlow,
+}: PortalOverviewProps) {
   return (
     <div className="isolate flex w-full flex-col">
       <div className="mb-6 mt-1 px-2 text-center md:mb-8">
@@ -51,7 +57,19 @@ export function PortalOverview({ onSelectPhase, onSelectSimtelog }: PortalOvervi
         </div>
       </div>
 
-      <PortalSimtelogEntry onSelect={onSelectSimtelog} />
+      {/* Section: Modul SIMTELOG terpisah */}
+      <section
+        className="relative z-20 mt-10 border-t border-app-border pt-8 md:mt-12 md:pt-10"
+        aria-label="Modul SIMTELOG"
+      >
+        <p className="mb-4 text-center text-sm font-semibold text-app-text-muted">
+          Modul terpisah — SIMTELOG TNI AU
+        </p>
+        <div className="flex flex-col gap-4">
+          <PortalSimtelogEntry onSelect={onSelectSimtelog} />
+          <PortalSimtelogFlowEntry onSelect={onSelectSimtelogFlow} />
+        </div>
+      </section>
     </div>
   );
 }

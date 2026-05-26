@@ -10,6 +10,7 @@ import { Fase4Section } from '@/components/pengadaan/fase-4/fase-4-section';
 import { Fase5Section } from '@/components/pengadaan/fase-5/fase-5-section';
 import { SummarySection } from '@/components/pengadaan/summary/summary-section';
 import { SimtelogSection } from '@/components/simtelog/simtelog-section';
+import { SimtelogFlowSection } from '@/components/simtelog-flow/simtelog-flow-section';
 
 function viewForPhase(phase: 1 | 2 | 3 | 4 | 5): AppView {
   return `fase-${phase}` as AppView;
@@ -19,6 +20,7 @@ function renderView(
   view: AppView,
   onSelectPhase: (phase: 1 | 2 | 3 | 4 | 5) => void,
   onSelectSimtelog: () => void,
+  onSelectSimtelogFlow: () => void,
 ) {
   switch (view) {
     case 'portal':
@@ -26,6 +28,7 @@ function renderView(
         <PortalOverview
           onSelectPhase={onSelectPhase}
           onSelectSimtelog={onSelectSimtelog}
+          onSelectSimtelogFlow={onSelectSimtelogFlow}
         />
       );
     case 'fase-1':
@@ -40,6 +43,8 @@ function renderView(
       return <Fase5Section />;
     case 'simtelog':
       return <SimtelogSection />;
+    case 'simtelog-flow':
+      return <SimtelogFlowSection />;
     case 'summary':
       return <SummarySection />;
     default:
@@ -47,6 +52,7 @@ function renderView(
         <PortalOverview
           onSelectPhase={onSelectPhase}
           onSelectSimtelog={onSelectSimtelog}
+          onSelectSimtelogFlow={onSelectSimtelogFlow}
         />
       );
   }
@@ -60,10 +66,11 @@ export default function HomePage() {
     [],
   );
   const goToSimtelog = useCallback(() => setView('simtelog'), []);
+  const goToSimtelogFlow = useCallback(() => setView('simtelog-flow'), []);
 
   return (
     <AppShell view={view} onBackToPortal={view !== 'portal' ? () => setView('portal') : undefined}>
-      {renderView(view, goToPhase, goToSimtelog)}
+      {renderView(view, goToPhase, goToSimtelog, goToSimtelogFlow)}
     </AppShell>
   );
 }
