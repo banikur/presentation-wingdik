@@ -17,7 +17,7 @@ export type AppLogoMeta = {
 export const APP_LOGO_REGISTRY: Record<AppId, AppLogoMeta> = {
   sakti: {
     id: 'sakti',
-    name: 'SAKTI',
+    name: 'SAKTI (Kemenkeu)',
     shortName: 'SAKTI',
     logoSrc: '/images/apps/sakti.jpg',
     accent: '#1e40af',
@@ -38,9 +38,9 @@ export const APP_LOGO_REGISTRY: Record<AppId, AppLogoMeta> = {
   },
   'simak-bmn': {
     id: 'simak-bmn',
-    name: 'SIMAK BMN',
-    shortName: 'SIMAK',
-    logoSrc: '/images/apps/simak-bmn.svg',
+    name: 'SIMAN',
+    shortName: 'SIMAN',
+    logoSrc: '/images/apps/logo-siman-landing-biru.png',
     accent: '#047857',
   },
   simtelog: {

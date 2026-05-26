@@ -8,7 +8,7 @@ Letakkan logo resmi (PNG/SVG) di folder ini dengan nama file yang sama dengan en
 | `sirup.webp` | SIRUP |
 | `inaproc.svg` | INAPROC |
 | `sikal.svg` | SIKAL |
-| `simak-bmn.svg` | SIMAK BMN |
+| `logo-siman-landing-biru.png` | SIMAK BMN |
 | `simtelog.svg` | SIMTELOG |
 
 Saat ini berisi placeholder berlabel teks. Ganti file tanpa mengubah kode jika nama path tetap sama.

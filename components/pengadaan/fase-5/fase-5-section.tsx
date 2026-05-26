@@ -25,9 +25,9 @@ export function Fase5Section() {
   return (
     <div className="w-full mx-auto">
       <PhaseSectionHeader
-        badge="Fase 5: Pendataan aset & persediaan"
-        title="Pencatatan BMN (SAKTI & SIMAK)"
-        subtitle="Klik tahapan pada alur: input SAKTI (persediaan/aset) dan pemutakhiran SIMAK BMN setelah SP2D."
+        badge="Fase 5: Pendataan pasca-SP2D"
+        title="SAKTI (Kemenkeu) & SIMAN"
+        subtitle="SAKTI: persediaan dan aset tetap yang dapat bergerak. SIMAN: aset tetap tidak bergerak (tanah, bangunan, dan sejenisnya). Klik tiap tahap pada alur."
       />
 
       <section aria-label="Alur pendataan aset fase 5">
@@ -35,7 +35,7 @@ export function Fase5Section() {
           nodes={FASE5_NODES}
           activeNodeId={activeNodeId}
           onSelectNode={handleSelectNode}
-          flowTitle="Alur pelaporan BMN"
+          flowTitle="Alur pendataan SAKTI → SIMAN"
         />
       </section>
 
