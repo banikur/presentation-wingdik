@@ -329,12 +329,12 @@ export function SimtelogTupoksiDetail({
 
   return (
     <div
-      className="mt-4 flex flex-col lg:max-h-[min(58vh,680px)] lg:min-h-[400px]"
+      className="mt-4 flex min-h-[min(70vh,820px)] w-full flex-col"
       role="region"
       aria-label={`Demo ${tupoksi.title}`}
     >
-      <div className="grid min-h-0 flex-1 grid-cols-1 gap-3 lg:grid-cols-[32%_68%]">
-        <aside className="app-card flex min-h-0 flex-col overflow-hidden rounded-xl p-3 md:p-4">
+      <div className="grid min-h-0 w-full flex-1 grid-cols-1 lg:grid-cols-[minmax(280px,34%)_1fr] lg:divide-x lg:divide-app-border">
+        <aside className="flex min-h-0 flex-col overflow-hidden py-1 pr-0 lg:py-2 lg:pr-5">
           <div className="shrink-0">
             <p className="text-sm font-bold text-app-accent">Tupoksi aktif</p>
             <h3 className="text-base font-bold leading-tight text-app-text">{tupoksi.title}</h3>
@@ -384,7 +384,7 @@ export function SimtelogTupoksiDetail({
           </div>
         </aside>
 
-        <div className="app-card flex min-h-0 flex-col overflow-hidden rounded-xl p-3 md:p-4">
+        <div className="flex min-h-[280px] flex-col overflow-hidden py-1 lg:min-h-0 lg:py-2 lg:pl-5">
           <div className="mb-2 flex shrink-0 flex-wrap gap-2" role="tablist" aria-label="Mode pratinjau">
             <button
               type="button"

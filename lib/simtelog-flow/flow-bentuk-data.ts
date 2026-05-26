@@ -2,13 +2,20 @@ import type { BentukFlow } from './flow-types';
 
 /**
  * Data 6 Bentuk proses utama SIMTELOG (sumber: PRD WINGDIK 600 + materi pembekalan).
+ *
+ * Catatan aktor:
+ * - Peran KaGPL (gudang pangkalan) dan KaGPD (gudang depo) saling menggantikan
+ *   tergantung skala/lokasi satker. Di shortPath ditulis "GPL/GPD".
+ * - Di actors[] tetap pakai 'gpl' sebagai representasi (warna & ikon), namun
+ *   action description menyebut "KaGPL/KaGPD" agar inklusif.
+ *
  * Visual ringkas:
- *   40200  : TB → SIKAL → GPL → TB
- *   40400  : SIKAL → GPL → GPL
- *   41300  : SIKAL → GPL → GPL  (varian khusus 40400)
- *   40170  : TB → GPL → RPC → GPL → TB     (service non-garansi)
- *   40170-1: TB → GPL → VENDOR → GPL → TB  (warranty claim)
- *   40220  : GPL ↔ GPL                     (mutasi antar gudang)
+ *   40200  : TB → SIKAL → GPL/GPD → TB
+ *   40400  : SIKAL → GPL/GPD → GPL/GPD
+ *   41300  : TB → GPL/GPD                  (pemindahan barang rusak)
+ *   40170  : TB → GPL/GPD → RPC → GPL/GPD → TB     (service non-garansi)
+ *   40170-1: TB → GPL/GPD → VENDOR → GPL/GPD → TB  (warranty claim)
+ *   40220  : GPL/GPD ↔ GPL/GPD              (mutasi antar gudang)
  */
 export const BENTUK_FLOWS: BentukFlow[] = [
   // ─────────────────────────────────────────────────────────────
@@ -19,7 +26,7 @@ export const BENTUK_FLOWS: BentukFlow[] = [
     title: 'Permintaan Barang',
     subtitle: 'Permintaan & Pengeluaran Barang Suku Cadang Pesawat',
     actors: ['tb', 'sikal', 'gpl', 'sistem'],
-    shortPath: 'TB → SIKAL → GPL → TB',
+    shortPath: 'TB → SIKAL → GPL/GPD → TB',
     statuses: ['Active', 'Notified'],
     nodes: [
       {
@@ -44,7 +51,7 @@ export const BENTUK_FLOWS: BentukFlow[] = [
         id: 'ka-gudang-pengirim',
         label: 'Ka Gudang Pengirim',
         actor: 'gpl',
-        action: 'KaGPL menyiapkan barang yang diminta untuk dikirim.',
+        action: 'KaGPL/KaGPD menyiapkan barang yang diminta untuk dikirim.',
       },
       {
         id: 'shipped',
@@ -75,7 +82,7 @@ export const BENTUK_FLOWS: BentukFlow[] = [
     title: 'Distribusi Barang',
     subtitle: 'Pengeluaran Barang Suku Cadang Antar Satker',
     actors: ['sikal', 'gpl', 'sistem'],
-    shortPath: 'SIKAL → GPL → GPL',
+    shortPath: 'SIKAL → GPL/GPD → GPL/GPD',
     statuses: ['Active', 'Notified'],
     nodes: [
       {
@@ -94,7 +101,7 @@ export const BENTUK_FLOWS: BentukFlow[] = [
         id: 'ka-gudang-pengirim',
         label: 'Ka Gudang Pengirim',
         actor: 'gpl',
-        action: 'KaGPL satker pengirim menyiapkan barang.',
+        action: 'KaGPL/KaGPD satker pengirim menyiapkan barang.',
       },
       {
         id: 'shipped',
@@ -106,7 +113,7 @@ export const BENTUK_FLOWS: BentukFlow[] = [
         id: 'ka-gudang-penerima',
         label: 'Ka Gudang Penerima',
         actor: 'gpl',
-        action: 'KaGPL satker penerima melakukan receipt & verifikasi.',
+        action: 'KaGPL/KaGPD satker penerima melakukan receipt & verifikasi.',
       },
       {
         id: 'notifikasi',
@@ -118,54 +125,55 @@ export const BENTUK_FLOWS: BentukFlow[] = [
   },
 
   // ─────────────────────────────────────────────────────────────
-  // 41300 — Distribusi Khusus (varian 40400)
+  // 41300 — Pemindahan Barang Rusak (TB → GPL/GPD)
   // ─────────────────────────────────────────────────────────────
   {
     code: '41300',
-    title: 'Distribusi Khusus',
-    subtitle: 'Pengembalian Barang US Dalam Satu Satker (1 item)',
-    actors: ['sikal', 'gpl', 'sistem'],
-    shortPath: 'SIKAL → GPL → GPL',
-    statuses: ['Active', 'Notified'],
+    title: 'Pemindahan Barang Rusak',
+    subtitle: 'Pemindahan barang rusak dari TB ke GPL/GPD',
+    actors: ['tb', 'gpl', 'sistem'],
+    shortPath: 'TB → GPL/GPD',
+    statuses: ['Active', 'Stock Updated', 'Notified'],
     notes: [
-      'Alur mirip 40400 tetapi diperuntukkan kebutuhan tertentu (pengembalian / 1 item barang).',
+      'Khusus untuk barang yang sudah teridentifikasi rusak (US — Unserviceable).',
+      'TB menginisiasi pemindahan; tidak melalui jalur SIKAL.',
     ],
     nodes: [
       {
-        id: 'validasi',
-        label: 'Validasi',
-        actor: 'sikal',
-        action: 'Kasikal memvalidasi dokumen distribusi khusus.',
+        id: 'identifikasi',
+        label: 'Identifikasi Rusak',
+        actor: 'tb',
+        action: 'TB mengidentifikasi barang rusak di bench stock yang perlu dipindah.',
       },
       {
-        id: 'memerintahkan',
-        label: 'Memerintahkan',
-        actor: 'sikal',
-        action: 'Kasikal menerbitkan perintah pengeluaran untuk kasus khusus.',
-      },
-      {
-        id: 'ka-gudang-pengirim',
-        label: 'Ka Gudang Pengirim',
-        actor: 'gpl',
-        action: 'KaGPL pengirim menyiapkan barang sesuai kategori khusus.',
+        id: 'dokumen-rusak',
+        label: 'Buat Dokumen',
+        actor: 'tb',
+        action: 'TB menerbitkan dokumen Bentuk 41300 sebagai pemindahan barang rusak.',
       },
       {
         id: 'shipped',
         label: 'Shipped',
-        actor: 'gpl',
-        action: 'Barang dalam perjalanan ke tujuan khusus.',
+        actor: 'tb',
+        action: 'Barang rusak dikirim dari TB menuju gudang KaGPL/KaGPD.',
       },
       {
-        id: 'ka-gudang-penerima',
+        id: 'gudang-penerima',
         label: 'Ka Gudang Penerima',
         actor: 'gpl',
-        action: 'KaGPL penerima melakukan receipt barang.',
+        action: 'KaGPL/KaGPD menerima & mencatat barang rusak ke storeroom US.',
+      },
+      {
+        id: 'stock-update',
+        label: 'Stock Update',
+        actor: 'sistem',
+        action: 'Stok barang rusak di gudang KaGPL/KaGPD ter-update (Stock Updated).',
       },
       {
         id: 'notifikasi',
         label: 'Notifikasi',
         actor: 'sistem',
-        action: 'SIMTELOG menutup transaksi & update stok.',
+        action: 'SIMTELOG mengirim notifikasi penyelesaian pemindahan.',
       },
     ],
   },
@@ -178,7 +186,7 @@ export const BENTUK_FLOWS: BentukFlow[] = [
     title: 'Service Non Garansi',
     subtitle: 'Pengeluaran Barang US Untuk Diperiksa/Diperbaiki Antar Satker',
     actors: ['tb', 'gpl', 'rpc', 'sistem'],
-    shortPath: 'TB → GPL → RPC → GPL → TB',
+    shortPath: 'TB → GPL/GPD → RPC → GPL/GPD → TB',
     statuses: ['Pending Service', 'In Repair', 'Returned', 'Notified'],
     nodes: [
       {
@@ -197,7 +205,7 @@ export const BENTUK_FLOWS: BentukFlow[] = [
         id: 'ka-gudang-pengirim',
         label: 'Ka Gudang Pengirim',
         actor: 'gpl',
-        action: 'KaGPL menyiapkan pengeluaran barang ke repair center.',
+        action: 'KaGPL/KaGPD menyiapkan pengeluaran barang ke repair center.',
       },
       {
         id: 'shipped',
@@ -215,7 +223,8 @@ export const BENTUK_FLOWS: BentukFlow[] = [
         id: 'returned',
         label: 'Returned',
         actor: 'gpl',
-        action: 'Barang selesai diperbaiki dikembalikan ke gudang (status Returned).',
+        action:
+          'Barang selesai diperbaiki dikembalikan ke gudang KaGPL/KaGPD (status Returned).',
       },
       {
         id: 'notifikasi',
@@ -234,7 +243,7 @@ export const BENTUK_FLOWS: BentukFlow[] = [
     title: 'Warranty Claim',
     subtitle: 'Pengeluaran Barang Warranty Claim Antar Satker / Bekmatpus',
     actors: ['tb', 'gpl', 'vendor', 'sistem'],
-    shortPath: 'TB → GPL → VENDOR → GPL → TB',
+    shortPath: 'TB → GPL/GPD → VENDOR → GPL/GPD → TB',
     statuses: ['Warranty Process Active', 'In Repair', 'Returned', 'Notified'],
     notes: [
       'Perbedaan dengan 40170: ada validasi garansi & proses klaim ke vendor.',
@@ -256,7 +265,7 @@ export const BENTUK_FLOWS: BentukFlow[] = [
         id: 'ka-gudang-pengirim',
         label: 'Ka Gudang Pengirim',
         actor: 'gpl',
-        action: 'KaGPL menyiapkan pengeluaran barang ke vendor.',
+        action: 'KaGPL/KaGPD menyiapkan pengeluaran barang ke vendor.',
       },
       {
         id: 'shipped',
@@ -274,7 +283,7 @@ export const BENTUK_FLOWS: BentukFlow[] = [
         id: 'returned',
         label: 'Returned',
         actor: 'gpl',
-        action: 'Barang hasil klaim dikembalikan ke gudang asal.',
+        action: 'Barang hasil klaim dikembalikan ke gudang KaGPL/KaGPD asal.',
       },
       {
         id: 'notifikasi',
@@ -293,17 +302,17 @@ export const BENTUK_FLOWS: BentukFlow[] = [
     title: 'Mutasi Antar Gudang',
     subtitle: 'Pemindahan Barang S Dalam Satu Satker',
     actors: ['gpl', 'sistem'],
-    shortPath: 'GPL ↔ GPL',
+    shortPath: 'GPL/GPD ↔ GPL/GPD',
     statuses: ['Active', 'Stock Updated', 'Notified'],
     notes: [
-      'Mutasi internal antar gudang (GPL ke GPL) dalam satu satker — tidak melibatkan SIKAL.',
+      'Mutasi internal antar gudang (KaGPL/KaGPD ke KaGPL/KaGPD) dalam satu satker — tidak melibatkan SIKAL.',
     ],
     nodes: [
       {
         id: 'gpl-asal',
-        label: 'GPL Asal',
+        label: 'Gudang Asal',
         actor: 'gpl',
-        action: 'KaGPL asal menginisiasi dokumen mutasi.',
+        action: 'KaGPL/KaGPD asal menginisiasi dokumen mutasi.',
       },
       {
         id: 'validasi',
@@ -319,9 +328,9 @@ export const BENTUK_FLOWS: BentukFlow[] = [
       },
       {
         id: 'gpl-tujuan',
-        label: 'GPL Tujuan',
+        label: 'Gudang Tujuan',
         actor: 'gpl',
-        action: 'KaGPL tujuan menerima & memverifikasi barang.',
+        action: 'KaGPL/KaGPD tujuan menerima & memverifikasi barang.',
       },
       {
         id: 'stock-update',
