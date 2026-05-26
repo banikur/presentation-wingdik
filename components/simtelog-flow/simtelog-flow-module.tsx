@@ -58,7 +58,7 @@ export function SimtelogFlowModule() {
             <span className="font-normal text-app-text-muted"> — {bentuk.title}</span>
           </h3>
           <p className="mt-2 text-sm leading-relaxed text-app-text-muted md:text-base">
-            Ringkasan alur dan aktor. Pada diagram, klik setiap langkah untuk detail.
+            Alur berjalan otomatis. Gunakan Play/Pause di diagram; klik node bila perlu detail.
           </p>
           <div className="mt-5 border-t-2 border-app-border-subtle pt-5">
             <FlowCanvas bentuk={bentuk} />

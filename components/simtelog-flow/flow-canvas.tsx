@@ -168,6 +168,12 @@ export function FlowCanvas({ bentuk }: FlowCanvasProps) {
         </p>
       </div>
 
+      <FlowReferenceImages
+        bentukCode={bentuk.code}
+        workflowImage={bentuk.workflowImage}
+        appScreenshots={bentuk.appScreenshots}
+      />
+
       {/* Actor cards */}
       <div>
         <p className="mb-2 text-[10px] font-bold uppercase tracking-wider text-app-text-muted">
