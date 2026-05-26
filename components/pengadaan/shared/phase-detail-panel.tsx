@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { ImageIcon, Loader2, ZoomIn } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ImageIcon, Loader2, ZoomIn } from 'lucide-react';
 import { ImageLightbox } from './image-lightbox';
 import {
   phaseImageSrc,
@@ -141,9 +141,9 @@ function ImagePreview({
           onClick={goPrev}
           disabled={loading || !hasImages || imageIndex <= 0}
           aria-label="Gambar sebelumnya"
-          className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-app-border bg-white text-lg leading-none text-white/90 transition-colors hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-40"
+          className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-app-border bg-white text-app-text transition-colors hover:border-app-link hover:bg-app-card-muted disabled:cursor-not-allowed disabled:opacity-40"
         >
-          ‹
+          <ChevronLeft className="h-5 w-5" aria-hidden />
         </button>
         <span className="min-w-[3rem] text-center text-xs font-medium tabular-nums text-app-text-muted">
           {loading ? '…' : hasImages ? `${imageIndex + 1} / ${total}` : '0 / 0'}
@@ -153,9 +153,9 @@ function ImagePreview({
           onClick={goNext}
           disabled={loading || !hasImages || imageIndex >= total - 1}
           aria-label="Gambar berikutnya"
-          className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-app-border bg-white text-lg leading-none text-white/90 transition-colors hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-40"
+          className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-app-border bg-white text-app-text transition-colors hover:border-app-link hover:bg-app-card-muted disabled:cursor-not-allowed disabled:opacity-40"
         >
-          ›
+          <ChevronRight className="h-5 w-5" aria-hidden />
         </button>
       </div>
     </div>

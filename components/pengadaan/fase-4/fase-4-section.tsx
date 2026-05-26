@@ -38,6 +38,7 @@ export function Fase4Section() {
           activeNodeId={activeNodeId}
           onSelectNode={handleSelectNode}
           flowTitle="Alur pelaksanaan pengadaan"
+          cardClassName="w-[14rem] shrink-0 snap-center sm:min-w-[12.5rem] sm:flex-1 sm:basis-0 sm:max-w-none md:min-w-[11.5rem] lg:min-w-[10.75rem] xl:min-w-[12rem]"
         />
       </section>
 

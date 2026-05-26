@@ -1,7 +1,14 @@
 'use client';
 
 import { Fragment, useEffect, useMemo, useState } from 'react';
-import { FileSpreadsheet, ImageIcon, Loader2, ZoomIn } from 'lucide-react';
+import {
+  ChevronLeft,
+  ChevronRight,
+  FileSpreadsheet,
+  ImageIcon,
+  Loader2,
+  ZoomIn,
+} from 'lucide-react';
 import { ImageLightbox } from '../shared/image-lightbox';
 import {
   phaseImageSrc,
@@ -123,9 +130,9 @@ function ImagePreview({
           onClick={() => onImageIndexChange(Math.max(0, imageIndex - 1))}
           disabled={loading || !hasImages || imageIndex <= 0}
           aria-label="Gambar sebelumnya"
-          className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-app-border bg-white text-lg text-white/90 hover:bg-white/10 disabled:opacity-40"
+          className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-app-border bg-white text-app-text transition-colors hover:border-app-link hover:bg-app-card-muted disabled:cursor-not-allowed disabled:opacity-40"
         >
-          ‹
+          <ChevronLeft className="h-5 w-5" aria-hidden />
         </button>
         <span className="min-w-[3rem] text-center text-xs tabular-nums text-app-text-muted">
           {loading ? '…' : hasImages ? `${imageIndex + 1} / ${total}` : '0 / 0'}
@@ -135,9 +142,9 @@ function ImagePreview({
           onClick={() => onImageIndexChange(Math.min(total - 1, imageIndex + 1))}
           disabled={loading || !hasImages || imageIndex >= total - 1}
           aria-label="Gambar berikutnya"
-          className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-app-border bg-white text-lg text-white/90 hover:bg-white/10 disabled:opacity-40"
+          className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-app-border bg-white text-app-text transition-colors hover:border-app-link hover:bg-app-card-muted disabled:cursor-not-allowed disabled:opacity-40"
         >
-          ›
+          <ChevronRight className="h-5 w-5" aria-hidden />
         </button>
       </div>
     </div>
@@ -261,7 +268,7 @@ export function BerkasPendukungDetail({
                         <td className="px-2 py-2 text-center text-xs tabular-nums text-app-text-muted">
                           {item.no}
                         </td>
-                        <td className="px-2 py-2 text-xs leading-snug text-white/85">
+                        <td className="px-2 py-2 text-sm leading-snug text-app-text">
                           {item.name}
                         </td>
                       </tr>

@@ -36,11 +36,11 @@ function FlowConnectorDown({ alignEnd }: { alignEnd?: boolean }) {
       aria-hidden
     >
       <div className="flex flex-col items-center">
-        <div className="h-3 w-px bg-white/15" />
+        <div className="h-3 w-px bg-app-border" />
         <div className="flex h-8 w-8 items-center justify-center rounded-full border border-app-border bg-app-card-muted sm:h-9 sm:w-9">
           <ArrowDown className="h-4 w-4 text-app-text-muted" strokeWidth={2} />
         </div>
-        <div className="h-3 w-px bg-white/15" />
+        <div className="h-3 w-px bg-app-border" />
       </div>
     </div>
   );
