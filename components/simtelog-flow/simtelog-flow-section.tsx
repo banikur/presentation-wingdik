@@ -11,7 +11,7 @@ export function SimtelogFlowSection() {
     <div className="w-full">
       <div className="mb-6">
         <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-app-text-muted">
-          Modul Pembelajaran · Logistik Materiel
+          
         </p>
         <h2 className="mt-1 text-2xl font-bold text-app-text md:text-3xl">
           Implementasi SIMTELOG di WINGDIK 600

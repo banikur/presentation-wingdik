@@ -70,7 +70,7 @@ function LandingScreen({ onSelectRole }: { onSelectRole: (id: string) => void })
   return (
     <div>
       <div className="text-center">
-        <SimtelogEyebrow>Modul Pembelajaran · Logistik Materiel</SimtelogEyebrow>
+        <SimtelogEyebrow>Modul Pembekalan</SimtelogEyebrow>
         <SimtelogPageTitle>
           Pengenalan Tupoksi
           <br />

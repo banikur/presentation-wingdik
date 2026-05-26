@@ -61,17 +61,8 @@ export function FlowNode({ node, index, state, onClick, isFocused }: FlowNodePro
       </span>
 
       {state === 'active' && (
-        <motion.span
-          className="absolute -right-1.5 -top-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-[#D4AF37] text-[9px] font-bold text-white"
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-        >
+        <span className="absolute -right-1.5 -top-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-[#D4AF37] text-[9px] font-bold text-white">
           ●
-        </motion.span>
-      )}
-      {state === 'completed' && (
-        <span className="absolute -right-1.5 -top-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-emerald-500 text-[9px] font-bold text-white">
-          ✓
         </span>
       )}
     </motion.button>
