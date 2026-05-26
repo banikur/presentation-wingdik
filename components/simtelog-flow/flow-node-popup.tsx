@@ -94,10 +94,10 @@ function PopupHeader({
         {actor.icon}
       </span>
       <div className="min-w-0 flex-1">
-        <p className="text-[10px] font-bold uppercase tracking-wider text-app-text-muted">
-          Step {stepIndex + 1} / {totalSteps} · NODE INFORMATION
+        <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-app-text-muted">
+          Langkah {stepIndex + 1} / {totalSteps}
         </p>
-        <h3 className="mt-0.5 text-lg font-bold leading-tight text-app-text">
+        <h3 className="mt-1 text-xl font-bold leading-tight text-app-text">
           {node.label}
         </h3>
       </div>
@@ -116,33 +116,37 @@ function PopupHeader({
 function PopupBody({ node }: { node: FlowNode }) {
   const actor = FLOW_ACTORS[node.actor];
   return (
-    <div className="space-y-4 p-4">
+    <div className="space-y-4 p-5">
       <div>
-        <p className="text-[10px] font-bold uppercase tracking-wider text-app-text-muted">
-          Actor
+        <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-app-text-muted">
+          Aktor
         </p>
-        <p className="mt-1 text-sm font-semibold" style={{ color: actor.accent }}>
+        <p className="mt-1.5 text-base font-semibold" style={{ color: actor.accent }}>
           {actor.short} — {actor.fullName}
         </p>
       </div>
 
       <div>
-        <p className="text-[10px] font-bold uppercase tracking-wider text-app-text-muted">
-          Role
+        <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-app-text-muted">
+          Peran
         </p>
-        <p className="mt-1 text-sm text-app-text">{actor.role}</p>
+        <p className="mt-1.5 text-sm leading-relaxed text-app-text md:text-base">
+          {actor.role}
+        </p>
       </div>
 
       <div>
-        <p className="text-[10px] font-bold uppercase tracking-wider text-app-text-muted">
-          Action
+        <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-app-text-muted">
+          Aksi
         </p>
-        <p className="mt-1 text-sm leading-relaxed text-app-text">{node.action}</p>
+        <p className="mt-1.5 text-sm leading-relaxed text-app-text md:text-base">
+          {node.action}
+        </p>
       </div>
 
       {node.note && (
-        <div className="rounded-lg border-l-4 border-[#D4AF37] bg-[#fdf6e3] p-3">
-          <p className="text-xs leading-relaxed text-app-text">{node.note}</p>
+        <div className="rounded-lg border-l-4 border-[#D4AF37] bg-[#fdf6e3] p-4">
+          <p className="text-sm leading-relaxed text-app-text md:text-base">{node.note}</p>
         </div>
       )}
     </div>

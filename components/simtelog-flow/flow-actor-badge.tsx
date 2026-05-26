@@ -22,9 +22,9 @@ export function FlowActorBadge({
 
   const sizeClass =
     size === 'xs'
-      ? 'text-[10px] px-1.5 py-0.5'
+      ? 'text-xs px-1.5 py-0.5'
       : size === 'sm'
-        ? 'text-xs px-2 py-0.5'
+        ? 'text-sm px-2 py-0.5'
         : 'text-sm px-2.5 py-1';
 
   return (
