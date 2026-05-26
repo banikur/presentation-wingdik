@@ -9,6 +9,8 @@ type FlowReferenceImagesProps = {
   bentukCode: string;
   workflowImage?: FlowReferenceImage;
   appScreenshots?: FlowReferenceImage[];
+  /** Tanpa border/card sendiri — dipakai di dalam disclosure */
+  embedded?: boolean;
 };
 
 type TabKey = 'workflow' | 'app';
@@ -21,6 +23,7 @@ export function FlowReferenceImages({
   bentukCode,
   workflowImage,
   appScreenshots = [],
+  embedded = false,
 }: FlowReferenceImagesProps) {
   const hasWorkflow = !!workflowImage;
   const hasApp = appScreenshots.length > 0;
@@ -39,25 +42,23 @@ export function FlowReferenceImages({
   return (
     <section
       aria-label="Referensi dari aplikasi SIMTELOG asli"
-      className="rounded-xl border border-app-border bg-app-card p-4"
+      className={embedded ? '' : 'rounded-xl border border-app-border bg-app-card p-4'}
     >
-      <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
-        <div>
-          <p className="text-[10px] font-bold uppercase tracking-wider text-app-text-muted">
-            📷 Referensi dari Aplikasi SIMTELOG Asli
-          </p>
-          <p className="mt-0.5 text-xs text-app-text-muted">
-            Sumber:{' '}
-            <span className="font-mono text-app-link">
-              simtelog.tni-au.mil.id/ilsms
-            </span>{' '}
-            · materi pembekalan WINGDIK 600
-          </p>
-        </div>
+      <div className={`flex flex-wrap items-center justify-between gap-2 ${embedded ? 'mb-2' : 'mb-3'}`}>
+        {!embedded && (
+          <div>
+            <p className="text-[10px] font-bold uppercase tracking-wider text-app-text-muted">
+              Referensi aplikasi asli
+            </p>
+            <p className="mt-0.5 text-xs text-app-text-muted">
+              <span className="font-mono text-app-link">simtelog.tni-au.mil.id/ilsms</span>
+            </p>
+          </div>
+        )}
 
         {/* Tab switcher */}
         <div
-          className="flex items-center gap-1 rounded-lg border border-app-border bg-app-card-muted p-1"
+          className={`flex items-center gap-1 rounded-lg border border-app-border bg-app-card-muted p-1 ${embedded ? 'w-full' : ''}`}
           role="tablist"
         >
           {hasWorkflow && (
@@ -145,7 +146,7 @@ function ReferenceCard({
         type="button"
         onClick={onZoom}
         className={`group relative block w-full overflow-hidden bg-white ${
-          compact ? 'max-h-64' : 'max-h-80'
+          compact ? 'max-h-44' : 'max-h-56'
         }`}
         aria-label={`Zoom ${image.caption}`}
       >
@@ -164,7 +165,7 @@ function ReferenceCard({
           </span>
         )}
       </button>
-      <figcaption className="border-t border-app-border bg-app-card px-3 py-2 text-xs leading-relaxed text-app-text">
+      <figcaption className="border-t border-app-border bg-app-card px-2 py-1.5 text-xs leading-snug text-app-text line-clamp-2">
         {image.caption}
       </figcaption>
     </figure>

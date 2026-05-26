@@ -13,7 +13,7 @@ type FlowSidebarProps = {
 export function FlowSidebar({ activeCode, onSelect }: FlowSidebarProps) {
   return (
     <nav aria-label="Menu Bentuk SIMTELOG" className="flex flex-col gap-2">
-      <div className="flex flex-row gap-2 overflow-x-auto pb-1 lg:flex-col lg:overflow-visible">
+      <div className="flex flex-row gap-2 overflow-x-auto pb-1 [-webkit-overflow-scrolling:touch]">
         {BENTUK_FLOWS.map((b) => {
           const active = b.code === activeCode;
           return (
@@ -21,7 +21,7 @@ export function FlowSidebar({ activeCode, onSelect }: FlowSidebarProps) {
               key={b.code}
               type="button"
               onClick={() => onSelect(b.code)}
-              className={`group relative flex w-[15rem] shrink-0 cursor-pointer flex-col gap-2.5 rounded-lg border-2 px-4 py-4 text-left transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-app-link focus-visible:ring-offset-2 active:scale-[0.99] lg:w-full ${
+              className={`group relative flex w-[14rem] shrink-0 cursor-pointer flex-col gap-1.5 rounded-lg border-2 px-3 py-2.5 text-left transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-app-link focus-visible:ring-offset-2 active:scale-[0.99] ${
                 active
                   ? 'border-app-link bg-amber-50/70 shadow-md ring-2 ring-app-link/35'
                   : 'border-app-border bg-white shadow-sm hover:border-app-link hover:bg-[var(--app-card-muted)] hover:shadow-[0_2px_8px_rgb(15_41_66/0.08)]'
@@ -64,16 +64,18 @@ export function FlowSidebar({ activeCode, onSelect }: FlowSidebarProps) {
                   />
                 </span>
               </div>
-              <p className="relative z-[1] text-lg font-semibold leading-snug text-app-text group-hover:text-app-text">
+              <p className="relative z-[1] text-sm font-semibold leading-snug text-app-text">
                 {b.title}
               </p>
-              <div className="relative z-[1] flex flex-wrap gap-1.5">
-                {b.actors
-                  .filter((a) => a !== 'sistem')
-                  .map((aid) => (
-                    <FlowActorBadge key={aid} actorId={aid} size="sm" />
-                  ))}
-              </div>
+              {active && (
+                <div className="relative z-[1] flex flex-wrap gap-1">
+                  {b.actors
+                    .filter((a) => a !== 'sistem')
+                    .map((aid) => (
+                      <FlowActorBadge key={aid} actorId={aid} size="xs" />
+                    ))}
+                </div>
+              )}
             </button>
           );
         })}
