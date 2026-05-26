@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { MousePointerClick } from 'lucide-react';
 import {
   BENTUK_DEFAULT_CODE,
   getBentukByCode,
@@ -20,20 +19,6 @@ export function SimtelogFlowModule() {
     <div className="overflow-hidden rounded-xl border-2 border-app-border bg-app-surface shadow-sm">
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(19rem,22rem)_1fr]">
         <aside className="relative border-b-4 border-app-border bg-app-card-muted px-4 py-5 lg:border-b-0 lg:border-r-4 lg:px-5 lg:py-6 lg:shadow-[4px_0_14px_-6px_rgba(15,41,66,0.12)]">
-          <div className="mb-4 flex items-start gap-2 rounded-lg border border-app-border bg-white px-3 py-2.5 shadow-sm">
-            <MousePointerClick
-              className="mt-0.5 h-5 w-5 shrink-0 text-app-link"
-              aria-hidden
-            />
-            <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-app-link">
-                Area interaktif
-              </p>
-              <p className="mt-0.5 text-sm font-medium text-app-text md:text-base">
-                Pilih salah satu Bentuk di bawah
-              </p>
-            </div>
-          </div>
           <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-app-accent">
             Navigasi Bentuk
           </p>
