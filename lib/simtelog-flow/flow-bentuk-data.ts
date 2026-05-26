@@ -72,6 +72,28 @@ export const BENTUK_FLOWS: BentukFlow[] = [
         action: 'SIMTELOG mengirim notifikasi update stok & status dokumen.',
       },
     ],
+    workflowImage: {
+      src: "/img/simtelog-flow/workflow/bentuk-40200-workflow.png",
+      caption:
+        "Diagram BPMN alur Bentuk 40200 - dari START (TB ajukan) → SATU SATKER/LANUD-DEPO → MEMERINTAHKAN (Kasatker) → KA GUDANG PENGIRIM → SHIPPED → KA GUDANG PENERIMA → NOTIFIKASI.",
+    },
+    appScreenshots: [
+      {
+        src: "/img/simtelog-flow/app/bentuk-40200-form-kosong.png",
+        caption:
+          "Form Bentuk 40200 (kosong) di aplikasi SIMTELOG asli — Nomer Dokumen, Gudang Pengirim/Penerima (LANUD SDM), GPL/GPD, Ka TB, Status ENTERED.",
+      },
+      {
+        src: "/img/simtelog-flow/app/bentuk-40200-form-terisi.png",
+        caption:
+          "Form Bentuk 40200 (terisi) — Ka GPL/D (Edang Wahyu Ramdani, Ka GPL Lanud Sdm), Ka TB (Muhammad Syahrul, Ka TB Subsikal Sihar Skadud 7), Diminta Oleh & Diteliti Oleh terisi.",
+      },
+      {
+        src: "/img/simtelog-flow/app/dashboard-start-center.png",
+        caption:
+          "Start Center SIMTELOG — Quick Insert (New 40200), menu Aplikasi Pembekalan (Bentuk 40200/40510/40220/41300/40170/40400/40171), Inbox/Assignments dengan list dokumen aktif.",
+      },
+    ],
   },
 
   // ─────────────────────────────────────────────────────────────
@@ -122,6 +144,12 @@ export const BENTUK_FLOWS: BentukFlow[] = [
         action: 'SIMTELOG mengirim notifikasi penyelesaian distribusi.',
       },
     ],
+    workflowImage: {
+      src: "/img/simtelog-flow/workflow/bentuk-40400-workflow.png",
+      caption:
+        "Diagram alur Bentuk 40400 (Distribusi Barang Antar Satker). ⚠ Gambar masih placeholder template — versi spesifik per bentuk akan menyusul.",
+      placeholder: true,
+    },
   },
 
   // ─────────────────────────────────────────────────────────────
@@ -176,6 +204,12 @@ export const BENTUK_FLOWS: BentukFlow[] = [
         action: 'SIMTELOG mengirim notifikasi penyelesaian pemindahan.',
       },
     ],
+    workflowImage: {
+      src: "/img/simtelog-flow/workflow/bentuk-41300-workflow.png",
+      caption:
+        "Diagram alur Bentuk 41300 (Pemindahan Barang Rusak dari TB ke GPL/GPD). ⚠ Gambar masih placeholder template — versi spesifik per bentuk akan menyusul.",
+      placeholder: true,
+    },
   },
 
   // ─────────────────────────────────────────────────────────────
@@ -233,6 +267,11 @@ export const BENTUK_FLOWS: BentukFlow[] = [
         action: 'SIMTELOG memberi notifikasi siklus service selesai.',
       },
     ],
+    workflowImage: {
+      src: "/img/simtelog-flow/workflow/bentuk-40170-workflow.png",
+      caption:
+        "Diagram BPMN alur Bentuk 40170/40170-1 - dari START (TB ajukan) → SATU SATKER → percabangan 40170 atau 40170-1 → KA GUDANG PENGIRIM → CEK BARANG → SHIPPED → RPC (Repair Center) → NOTIFIKASI. Branch atas: Service Non Garansi. Branch bawah: Warranty Claim.",
+    },
   },
 
   // ─────────────────────────────────────────────────────────────
@@ -292,6 +331,11 @@ export const BENTUK_FLOWS: BentukFlow[] = [
         action: 'SIMTELOG mencatat penutupan klaim & update inventory.',
       },
     ],
+    workflowImage: {
+      src: "/img/simtelog-flow/workflow/bentuk-40170-workflow.png",
+      caption:
+        "Diagram BPMN sama dengan Bentuk 40170 — perbedaan pada percabangan \"40170 ATAU 40170-1?\": Bentuk 40170-1 melibatkan VENDOR untuk klaim warranty (bukan RPC).",
+    },
   },
 
   // ─────────────────────────────────────────────────────────────
@@ -343,6 +387,19 @@ export const BENTUK_FLOWS: BentukFlow[] = [
         label: 'Notifikasi',
         actor: 'sistem',
         action: 'SIMTELOG mengirim notifikasi penyelesaian mutasi.',
+      },
+    ],
+    workflowImage: {
+      src: "/img/simtelog-flow/workflow/bentuk-40220-workflow.png",
+      caption:
+        "Diagram alur Bentuk 40220 (Mutasi Antar Gudang dalam satu satker). ⚠ Gambar masih placeholder template — versi spesifik per bentuk akan menyusul.",
+      placeholder: true,
+    },
+    appScreenshots: [
+      {
+        src: "/img/simtelog-flow/app/bentuk-40220-form-terisi.png",
+        caption:
+          "Form Bentuk 40220 (terisi) — Lanud/Depo: LANUD SDM, GPL/GPD: GPL SDM GD 01, Status: SHIPPED, Receipts: COMPLETE, dengan line item barang (SCREW MACHINE, PN A0164TK050S020X, Jumlah 10).",
       },
     ],
   },

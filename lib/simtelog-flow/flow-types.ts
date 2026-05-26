@@ -54,6 +54,16 @@ export type FlowProcessStatus =
   | 'Notified'
   | 'Active';
 
+/** Satu gambar referensi (workflow diagram BPMN atau screenshot UI aplikasi). */
+export type FlowReferenceImage = {
+  /** Path absolut public (mis. "/img/simtelog-flow/workflow/bentuk-40200-workflow.png"). */
+  src: string;
+  /** Caption singkat di bawah gambar. */
+  caption: string;
+  /** Set true bila gambar masih placeholder/duplikat dan belum versi aslinya. */
+  placeholder?: boolean;
+};
+
 /** Definisi satu Bentuk (form proses). */
 export type BentukFlow = {
   /** Kode bentuk (mis. "40200", "40170-1"). */
@@ -72,4 +82,8 @@ export type BentukFlow = {
   statuses?: FlowProcessStatus[];
   /** Catatan khusus (mis. perbedaan dengan bentuk lain). */
   notes?: string[];
+  /** Diagram BPMN-style workflow asli dari materi SIMTELOG. */
+  workflowImage?: FlowReferenceImage;
+  /** Screenshot dari aplikasi SIMTELOG asli (form / dashboard). */
+  appScreenshots?: FlowReferenceImage[];
 };

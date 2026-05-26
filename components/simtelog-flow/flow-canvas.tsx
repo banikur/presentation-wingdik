@@ -7,6 +7,7 @@ import type { BentukFlow, FlowNodeState } from '@/lib/simtelog-flow/flow-types';
 import { FlowNode } from './flow-node';
 import { FlowNodePopup } from './flow-node-popup';
 import { FlowActorCard } from './flow-actor-card';
+import { FlowReferenceImages } from './flow-reference-images';
 
 type FlowCanvasProps = {
   bentuk: BentukFlow;
