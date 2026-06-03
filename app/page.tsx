@@ -3,6 +3,7 @@
 import { useCallback, useState } from 'react';
 import { AppShell, type AppView } from '@/components/pengadaan/layout/app-shell';
 import { PortalOverview } from '@/components/pengadaan/portal/portal-overview';
+import { PortalFlowView } from '@/components/pengadaan/portal/portal-flow-view';
 import { Fase1Section } from '@/components/pengadaan/fase-1/fase-1-section';
 import { Fase2Section } from '@/components/pengadaan/fase-2/fase-2-section';
 import { Fase3Section } from '@/components/pengadaan/fase-3/fase-3-section';
@@ -18,6 +19,7 @@ function viewForPhase(phase: 1 | 2 | 3 | 4 | 5): AppView {
 
 function renderView(
   view: AppView,
+  onGoToFlow: () => void,
   onSelectPhase: (phase: 1 | 2 | 3 | 4 | 5) => void,
   onSelectSimtelog: () => void,
   onSelectSimtelogFlow: () => void,
@@ -26,9 +28,15 @@ function renderView(
     case 'portal':
       return (
         <PortalOverview
-          onSelectPhase={onSelectPhase}
+          onGoToFlow={onGoToFlow}
           onSelectSimtelog={onSelectSimtelog}
           onSelectSimtelogFlow={onSelectSimtelogFlow}
+        />
+      );
+    case 'portal-flow':
+      return (
+        <PortalFlowView
+          onSelectPhase={onSelectPhase}
         />
       );
     case 'fase-1':
@@ -50,7 +58,7 @@ function renderView(
     default:
       return (
         <PortalOverview
-          onSelectPhase={onSelectPhase}
+          onGoToFlow={onGoToFlow}
           onSelectSimtelog={onSelectSimtelog}
           onSelectSimtelogFlow={onSelectSimtelogFlow}
         />
@@ -61,6 +69,7 @@ function renderView(
 export default function HomePage() {
   const [view, setView] = useState<AppView>('portal');
 
+  const goToFlow = useCallback(() => setView('portal-flow'), []);
   const goToPhase = useCallback(
     (phase: 1 | 2 | 3 | 4 | 5) => setView(viewForPhase(phase)),
     [],
@@ -70,7 +79,7 @@ export default function HomePage() {
 
   return (
     <AppShell view={view} onBackToPortal={view !== 'portal' ? () => setView('portal') : undefined}>
-      {renderView(view, goToPhase, goToSimtelog, goToSimtelogFlow)}
+      {renderView(view, goToFlow, goToPhase, goToSimtelog, goToSimtelogFlow)}
     </AppShell>
   );
 }

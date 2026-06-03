@@ -6,6 +6,7 @@ export const WINGDIK_LOGO_PATH = '/images/wingdik/wingdik-logo.png';
 
 export type AppView =
   | 'portal'
+  | 'portal-flow'
   | 'fase-1'
   | 'fase-2'
   | 'fase-3'

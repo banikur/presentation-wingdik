@@ -10,7 +10,7 @@ import Image from 'next/image';
    ============================================================ */
 
 type PortalOverviewProps = {
-  onSelectPhase: (phase: 1 | 2 | 3 | 4 | 5) => void;
+  onGoToFlow: () => void;
   onSelectSimtelog: () => void;
   onSelectSimtelogFlow: () => void;
 };
@@ -107,7 +107,7 @@ const IconChart = () => (
    MAIN COMPONENT
    ============================================================ */
 export function PortalOverview({
-  onSelectPhase,
+  onGoToFlow,
   onSelectSimtelog,
   onSelectSimtelogFlow,
 }: PortalOverviewProps) {
@@ -188,10 +188,18 @@ export function PortalOverview({
 
         {/* Card 02 — Lokal/Satker (active) */}
         <article
-          className="po-card"
+          className="po-card po-card--clickable"
           role="listitem"
           aria-label="Modul 02 — Alur Pengadaan Lokal / Satuan Kerja"
           style={{ animationDelay: '0.15s' }}
+          onClick={() => onGoToFlow()}
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              onGoToFlow();
+            }
+          }}
         >
           <div className="po-card-top">
             <div className="po-card-icon" aria-hidden="true"><IconClipboard /></div>
@@ -208,23 +216,29 @@ export function PortalOverview({
               <span key={p} className="po-pill" role="listitem">{p}</span>
             ))}
           </div>
-          <button
-            type="button"
+          <span
             className="po-cta"
-            onClick={() => onSelectPhase(1)}
             aria-label="Buka Modul 02 — Alur Pengadaan Lokal / Satker"
           >
             Buka Modul <ArrowRight />
-          </button>
+          </span>
           <AccentGrid />
         </article>
 
         {/* Card 03 — SIMTELOG Tupoksi (active) */}
         <article
-          className="po-card"
+          className="po-card po-card--clickable"
           role="listitem"
           aria-label="Modul 03 — SIMTELOG Tupoksi 16 Operator"
           style={{ animationDelay: '0.25s' }}
+          onClick={() => onSelectSimtelog()}
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              onSelectSimtelog();
+            }
+          }}
         >
           <div className="po-card-top">
             <div className="po-card-icon" aria-hidden="true"><IconUsers /></div>
@@ -236,23 +250,29 @@ export function PortalOverview({
             Peran, fungsi, dan tugas pokok masing-masing dari 16 operator SIMTELOG
             yang terbagi dalam 4 bidang pengelolaan logistik.
           </p>
-          <button
-            type="button"
+          <span
             className="po-cta"
-            onClick={onSelectSimtelog}
             aria-label="Buka Modul 03 — SIMTELOG Tupoksi 16 Operator"
           >
             Buka Modul <ArrowRight />
-          </button>
+          </span>
           <AccentCircles />
         </article>
 
         {/* Card 04 — SIMTELOG Visualisasi (active) */}
         <article
-          className="po-card"
+          className="po-card po-card--clickable"
           role="listitem"
           aria-label="Modul 04 — SIMTELOG Visualisasi TB/SIKAL dan GPL"
           style={{ animationDelay: '0.35s' }}
+          onClick={() => onSelectSimtelogFlow()}
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              onSelectSimtelogFlow();
+            }
+          }}
         >
           <div className="po-card-top">
             <div className="po-card-icon" aria-hidden="true"><IconChart /></div>
@@ -264,14 +284,12 @@ export function PortalOverview({
             Eksplorasi interaktif alur data Tabel Bekalan (TB), SIKAL, dan Garis
             Penyaluran Logistik (GPL) dalam sistem SIMTELOG.
           </p>
-          <button
-            type="button"
+          <span
             className="po-cta"
-            onClick={onSelectSimtelogFlow}
             aria-label="Buka Modul 04 — SIMTELOG Visualisasi TB/SIKAL dan GPL"
           >
             Buka Modul <ArrowRight />
-          </button>
+          </span>
           <AccentDiagonals />
         </article>
 
@@ -428,6 +446,13 @@ export function PortalOverview({
         .po-card:not(.po-card--disabled):hover {
           transform: translateY(-2px);
           box-shadow: var(--po-shadow-hover);
+        }
+        .po-card--clickable {
+          cursor: pointer;
+        }
+        .po-card--clickable:focus-visible {
+          outline: 2px solid var(--po-primary);
+          outline-offset: 2px;
         }
         .po-card--disabled {
           cursor: default;
