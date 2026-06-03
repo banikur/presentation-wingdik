@@ -25,7 +25,7 @@ export const FLOW_ACTORS: Record<FlowActorId, FlowActor> = {
     id: 'gpl',
     short: 'GPL/GPD',
     fullName: 'KaGPL (Pangkalan) / KaGPD (Depo)',
-    role: 'Pengelola stok & transaksi gudang — KaGPL untuk pangkalan, KaGPD untuk depo (skala lebih besar). Perannya saling menggantikan tergantung satker.',
+    role: 'Pengelola stok & transaksi gudang - KaGPL untuk pangkalan, KaGPD untuk depo (skala lebih besar). Perannya saling menggantikan tergantung satker.',
     accent: '#b91c1c', // red-700
     icon: '🏭',
   },

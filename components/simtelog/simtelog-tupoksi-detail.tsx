@@ -262,7 +262,7 @@ function StepsList({ steps }: { steps: { title: string; desc: string }[] }) {
         <div key={s.title} className="flex gap-2 text-sm text-app-text">
           <span className="font-bold text-app-accent">{i + 1}.</span>
           <span>
-            <strong>{s.title}</strong> — {s.desc}
+            <strong>{s.title}</strong> - {s.desc}
           </span>
         </div>
       ))}

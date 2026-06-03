@@ -30,7 +30,7 @@ export function PortalSimtelogFlowEntry({ onSelect }: PortalSimtelogFlowEntryPro
           Implementasi SIMTELOG di WINGDIK 600
         </h3>
         <p className="mt-1 text-base leading-relaxed text-app-text-muted">
-          Visualisasi interaktif 6 Bentuk proses utama — alur node, aktor (TB/SIKAL/GPL),
+          Visualisasi interaktif 6 Bentuk proses utama - alur node, aktor (TB/SIKAL/GPL),
           dan posisi approval untuk onboarding user baru.
         </p>
         <p className="mt-2 text-sm font-semibold text-[#1d4ed8] group-hover:text-[#1e40af]">

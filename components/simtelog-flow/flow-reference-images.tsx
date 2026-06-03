@@ -9,14 +9,14 @@ type FlowReferenceImagesProps = {
   bentukCode: string;
   workflowImage?: FlowReferenceImage;
   appScreenshots?: FlowReferenceImage[];
-  /** Tanpa border/card sendiri — dipakai di dalam disclosure */
+  /** Tanpa border/card sendiri - dipakai di dalam disclosure */
   embedded?: boolean;
 };
 
 type TabKey = 'workflow' | 'app';
 
 /**
- * Section "Referensi dari Aplikasi Asli" — tampilkan workflow diagram BPMN
+ * Section "Referensi dari Aplikasi Asli" - tampilkan workflow diagram BPMN
  * dan/atau screenshot aplikasi SIMTELOG. Klik gambar untuk fullscreen lightbox.
  */
 export function FlowReferenceImages({
@@ -230,7 +230,7 @@ function ReferenceLightbox({
             </p>
             {image.placeholder && (
               <p className="rounded-full border border-amber-400 bg-amber-50/95 px-3 py-1 text-xs font-semibold text-amber-800">
-                ⚠ Gambar masih placeholder — versi asli per bentuk belum tersedia
+                ⚠ Gambar masih placeholder - versi asli per bentuk belum tersedia
               </p>
             )}
           </motion.div>

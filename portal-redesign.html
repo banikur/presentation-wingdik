@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Wing Pendidikan 600 / Pembekalan - Portal Materi Pengadaan &amp; SIMTELOG TNI AU</title>
+<meta name="description" content="Portal materi pengenalan alur pengadaan dan sistem logistik SIMTELOG untuk Wing Pendidikan 600 / Pembekalan TNI AU." />
+
+<!-- ============================================================
+     STYLES - semua styling inline, tanpa build step.
+     Tema: dark-navy institusional + aksen emas (military ops portal)
+     ============================================================ -->
+<style>
+  /* ---- Google Fonts: Playfair Display (judul) + Source Sans 3 (body) ---- */
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+
+  /* ---- Design tokens ---- */
+  :root {
+    --navy-900: #0A1628;   /* base background */
+    --navy-850: #0C1B30;
+    --navy-800: #0F2138;   /* card surface */
+    --navy-700: #14283F;   /* card surface raised */
+    --navy-600: #1B3350;
+    --gold:     #C9972C;   /* primary accent */
+    --gold-soft:#E0B556;
+    --gold-dim: rgba(201,151,44,0.30);
+    --line:     rgba(201,151,44,0.22);
+    --hairline: rgba(255,255,255,0.08);
+    --ink:      #F3F6FB;   /* primary text */
+    --ink-70:   rgba(243,246,251,0.70);
+    --ink-50:   rgba(243,246,251,0.50);
+    --ink-35:   rgba(243,246,251,0.35);
+    --serif:    'Playfair Display', Georgia, serif;
+    --sans:     'Source Sans 3', system-ui, -apple-system, sans-serif;
+    --mono:     'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  /* ---- Reset ---- */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background-color: var(--navy-900);
+    color: var(--ink);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---- Background: radial vignette + subtle grain texture overlay ---- */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(1200px 600px at 50% -10%, rgba(27,51,80,0.55), transparent 60%),
+      radial-gradient(900px 500px at 100% 100%, rgba(201,151,44,0.06), transparent 55%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  /* SVG fractal noise grain - encoded inline, no external file */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    mix-blend-mode: overlay;
+  }
+
+  /* keep content above texture layers */
+  header, main, footer { position: relative; z-index: 1; }
+
+  /* ============================================================
+     HEADER - dark navy command bar
+     ============================================================ */
+  .site-header {
+    border-bottom: 1px solid var(--line);
+    background:
+      linear-gradient(180deg, rgba(10,22,40,0.96), rgba(10,22,40,0.86));
+    backdrop-filter: blur(6px);
+  }
+  /* thin gold rule accent under header */
+  .site-header__accent {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold) 20%, var(--gold-soft) 50%, var(--gold) 80%, transparent);
+    opacity: 0.85;
+  }
+  .header-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  /* Emblem placeholder (✦ inside a bordered crest) */
+  .emblem {
+    width: 56px; height: 56px;
+    flex-shrink: 0;
+    display: grid; place-items: center;
+    border: 1.5px solid var(--gold);
+    color: var(--gold-soft);
+    font-size: 26px;
+    position: relative;
+    background: radial-gradient(circle at 50% 30%, rgba(201,151,44,0.18), transparent 70%);
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  }
+
+  .header-titles { flex: 1; min-width: 0; }
+  .header-titles .eyebrow {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    color: var(--gold-soft);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .header-titles h1 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(16px, 2.4vw, 23px);
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    line-height: 1.15;
+  }
+  .header-titles p {
+    font-size: 13px;
+    color: var(--ink-50);
+    letter-spacing: 0.04em;
+    margin-top: 3px;
+  }
+
+  /* Right: current section breadcrumb */
+  .header-section {
+    flex-shrink: 0;
+    text-align: right;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--ink-50);
+    text-transform: uppercase;
+    border-left: 1px solid var(--hairline);
+    padding-left: 20px;
+  }
+  .header-section .dot {
+    display: inline-block; width: 6px; height: 6px;
+    border-radius: 50%; background: var(--gold);
+    margin-right: 7px; vertical-align: middle;
+    box-shadow: 0 0 8px var(--gold);
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.35} }
+
+  /* ============================================================
+     HERO
+     ============================================================ */
+  .hero {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 64px 32px 28px;
+    text-align: center;
+  }
+  .hero .kicker {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    opacity: 0;
+    animation: rise 0.7s ease forwards;
+  }
+  .hero h2 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(28px, 4.6vw, 46px);
+    line-height: 1.15;
+    letter-spacing: 0.01em;
+    max-width: 18ch;
+    margin: 0 auto 18px;
+    opacity: 0;
+    animation: rise 0.7s ease 0.08s forwards;
+  }
+  .hero h2 .accent { color: var(--gold-soft); }
+  .hero p {
+    font-size: clamp(14px, 1.6vw, 16px);
+    color: var(--ink-70);
+    max-width: 60ch;
+    margin: 0 auto;
+    letter-spacing: 0.01em;
+    opacity: 0;
+    animation: rise 0.7s ease 0.16s forwards;
+  }
+  /* decorative double gold rule */
+  .hero .rule {
+    width: 120px; height: 0; margin: 30px auto 0;
+    border-top: 1px solid var(--gold);
+    position: relative;
+    opacity: 0;
+    animation: rise 0.7s ease 0.24s forwards;
+  }
+  .hero .rule::after {
+    content: "✦";
+    position: absolute; top: -11px; left: 50%; transform: translateX(-50%);
+    background: var(--navy-900); padding: 0 10px;
+    color: var(--gold); font-size: 12px;
+  }
+
+  /* ============================================================
+     MODULE GRID - "Big 4" briefing folders (2×2)
+     ============================================================ */
+  .modules {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 44px 32px 72px;
+  }
+  .modules__label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    color: var(--ink-35);
+    text-transform: uppercase;
+    margin-bottom: 22px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .modules__label::after {
+    content: ""; flex: 1; height: 1px;
+    background: linear-gradient(90deg, var(--line), transparent);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+  }
+
+  /* ---- The briefing-folder card ---- */
+  .card {
+    position: relative;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background:
+      linear-gradient(160deg, var(--navy-800), var(--navy-850));
+    border: 1px solid var(--hairline);
+    padding: 34px 32px 30px;
+    overflow: hidden;
+    transition: transform 0.35s cubic-bezier(.2,.7,.2,1),
+                border-color 0.35s ease,
+                box-shadow 0.35s ease;
+    /* clipped folder-tab corner */
+    clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 0 100%);
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  /* staggered fade-in on load */
+  .card.in { animation: cardIn 0.7s cubic-bezier(.2,.7,.2,1) forwards; }
+  .card:nth-child(1).in { animation-delay: 0.10s; }
+  .card:nth-child(2).in { animation-delay: 0.20s; }
+  .card:nth-child(3).in { animation-delay: 0.30s; }
+  .card:nth-child(4).in { animation-delay: 0.40s; }
+  @keyframes cardIn { to { opacity: 1; transform: translateY(0); } }
+
+  /* left gold spine, like a file binding */
+  .card::before {
+    content: "";
+    position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+    background: linear-gradient(180deg, var(--gold), rgba(201,151,44,0.15));
+    opacity: 0.55;
+    transition: opacity 0.35s ease, width 0.35s ease;
+  }
+  /* faint inner border frame */
+  .card::after {
+    content: "";
+    position: absolute; inset: 12px;
+    border: 1px solid rgba(255,255,255,0.04);
+    pointer-events: none;
+  }
+
+  /* hover / focus: gold border glow + lift */
+  .card:hover, .card:focus-visible {
+    transform: translateY(-6px);
+    border-color: var(--gold-dim);
+    box-shadow:
+      0 18px 40px -20px rgba(0,0,0,0.8),
+      0 0 0 1px rgba(201,151,44,0.25),
+      0 0 26px -6px rgba(201,151,44,0.22);
+    outline: none;
+  }
+  .card:hover::before, .card:focus-visible::before { opacity: 1; width: 4px; }
+
+  /* big decorative module number */
+  .card__num {
+    position: absolute;
+    top: 14px; right: 20px;
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 58px;
+    line-height: 1;
+    color: rgba(201,151,44,0.10);
+    letter-spacing: -0.02em;
+    transition: color 0.35s ease;
+    user-select: none;
+  }
+  .card:hover .card__num, .card:focus-visible .card__num { color: rgba(201,151,44,0.20); }
+
+  /* icon chip */
+  .card__icon {
+    width: 46px; height: 46px;
+    display: grid; place-items: center;
+    border: 1px solid var(--line);
+    color: var(--gold-soft);
+    margin-bottom: 22px;
+    background: rgba(201,151,44,0.06);
+  }
+  .card__icon svg { width: 24px; height: 24px; }
+
+  .card__tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-35);
+    margin-bottom: 8px;
+  }
+  .card__title {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 1.25;
+    margin-bottom: 10px;
+    max-width: 22ch;
+    letter-spacing: 0.01em;
+  }
+  .card__desc {
+    font-size: 14px;
+    color: var(--ink-70);
+    max-width: 42ch;
+    margin-bottom: 26px;
+  }
+  /* phase chips (only on module 2) */
+  .card__phases {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    margin: -8px 0 24px;
+  }
+  .card__phases span {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: var(--ink-50);
+    border: 1px solid var(--hairline);
+    padding: 3px 8px;
+  }
+
+  /* CTA */
+  .card__cta {
+    display: inline-flex; align-items: center; gap: 9px;
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+    border-top: 1px solid var(--line);
+    padding-top: 16px;
+    width: 100%;
+  }
+  .card__cta .arrow { transition: transform 0.3s ease; }
+  .card:hover .card__cta .arrow,
+  .card:focus-visible .card__cta .arrow { transform: translateX(6px); }
+
+  /* ============================================================
+     FOOTER
+     ============================================================ */
+  .site-footer {
+    margin-top: auto;
+    border-top: 1px solid var(--line);
+    background: rgba(8,17,30,0.7);
+  }
+  .footer-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 22px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .footer-inner p {
+    font-size: 12px;
+    color: var(--ink-50);
+    letter-spacing: 0.04em;
+  }
+  .footer-inner .classified {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--line);
+    padding: 4px 10px;
+  }
+
+  /* ============================================================
+     RESPONSIVE
+     ============================================================ */
+  @media (max-width: 820px) {
+    .header-section { display: none; }
+    .grid { grid-template-columns: 1fr; }
+    .hero { padding-top: 44px; }
+  }
+  @media (max-width: 520px) {
+    .header-inner, .hero, .modules, .footer-inner { padding-left: 20px; padding-right: 20px; }
+    .card { padding: 28px 24px 26px; }
+    .card__num { font-size: 46px; }
+  }
+
+  /* reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .card, .hero .kicker, .hero h2, .hero p, .hero .rule { opacity: 1; transform: none; }
+  }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+  .hero .kicker, .hero h2, .hero p, .hero .rule { transform: translateY(14px); }
+</style>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       HEADER - command bar with emblem, title, section label
+       ============================================================ -->
+  <header class="site-header">
+    <div class="header-inner">
+      <!-- Emblem placeholder (replace ✦ with TNI AU garuda <img>) -->
+      <div class="emblem" aria-hidden="true">✦</div>
+
+      <div class="header-titles">
+        <span class="eyebrow">TNI Angkatan Udara</span>
+        <h1>WING PENDIDIKAN 600 / PEMBEKALAN</h1>
+        <p>Portal Materi Pengenalan Pengadaan &amp; SIMTELOG TNI AU</p>
+      </div>
+
+      <div class="header-section" aria-label="Bagian aktif">
+        <span class="dot"></span>Beranda&nbsp;Portal
+      </div>
+    </div>
+    <div class="site-header__accent"></div>
+  </header>
+
+  <main>
+    <!-- ============================================================
+         HERO
+         ============================================================ -->
+    <section class="hero">
+      <span class="kicker">Materi Pembekalan Internal</span>
+      <h2>Empat Modul Inti <span class="accent">Pengadaan &amp; Logistik</span> Satuan</h2>
+      <p>
+        Pelajari alur pengadaan barang/jasa dari tingkat terpusat hingga satuan kerja,
+        serta tata kelola logistik SIMTELOG secara interaktif. Pilih modul untuk memulai
+        sesi pengenalan.
+      </p>
+      <div class="rule" aria-hidden="true"></div>
+    </section>
+
+    <!-- ============================================================
+         MODULE GRID - Big 4
+         ============================================================ -->
+    <section class="modules" aria-label="Modul materi">
+      <p class="modules__label">Daftar Modul · Big 4</p>
+
+      <div class="grid">
+
+        <!-- ===== Module 01 - Pengadaan Terpusat ===== -->
+        <a class="card" href="#modul-pengadaan-terpusat">
+          <span class="card__num">01</span>
+          <div class="card__icon" aria-hidden="true">
+            <!-- network / centralized icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="5" r="2.4"/><circle cx="5" cy="19" r="2.4"/><circle cx="19" cy="19" r="2.4"/>
+              <path d="M12 7.4v4.6M12 12L6.4 17.2M12 12l5.6 5.2"/>
+            </svg>
+          </div>
+          <p class="card__tag">Tingkat Mabes</p>
+          <h3 class="card__title">Alur Pengadaan - Terpusat</h3>
+          <p class="card__desc">
+            Proses pengadaan barang/jasa pada tingkat terpusat / Markas Besar TNI AU
+            beserta otorisasi dan rantai keputusannya.
+          </p>
+          <span class="card__cta">Buka Modul <span class="arrow">→</span></span>
+        </a>
+
+        <!-- ===== Module 02 - Pengadaan Lokal (Satker) ===== -->
+        <a class="card" href="#modul-pengadaan-lokal">
+          <span class="card__num">02</span>
+          <div class="card__icon" aria-hidden="true">
+            <!-- layered flow icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 7h12M4 12h16M4 17h9"/><path d="M18 14l3 3-3 3"/>
+            </svg>
+          </div>
+          <p class="card__tag">Tingkat Satuan Kerja</p>
+          <h3 class="card__title">Alur Pengadaan - Lokal (Satker)</h3>
+          <p class="card__desc">
+            Lima fase pengadaan di tingkat satuan kerja, dari perencanaan hingga
+            pendataan aset.
+          </p>
+          <!-- 5 phase chips -->
+          <div class="card__phases" aria-hidden="true">
+            <span>1 · Perencanaan</span>
+            <span>2 · Penyaluran Anggaran</span>
+            <span>3 · Usul Pesanan</span>
+            <span>4 · Pelaksanaan</span>
+            <span>5 · Pendataan Aset</span>
+          </div>
+          <span class="card__cta">Buka Modul <span class="arrow">→</span></span>
+        </a>
+
+        <!-- ===== Module 03 - SIMTELOG Tupoksi 16 Operator ===== -->
+        <a class="card" href="#modul-simtelog-tupoksi">
+          <span class="card__num">03</span>
+          <div class="card__icon" aria-hidden="true">
+            <!-- personnel / roles icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/>
+              <path d="M16 6.2a3 3 0 0 1 0 5.6M18 20a6 6 0 0 0-3-5.2"/>
+            </svg>
+          </div>
+          <p class="card__tag">16 Operator · 4 Bidang</p>
+          <h3 class="card__title">SIMTELOG - Tupoksi 16 Operator</h3>
+          <p class="card__desc">
+            Tugas pokok dan fungsi 16 operator SIMTELOG yang tersebar pada empat bidang
+            pengelolaan logistik.
+          </p>
+          <span class="card__cta">Buka Modul <span class="arrow">→</span></span>
+        </a>
+
+        <!-- ===== Module 04 - SIMTELOG Visualisasi TB/SIKAL & GPL ===== -->
+        <a class="card" href="#modul-simtelog-visualisasi">
+          <span class="card__num">04</span>
+          <div class="card__icon" aria-hidden="true">
+            <!-- node graph icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="9" width="5" height="6" rx="0.5"/><rect x="16" y="4" width="5" height="6" rx="0.5"/>
+              <rect x="16" y="14" width="5" height="6" rx="0.5"/><path d="M8 11.5h4.5V7H16M8 12.5h4.5V17H16"/>
+            </svg>
+          </div>
+          <p class="card__tag">Visualisasi Interaktif</p>
+          <h3 class="card__title">SIMTELOG - Visualisasi TB/SIKAL &amp; GPL</h3>
+          <p class="card__desc">
+            Peta alur interaktif proses TB, SIKAL, dan GPL lengkap dengan node, aktor,
+            serta posisi persetujuan.
+          </p>
+          <span class="card__cta">Buka Modul <span class="arrow">→</span></span>
+        </a>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>© 2025 Wingdik 600 TNI AU - Materi Pembekalan Internal</p>
+      <span class="classified">Restricted · Internal Use Only</span>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       SCRIPT - CSS-driven; JS only triggers staggered entrance
+       once the cards scroll into view (IntersectionObserver).
+       ============================================================ -->
+  <script>
+    (function () {
+      var cards = document.querySelectorAll('.card');
+
+      // If IntersectionObserver unsupported, just reveal all.
+      if (!('IntersectionObserver' in window)) {
+        cards.forEach(function (c) { c.classList.add('in'); });
+        return;
+      }
+
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+
+      cards.forEach(function (c) { io.observe(c); });
+    })();
+  </script>
+
+</body>
+</html>

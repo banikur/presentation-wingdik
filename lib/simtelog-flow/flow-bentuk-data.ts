@@ -19,7 +19,7 @@ import type { BentukFlow } from './flow-types';
  */
 export const BENTUK_FLOWS: BentukFlow[] = [
   // ─────────────────────────────────────────────────────────────
-  // 40200 — Permintaan Barang
+  // 40200 - Permintaan Barang
   // ─────────────────────────────────────────────────────────────
   {
     code: '40200',
@@ -81,23 +81,23 @@ export const BENTUK_FLOWS: BentukFlow[] = [
       {
         src: "/img/simtelog-flow/app/bentuk-40200-form-kosong.png",
         caption:
-          "Form Bentuk 40200 (kosong) di aplikasi SIMTELOG asli — Nomer Dokumen, Gudang Pengirim/Penerima (LANUD SDM), GPL/GPD, Ka TB, Status ENTERED.",
+          "Form Bentuk 40200 (kosong) di aplikasi SIMTELOG asli - Nomer Dokumen, Gudang Pengirim/Penerima (LANUD SDM), GPL/GPD, Ka TB, Status ENTERED.",
       },
       {
         src: "/img/simtelog-flow/app/bentuk-40200-form-terisi.png",
         caption:
-          "Form Bentuk 40200 (terisi) — Ka GPL/D (Edang Wahyu Ramdani, Ka GPL Lanud Sdm), Ka TB (Muhammad Syahrul, Ka TB Subsikal Sihar Skadud 7), Diminta Oleh & Diteliti Oleh terisi.",
+          "Form Bentuk 40200 (terisi) - Ka GPL/D (Edang Wahyu Ramdani, Ka GPL Lanud Sdm), Ka TB (Muhammad Syahrul, Ka TB Subsikal Sihar Skadud 7), Diminta Oleh & Diteliti Oleh terisi.",
       },
       {
         src: "/img/simtelog-flow/app/dashboard-start-center.png",
         caption:
-          "Start Center SIMTELOG — Quick Insert (New 40200), menu Aplikasi Pembekalan (Bentuk 40200/40510/40220/41300/40170/40400/40171), Inbox/Assignments dengan list dokumen aktif.",
+          "Start Center SIMTELOG - Quick Insert (New 40200), menu Aplikasi Pembekalan (Bentuk 40200/40510/40220/41300/40170/40400/40171), Inbox/Assignments dengan list dokumen aktif.",
       },
     ],
   },
 
   // ─────────────────────────────────────────────────────────────
-  // 40400 — Distribusi Barang
+  // 40400 - Distribusi Barang
   // ─────────────────────────────────────────────────────────────
   {
     code: '40400',
@@ -147,13 +147,13 @@ export const BENTUK_FLOWS: BentukFlow[] = [
     workflowImage: {
       src: "/img/simtelog-flow/workflow/bentuk-40400-workflow.png",
       caption:
-        "Diagram alur Bentuk 40400 (Distribusi Barang Antar Satker). ⚠ Gambar masih placeholder template — versi spesifik per bentuk akan menyusul.",
+        "Diagram alur Bentuk 40400 (Distribusi Barang Antar Satker). ⚠ Gambar masih placeholder template - versi spesifik per bentuk akan menyusul.",
       placeholder: true,
     },
   },
 
   // ─────────────────────────────────────────────────────────────
-  // 41300 — Pemindahan Barang Rusak (TB → GPL/GPD)
+  // 41300 - Pemindahan Barang Rusak (TB → GPL/GPD)
   // ─────────────────────────────────────────────────────────────
   {
     code: '41300',
@@ -163,7 +163,7 @@ export const BENTUK_FLOWS: BentukFlow[] = [
     shortPath: 'TB → GPL/GPD',
     statuses: ['Active', 'Stock Updated', 'Notified'],
     notes: [
-      'Khusus untuk barang yang sudah teridentifikasi rusak (US — Unserviceable).',
+      'Khusus untuk barang yang sudah teridentifikasi rusak (US - Unserviceable).',
       'TB menginisiasi pemindahan; tidak melalui jalur SIKAL.',
     ],
     nodes: [
@@ -207,13 +207,13 @@ export const BENTUK_FLOWS: BentukFlow[] = [
     workflowImage: {
       src: "/img/simtelog-flow/workflow/bentuk-41300-workflow.png",
       caption:
-        "Diagram alur Bentuk 41300 (Pemindahan Barang Rusak dari TB ke GPL/GPD). ⚠ Gambar masih placeholder template — versi spesifik per bentuk akan menyusul.",
+        "Diagram alur Bentuk 41300 (Pemindahan Barang Rusak dari TB ke GPL/GPD). ⚠ Gambar masih placeholder template - versi spesifik per bentuk akan menyusul.",
       placeholder: true,
     },
   },
 
   // ─────────────────────────────────────────────────────────────
-  // 40170 — Service Non Garansi
+  // 40170 - Service Non Garansi
   // ─────────────────────────────────────────────────────────────
   {
     code: '40170',
@@ -275,7 +275,7 @@ export const BENTUK_FLOWS: BentukFlow[] = [
   },
 
   // ─────────────────────────────────────────────────────────────
-  // 40170-1 — Warranty Claim
+  // 40170-1 - Warranty Claim
   // ─────────────────────────────────────────────────────────────
   {
     code: '40170-1',
@@ -334,12 +334,12 @@ export const BENTUK_FLOWS: BentukFlow[] = [
     workflowImage: {
       src: "/img/simtelog-flow/workflow/bentuk-40170-workflow.png",
       caption:
-        "Diagram BPMN sama dengan Bentuk 40170 — perbedaan pada percabangan \"40170 ATAU 40170-1?\": Bentuk 40170-1 melibatkan VENDOR untuk klaim warranty (bukan RPC).",
+        "Diagram BPMN sama dengan Bentuk 40170 - perbedaan pada percabangan \"40170 ATAU 40170-1?\": Bentuk 40170-1 melibatkan VENDOR untuk klaim warranty (bukan RPC).",
     },
   },
 
   // ─────────────────────────────────────────────────────────────
-  // 40220 — Mutasi Antar Gudang
+  // 40220 - Mutasi Antar Gudang
   // ─────────────────────────────────────────────────────────────
   {
     code: '40220',
@@ -349,7 +349,7 @@ export const BENTUK_FLOWS: BentukFlow[] = [
     shortPath: 'GPL/GPD ↔ GPL/GPD',
     statuses: ['Active', 'Stock Updated', 'Notified'],
     notes: [
-      'Mutasi internal antar gudang (KaGPL/KaGPD ke KaGPL/KaGPD) dalam satu satker — tidak melibatkan SIKAL.',
+      'Mutasi internal antar gudang (KaGPL/KaGPD ke KaGPL/KaGPD) dalam satu satker - tidak melibatkan SIKAL.',
     ],
     nodes: [
       {
@@ -392,14 +392,14 @@ export const BENTUK_FLOWS: BentukFlow[] = [
     workflowImage: {
       src: "/img/simtelog-flow/workflow/bentuk-40220-workflow.png",
       caption:
-        "Diagram alur Bentuk 40220 (Mutasi Antar Gudang dalam satu satker). ⚠ Gambar masih placeholder template — versi spesifik per bentuk akan menyusul.",
+        "Diagram alur Bentuk 40220 (Mutasi Antar Gudang dalam satu satker). ⚠ Gambar masih placeholder template - versi spesifik per bentuk akan menyusul.",
       placeholder: true,
     },
     appScreenshots: [
       {
         src: "/img/simtelog-flow/app/bentuk-40220-form-terisi.png",
         caption:
-          "Form Bentuk 40220 (terisi) — Lanud/Depo: LANUD SDM, GPL/GPD: GPL SDM GD 01, Status: SHIPPED, Receipts: COMPLETE, dengan line item barang (SCREW MACHINE, PN A0164TK050S020X, Jumlah 10).",
+          "Form Bentuk 40220 (terisi) - Lanud/Depo: LANUD SDM, GPL/GPD: GPL SDM GD 01, Status: SHIPPED, Receipts: COMPLETE, dengan line item barang (SCREW MACHINE, PN A0164TK050S020X, Jumlah 10).",
       },
     ],
   },

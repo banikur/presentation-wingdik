@@ -118,7 +118,7 @@ export function FlowCanvas({ bentuk }: FlowCanvasProps) {
           <div className="min-w-0 flex-1">
             <h2 className="text-lg font-bold text-app-text md:text-xl">
               Bentuk {bentuk.code}
-              <span className="font-normal text-app-text-muted"> — {bentuk.title}</span>
+              <span className="font-normal text-app-text-muted"> - {bentuk.title}</span>
             </h2>
             {bentuk.subtitle && (
               <p className="mt-0.5 text-sm text-app-text-muted">{bentuk.subtitle}</p>

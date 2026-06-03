@@ -195,7 +195,7 @@ function RoleTupoksiScreen({
       <div className="mt-5">
         <SimtelogSectionLabel>Tugas Pokok &amp; Fungsi</SimtelogSectionLabel>
         <p className="mb-3 text-sm text-app-text-muted">
-          Pilih nomor tugas — materi tampil di panel bawah tanpa perlu scroll ke atas.
+          Pilih nomor tugas - materi tampil di panel bawah tanpa perlu scroll ke atas.
         </p>
 
         <div

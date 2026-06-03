@@ -122,7 +122,7 @@ function PopupBody({ node }: { node: FlowNode }) {
           Aktor
         </p>
         <p className="mt-1.5 text-base font-semibold" style={{ color: actor.accent }}>
-          {actor.short} — {actor.fullName}
+          {actor.short} - {actor.fullName}
         </p>
       </div>
 

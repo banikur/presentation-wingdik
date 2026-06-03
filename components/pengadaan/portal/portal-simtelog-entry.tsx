@@ -26,9 +26,9 @@ export function PortalSimtelogEntry({ onSelect }: PortalSimtelogEntryProps) {
         <AppLogo appId="simtelog" size="md" />
       </div>
       <div className="pointer-events-none min-w-0 flex-1">
-        <h3 className="text-xl font-bold text-app-text">SIMTELOGAU — 16 Peran</h3>
+        <h3 className="text-xl font-bold text-app-text">SIMTELOGAU - 16 Peran</h3>
         <p className="mt-1 text-base leading-relaxed text-app-text-muted">
-          Pengenalan tupoksi modul Pembekalan — 16 peran, 4 bidang, contoh task per peran
+          Pengenalan tupoksi modul Pembekalan - 16 peran, 4 bidang, contoh task per peran
           (sumber: materi pembekalan SIMTELOG).
         </p>
         <p className="mt-2 text-sm font-semibold text-[#ea580c] group-hover:text-[#c2410c]">
